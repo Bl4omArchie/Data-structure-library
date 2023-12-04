@@ -29,8 +29,6 @@ int file_size(const DoublyLinkedList* f);
 bool is_empty(const DoublyLinkedList* f);
 void free_file(DoublyLinkedList* f);
 
-// int File_premier(const File_t* f);
-// int File_dernier(const File_t* f);
 
 
 #endif

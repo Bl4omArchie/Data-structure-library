@@ -34,22 +34,46 @@ void insert_tail(DoublyLinkedList *f, int v) {
     f->tail = newElement;
 }
 
-int File_defiler(DoublyLinkedList *f) {
-
+int next_list(DoublyLinkedList *f) {
+    return f->head->next;
 }
 
-int file_size(const DoublyLinkedList *f) {
-
+int previous_list(const DoublyLinkedList *f) {
+    return f->head->prev;
 }
 
 bool is_empty(const DoublyLinkedList *f) {
-
+    return f->head == NULL;
 }
 
-void free_file(DoublyLinkedList *f) {
+
+//Delete a given Element of a given list
+void delete_element(DoublyLinkedList *f, Element to_delete) {
+    if (to_delete.prev != NULL)
+        to_delete.prev->next = to_delete.next;
+    else
+        f->head = to_delete.next;
     
+    if (to_delete.next != NULL)
+        to_delete.next->prev = to_delete.prev;
+    else   
+        f->tail = to_delete.prev;
 }
 
 
-// int File_premier(const DoublyLinkedList* f);
-// int File_dernier(const DoublyLinkedList* f);
+/*
+Suppression of each Element of the list
+The head and tail are set to null
+*/
+void free_file(DoublyLinkedList *f) {
+    Element *current = f->head;
+    Element *next;
+
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    f->head = NULL;
+    f->tail = NULL;
+}
