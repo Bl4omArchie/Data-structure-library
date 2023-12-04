@@ -1,12 +1,29 @@
 #include "../src/file_struct.h"
 
 
-void init_list(DoublyLinkedList *list) {
-    list->head = NULL;
-    list->tail = NULL;
+void init_list(DoublyLinkedList *f) {
+    f->head = NULL;
+    f->tail = NULL;
 }
 
-void File_enfiler(DoublyLinkedList *f, int v) {
+void insert_head(DoublyLinkedList *f, int v) {
+    Element* newElement = (Element*)malloc(sizeof(Element));
+    newElement->data = v;
+    newElement->next = f->head;
+    newElement->prev = NULL;
+
+    if (f->head != NULL) 
+        f->head->prev = newElement;
+    else 
+        f->tail = newElement;
+        
+    f->head = newElement;
+}
+
+void insert_tail(DoublyLinkedList *f, int v) {
+    if (f->tail == NULL) {
+
+    }
 
 }
 

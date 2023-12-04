@@ -21,7 +21,9 @@ typedef struct DoublyLinkedList {
 
 
 void init_list(DoublyLinkedList *list);
-void File_enfiler(DoublyLinkedList* f, int v);
+void insert_head(DoublyLinkedList *f, int v);
+void insert_tail(DoublyLinkedList *f, int v);
+
 int File_defiler(DoublyLinkedList* f);
 int file_size(const DoublyLinkedList* f);
 bool is_empty(const DoublyLinkedList* f);
