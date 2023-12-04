@@ -1,21 +1,34 @@
 #ifndef FILE_STRUCT_H
 #define FILE_STRUCT_H
 
-typedef struct File_s File_t;
-
-struct File_s {
-    
-};
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 
-File_t* File_creer();
-void File_enfiler(File_t* f, int v);
-int File_defiler(File_t* f);
-int File_taille(const File_t* f);
-bool File_vide(const File_t* f);
+// Structure of an element of the DoublyLinkedList
+typedef struct Element {
+    int data;
+    struct Element* next;
+    struct Element* prev;
+} Element;
+
+// Structure DoublyLinkedList
+typedef struct DoublyLinkedList {
+    Element* head;
+    Element* tail;
+} DoublyLinkedList;
+
+
+void init_list(DoublyLinkedList *list);
+void File_enfiler(DoublyLinkedList* f, int v);
+int File_defiler(DoublyLinkedList* f);
+int file_size(const DoublyLinkedList* f);
+bool is_empty(const DoublyLinkedList* f);
+void free_file(DoublyLinkedList* f);
+
 // int File_premier(const File_t* f);
 // int File_dernier(const File_t* f);
-void File_liberer(File_t* f);
 
 
 #endif

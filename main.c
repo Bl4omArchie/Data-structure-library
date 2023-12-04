@@ -3,6 +3,8 @@
 
 
 int main() {
+    DoublyLinkedList myList;
+    init_list(&myList);
 
-
+    return 1;
 }

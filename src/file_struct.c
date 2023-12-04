@@ -1,30 +1,31 @@
-#include "src/file_struct.h"
+#include "../src/file_struct.h"
 
 
-File_t* File_creer() {
+void init_list(DoublyLinkedList *list) {
+    list->head = NULL;
+    list->tail = NULL;
+}
+
+void File_enfiler(DoublyLinkedList *f, int v) {
 
 }
 
-void File_enfiler(File_t* f, int v) {
+int File_defiler(DoublyLinkedList *f) {
 
 }
 
-int File_defiler(File_t* f) {
+int file_size(const DoublyLinkedList *f) {
 
 }
 
-int File_taille(const File_t* f) {
+bool is_empty(const DoublyLinkedList *f) {
 
 }
 
-bool File_vide(const File_t* f) {
-
-}
-
-void File_liberer(File_t* f) {
+void free_file(DoublyLinkedList *f) {
     
 }
 
 
-// int File_premier(const File_t* f);
-// int File_dernier(const File_t* f);
+// int File_premier(const DoublyLinkedList* f);
+// int File_dernier(const DoublyLinkedList* f);
