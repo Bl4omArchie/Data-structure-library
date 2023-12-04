@@ -10,5 +10,7 @@ int main() {
     insert_head(&myList, 1011100);
     insert_head(&myList, 101010);
 
+    myList.head->prev;
+
     return 1;
 }

@@ -1,5 +1,7 @@
 # File structure using FIFO strategy
 
+
+
 # Sources
 
 - [Les listes doublement chaînées en C](https://nicolasj.developpez.com/articles/listedouble/#LIII-C)

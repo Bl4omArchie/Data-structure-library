@@ -34,14 +34,6 @@ void insert_tail(DoublyLinkedList *f, int v) {
     f->tail = newElement;
 }
 
-int next_list(DoublyLinkedList *f) {
-    return f->head->next;
-}
-
-int previous_list(const DoublyLinkedList *f) {
-    return f->head->prev;
-}
-
 bool is_empty(const DoublyLinkedList *f) {
     return f->head == NULL;
 }
@@ -76,4 +68,14 @@ void free_file(DoublyLinkedList *f) {
     }
     f->head = NULL;
     f->tail = NULL;
+}
+
+void find(DoublyLinkedList *f, Element *elem) {
+
+}
+void find_next(DoublyLinkedList *f, Element *elem) {
+    
+}
+void find_previous(DoublyLinkedList *f, Element *elem) {
+
 }
