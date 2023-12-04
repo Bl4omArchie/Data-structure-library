@@ -16,15 +16,22 @@ void insert_head(DoublyLinkedList *f, int v) {
         f->head->prev = newElement;
     else 
         f->tail = newElement;
-        
+
     f->head = newElement;
 }
 
 void insert_tail(DoublyLinkedList *f, int v) {
-    if (f->tail == NULL) {
+    Element* newElement = (Element*)malloc(sizeof(Element));
+    newElement->data = v;
+    newElement->next = f->tail;
+    newElement->prev = NULL;
 
-    }
-
+    if (f->tail != NULL) 
+        f->tail->prev = newElement;
+    else 
+        f->head = newElement;
+        
+    f->tail = newElement;
 }
 
 int File_defiler(DoublyLinkedList *f) {
