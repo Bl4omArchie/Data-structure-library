@@ -27,8 +27,8 @@ bool is_empty(const DoublyLinkedList *f);
 void delete_element(DoublyLinkedList *f, Element to_delete);
 void free_file(DoublyLinkedList *f);
 
-void find(DoublyLinkedList *f, Element *elem);
-void find_next(DoublyLinkedList *f, Element *elem);
-void find_previous(DoublyLinkedList *f, Element *elem);
+Element find(DoublyLinkedList *f, int v);
+Element find_next(DoublyLinkedList *f, int v);
+Element find_previous(DoublyLinkedList *f, in v);
 
 #endif

@@ -70,12 +70,22 @@ void free_file(DoublyLinkedList *f) {
     f->tail = NULL;
 }
 
-void find(DoublyLinkedList *f, Element *elem) {
+Element find(DoublyLinkedList *f, int v) {
+    Element *current = f->head;
+    Element *next = current->next;
 
+    while (current != NULL) {
+        if (current->data == v)
+            return *current;
+        current = next;
+        next = current->next;
+    }
 }
-void find_next(DoublyLinkedList *f, Element *elem) {
-    
-}
-void find_previous(DoublyLinkedList *f, Element *elem) {
 
+Element find_next(DoublyLinkedList *f, int v) {
+    return *find(f, v).next;
+}
+
+Element find_previous(DoublyLinkedList *f, int v) {
+    return *find(f, v).prev;
 }
