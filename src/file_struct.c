@@ -6,7 +6,7 @@ void init_list(DoublyLinkedList *f) {
     f->tail = NULL;
 }
 
-void insert_head(DoublyLinkedList *f, int v) {
+void insert_head(DoublyLinkedList *f, uint64_t v) {
     Element* newElement = (Element*)malloc(sizeof(Element));
     newElement->data = v;
     newElement->next = f->head;
@@ -20,7 +20,7 @@ void insert_head(DoublyLinkedList *f, int v) {
     f->head = newElement;
 }
 
-void insert_tail(DoublyLinkedList *f, int v) {
+void insert_tail(DoublyLinkedList *f, uint64_t v) {
     Element* newElement = (Element*)malloc(sizeof(Element));
     newElement->data = v;
     newElement->next = f->tail;
@@ -52,6 +52,18 @@ void delete_element(DoublyLinkedList *f, Element to_delete) {
         f->tail = to_delete.prev;
 }
 
+void print_doubly_linked(DoublyLinkedList *f) {
+    Element *current = f->head;
+    Element *next;
+
+    while (current != NULL) {
+        next = current->next;
+        printf("%ld\n", current->data);
+        current = next;
+    }
+    printf ("\n");
+}
+
 
 /*
 Suppression of each Element of the list
@@ -70,7 +82,7 @@ void free_file(DoublyLinkedList *f) {
     f->tail = NULL;
 }
 
-Element find(DoublyLinkedList *f, int v) {
+Element find(DoublyLinkedList *f, uint64_t v) {
     Element *current = f->head;
     Element *next = current->next;
 
@@ -82,10 +94,10 @@ Element find(DoublyLinkedList *f, int v) {
     }
 }
 
-Element find_next(DoublyLinkedList *f, int v) {
+Element find_next(DoublyLinkedList *f, uint64_t v) {
     return *find(f, v).next;
 }
 
-Element find_previous(DoublyLinkedList *f, int v) {
+Element find_previous(DoublyLinkedList *f, uint64_t v) {
     return *find(f, v).prev;
 }

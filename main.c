@@ -6,11 +6,11 @@ int main() {
     DoublyLinkedList myList;
     init_list(&myList);
 
-    insert_head(&myList, 1);
-    insert_head(&myList, 1011100);
-    insert_head(&myList, 101010);
+    insert_head(&myList, 569464);
+    insert_head(&myList, 1561651);
+    insert_head(&myList, 56489464);
 
-    myList.head->prev;
+    print_doubly_linked(&myList);
 
     return 1;
 }
