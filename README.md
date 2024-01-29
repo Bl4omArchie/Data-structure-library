@@ -2,26 +2,31 @@
 
 This project goals is to understand linked list, examine techniques to implement it and finally, find an optimal way to implement this data structure.
 
-There is a bit of context: data structure are a way to store informations. Actually there are differents techniques to do so: array, hash tables, graphs, stacks/queues, trees and linked list. Each of them has their own specificities but here we have a fixed subject: linked list, so we won't talk about differences between data structure. 
+
+## Introduction
+
+### Context
+
+Data structure are a way to store informations. Actually there are differents techniques to do so: array, hash tables, graphs, stacks/queues, trees and linked list. Each of them has their own specificities but here we have a fixed subject: linked list, so we won't talk about differences between data structure. 
 For further reading I suggest you geeksforgeeks's website which resume and lead to various documentation about each type of data structure.
 The post is called: [Data Structures Tutorial](https://www.geeksforgeeks.org/data-structures/).
 
-## Definition 
+### Definition 
 
 So what is a linked list ?
-<br/>
 -> Linked list is a data structure where each element contains a data element of some type and a pointer to the next item in the list. It is easy to insert and delete elements in a linked list, which are not natural operations on arrays, since arrays have a fixed size. 
 
 You also may heard of **Doubly Linked List**. This means that each item contains not only a pointer to the next item but also on the previous one. In this project, we'll use a doubly linked list.
 
 
+## Techniques and methods
 
-## Different methods of implementation
+### Structures
 
-To implement a linked list, you have two ways:
+First we need to create a structure to represent the Linked list. We have two ways to do this.
 
 - with two structures:
-As you can see here, we have two structures, one for the Linked List and the second one for representing Elements. The advantage of this method is that we keep an eye on the first and last element which can be an advantage depending on how you are implementing yours prototypes.
+The first struct represent the Linked List itself and the second one represent an Element. The advantage of this method is that we keep an eye on the first and last element which can be an advantage depending on how you are implementing yours prototypes. But in the other hand, this method can be unconfortable for prototypes implemetations (ie: more steps for the adding feature).
 ```c
 typedef struct Element {
     uint64_t data;
@@ -37,7 +42,7 @@ typedef struct DoublyLinkedList {
 ```
 
 - self contained structure:
-With the second method, we are merging the representation of the global struct and an element in one single structure. This way is a bit simplier for impementing the prototypes but more complex to handle because you don't keep a track on the head and tail which means you may have to retrieve it by searching in the whole pipe. 
+With the second method, we are merging the representation of the global struct and an element into one single structure. This representation is lighter and personnaly, I prefer this **one**.  
 ```c
 struct DoublyLinkedList {
     int value;
@@ -46,7 +51,7 @@ struct DoublyLinkedList {
 };
 ```
 
-## Prototypes
+### Prototypes
 
 Now, we'll talk about the prototype to implement in order to make our linked list functionnal. No matters what methods you chosed previously, the idea stay the same but you have to thing slighty differently.
 

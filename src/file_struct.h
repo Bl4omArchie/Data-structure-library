@@ -7,30 +7,30 @@
 #include <stdint.h>
 
 
-// Structure of an integer element of the DoublyLinkedList
-typedef struct Element {
-    uint64_t data;
-    struct Element* next;
-    struct Element* prev;
-} Element;
-
-// Structure DoublyLinkedList
+/*
+A doubly linked list that handle positive numbers of 64 bits. 
+*/
 typedef struct DoublyLinkedList {
-    Element* head;
-    Element* tail;
+    uint64_t data;
+    struct DoublyLinkedList* next;
+    struct DoublyLinkedList* prev;
 } DoublyLinkedList;
 
 
-void init_list(DoublyLinkedList *f);
-void insert_head(DoublyLinkedList *f, uint64_t v);
-void insert_tail(DoublyLinkedList *f, uint64_t v);
-bool is_empty(const DoublyLinkedList *f);
-void delete_element(DoublyLinkedList *f, Element to_delete);
-void free_file(DoublyLinkedList *f);
-void print_doubly_linked(DoublyLinkedList *f);
+int init_linked_list(struct DoublyLinkedList *linked_list);
 
-Element find(DoublyLinkedList *f, uint64_t v);
-Element find_next(DoublyLinkedList *f, uint64_t v);
-Element find_previous(DoublyLinkedList *f, uint64_t v);
+int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
+int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data);
+
+int insert_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
+int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data);
+
+int remove_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
+int remove_data_head(struct DoublyLinkedList *linked_list, uint64_t data);
+
+int remove_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
+int remove_data_tail(struct DoublyLinkedList *linked_list, uint64_t data);
+
+int free_linked_list(struct DoublyLinkedList *linked_list);
 
 #endif
