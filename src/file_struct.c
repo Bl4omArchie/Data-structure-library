@@ -1,103 +1,82 @@
 #include "../src/file_struct.h"
 
 
-void init_list(DoublyLinkedList *f) {
-    f->head = NULL;
-    f->tail = NULL;
+void init_linked_list(struct DoublyLinkedList *linked_list) {
+    linked_list->data = 0;
+    linked_list->head = NULL;
+    linked_list->tail = NULL;
 }
 
-void insert_head(DoublyLinkedList *f, uint64_t v) {
-    Element* newElement = (Element*)malloc(sizeof(Element));
-    newElement->data = v;
-    newElement->next = f->head;
-    newElement->prev = NULL;
-
-    if (f->head != NULL) 
-        f->head->prev = newElement;
-    else 
-        f->tail = newElement;
-
-    f->head = newElement;
-}
-
-void insert_tail(DoublyLinkedList *f, uint64_t v) {
-    Element* newElement = (Element*)malloc(sizeof(Element));
-    newElement->data = v;
-    newElement->next = f->tail;
-    newElement->prev = NULL;
-
-    if (f->tail != NULL) 
-        f->tail->prev = newElement;
-    else 
-        f->head = newElement;
-        
-    f->tail = newElement;
-}
-
-bool is_empty(const DoublyLinkedList *f) {
-    return f->head == NULL;
-}
-
-
-//Delete a given Element of a given list
-void delete_element(DoublyLinkedList *f, Element to_delete) {
-    if (to_delete.prev != NULL)
-        to_delete.prev->next = to_delete.next;
-    else
-        f->head = to_delete.next;
+int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element) {
+    if (linked_list == NULL || element == NULL) 
+        return -1;
     
-    if (to_delete.next != NULL)
-        to_delete.next->prev = to_delete.prev;
-    else   
-        f->tail = to_delete.prev;
-}
-
-void print_doubly_linked(DoublyLinkedList *f) {
-    Element *current = f->head;
-    Element *next;
-
-    while (current != NULL) {
-        next = current->next;
-        printf("%ld\n", current->data);
-        current = next;
+    if (linked_list->head != NULL) {
+        linked_list->head->tail = element;
+        element->head = linked_list->head;
     }
-    printf ("\n");
+    element->tail = linked_list;
+    linked_list->head = element;
+
+    return 1;
 }
 
+int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data) {
+    if (linked_list == NULL) 
+        return -1;
 
-/*
-Suppression of each Element of the list
-The head and tail are set to null
-*/
-void free_file(DoublyLinkedList *f) {
-    Element *current = f->head;
-    Element *next;
+    DoublyLinkedList *newElement = (DoublyLinkedList*)malloc(sizeof(DoublyLinkedList));
+    init_linked_list(newElement);
+    newElement->data = data;
+    return insert_element_head(linked_list, newElement);
+}
+
+int insert_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element) {
+    if (linked_list == NULL || element == NULL) 
+        return -1;
+    
+    linked_list->tail->head = element;
+    element->tail = linked_list->tail;
+    element->head = linked_list;
+    linked_list->tail = element;
+    return 1;
+}
+
+int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data) {
+    if (linked_list == NULL) 
+        return -1;
+    
+    DoublyLinkedList *newElement = (DoublyLinkedList*)malloc(sizeof(DoublyLinkedList));
+    init_linked_list(newElement);
+    newElement->data = data;
+    return insert_element_tail(linked_list, newElement);
+}
+
+int remove_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
+int remove_data_head(struct DoublyLinkedList *linked_list, uint64_t data);
+
+int remove_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
+int remove_data_tail(struct DoublyLinkedList *linked_list, uint64_t data);
+
+
+void free_element(struct DoublyLinkedList *element) {
+    element->head->tail = element->tail;
+    element->tail = element->head;
+    free(element);
+}
+
+void free_linked_list(struct DoublyLinkedList *linked_list) {
+    DoublyLinkedList *current = linked_list->head;
+    DoublyLinkedList *next;
 
     while (current != NULL) {
-        next = current->next;
+        next = current->tail;
         free(current);
         current = next;
     }
-    f->head = NULL;
-    f->tail = NULL;
+    free(linked_list);
 }
 
-Element find(DoublyLinkedList *f, uint64_t v) {
-    Element *current = f->head;
-    Element *next = current->next;
+void free_linked_list_fork(struct DoublyLinkedList *linked_list) {
 
-    while (current != NULL) {
-        if (current->data == v)
-            return *current;
-        current = next;
-        next = current->next;
-    }
-}
-
-Element find_next(DoublyLinkedList *f, uint64_t v) {
-    return *find(f, v).next;
-}
-
-Element find_previous(DoublyLinkedList *f, uint64_t v) {
-    return *find(f, v).prev;
 }

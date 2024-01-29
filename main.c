@@ -4,13 +4,9 @@
 
 int main() {
     DoublyLinkedList myList;
-    init_list(&myList);
 
-    insert_head(&myList, 569464);
-    insert_head(&myList, 1561651);
-    insert_head(&myList, 56489464);
-
-    print_doubly_linked(&myList);
+    init_linked_list(&myList);
+    insert_data_head(&myList, 65468498);
 
     return 1;
 }

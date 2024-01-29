@@ -1,25 +1,29 @@
-C = gcc
+# Compilateur
+CC = gcc
 
 # Dossiers
 SRCDIR = src
+INCDIR = include
 BUILDDIR = build
 TARGET = file.o
 
-# Fichiers sources
 SRCS = $(wildcard $(SRCDIR)/*.c)
-# Fichiers objets
 OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
 
+# Options de compilation
+CFLAGS = -I$(INCDIR)
+
+# Règles de construction
 all: $(BUILDDIR) $(TARGET)
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
-	$(C) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(TARGET): $(OBJS)
-	$(C) main.c -o $(TARGET) $(OBJS)
+	$(CC) main.c -o $(TARGET) $(OBJS)
 
 clean:
 	rm -rf $(BUILDDIR) $(TARGET)
