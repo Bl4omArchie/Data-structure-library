@@ -7,8 +7,10 @@ void init_linked_list(struct DoublyLinkedList *linked_list) {
     linked_list->tail = NULL;
 }
 
+
 void set_data(struct DoublyLinkedList *linked_list, uint64_t data) {
-    linked_list->data = data & 0x8000000000000000;
+    // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
+    linked_list->data = data & 0x7FFFFFFFFFFFFFFF;
 }
 
 
@@ -64,7 +66,7 @@ int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data) {
 }
 
 
-int remove_element(struct DoublyLinkedList *element) {
+void remove_element(struct DoublyLinkedList *element) {
     element->head->tail = element->tail;
     element->tail = element->head;
     free(element);
@@ -72,18 +74,7 @@ int remove_element(struct DoublyLinkedList *element) {
 
 
 void clear_linked_list(struct DoublyLinkedList *linked_list) {
-    DoublyLinkedList *current = linked_list;
-    DoublyLinkedList *next;
-
-    if (linked_list->head != NULL)
-        linked_list->head->tail = NULL;
-
-    while (current != NULL) {
-        next = current->tail;
-        free(current);
-        current = next;
-    }
-    init_linked_list(linked_list);
+    find_head(linked_list);
 }
 
 
@@ -131,4 +122,15 @@ void free_head_linked_list(struct DoublyLinkedList *linked_list) {
 void free_tail_linked_list(struct DoublyLinkedList *linked_list) {
     clear_tail_linked_list(linked_list);
     free(linked_list);
+}
+
+DoublyLinkedList *find_head(struct DoublyLinkedList *linked_list) {
+    DoublyLinkedList *current = linked_list;
+    DoublyLinkedList *next;
+
+    while (current->head != NULL) {
+        current = next;
+        next = current->tail;
+    }
+    return current;
 }

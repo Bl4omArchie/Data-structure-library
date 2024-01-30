@@ -29,7 +29,7 @@ for parallelization
 */
 
 
-// A doubly linked list that handle positive numbers of 64 bits. 
+// A doubly linked list that handle positive nu vmbers of 64 bits. 
 typedef struct DoublyLinkedList {
     uint64_t data;
     struct DoublyLinkedList *head;
@@ -57,7 +57,7 @@ int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data);
 
 
 // Manual deletion
-int remove_element(struct DoublyLinkedList *element);
+void remove_element(struct DoublyLinkedList *element);
 
 
 /* Manual: clear
@@ -75,6 +75,13 @@ void clear_head_linked_list(struct DoublyLinkedList *linked_list);
 void clear_tail_linked_list(struct DoublyLinkedList *linked_list);
 void free_head_linked_list(struct DoublyLinkedList *linked_list);
 void free_tail_linked_list(struct DoublyLinkedList *linked_list);
+
+
+/* Manual: find
+find_head:
+find_tail:
+*/
+DoublyLinkedList *find_head(struct DoublyLinkedList *linked_list);
 
 
 #endif
