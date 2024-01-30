@@ -82,6 +82,7 @@ find_head:
 find_tail:
 */
 DoublyLinkedList *find_head(struct DoublyLinkedList *linked_list);
+DoublyLinkedList *find_tail(struct DoublyLinkedList *linked_list);
 
 
 #endif

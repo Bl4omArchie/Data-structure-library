@@ -11,5 +11,7 @@ int main() {
 
     head = find_head(&myList);
 
+    clear_head_linked_list(&myList);
+
     return 1;
 }

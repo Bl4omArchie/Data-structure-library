@@ -3,7 +3,7 @@ CC = gcc
 
 # Dossiers
 SRCDIR = src
-INCDIR = include
+INCDIR = includes
 BUILDDIR = build
 TARGET = file.o
 
