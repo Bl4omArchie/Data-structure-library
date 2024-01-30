@@ -12,17 +12,20 @@
 
 
 /*
-Third struct ?
+Third type of struct ?
+
+struct Element {
+    Element *head;
+    Element *tail;
+} Element;
 
 typedef struct DoublyLinkedList {
-    uint64_t data;
-    struct DoublyLinkedList *head;
-    struct DoublyLinkedList *tail;
-    struct DoublyLinkedList *middle;
+    struct Element *head;
+    struct Element *tail;
+    struct Element *middle;
 } DoublyLinkedList;
 
-Parallelization for clear and free
-
+for parallelization
 */
 
 
@@ -42,11 +45,11 @@ void init_linked_list(struct DoublyLinkedList *linked_list);
 
 
 /* Manual: insertion
-The first prototype insert a given element.
-The second one create a new element with a given data
-Both prototype exists for head and tail 
+set_data: set the given value into your element (positive number only)
+insert_element: insert a given element (DoublyLinkedList) into the head or the tail of the given linked list
+insert_data: same utility but you only provide a value and it create a new element
 */
-int insert_data(struct DoublyLinkedList *linked_list, uint64_t data);
+void set_data(struct DoublyLinkedList *linked_list, uint64_t data);
 int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
 int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data);
 int insert_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);

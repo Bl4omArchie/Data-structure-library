@@ -42,7 +42,7 @@ typedef struct DoublyLinkedList {
 ```
 
 - self contained structure:
-With the second method, we are merging the representation of the global struct and an element into one single structure. This representation is lighter and personnaly, I prefer this **one**.  
+With the second method, we are merging the representation of the global struct and an element into one single structure. This representation is lighter and personnaly I prefer this one.  
 ```c
 struct DoublyLinkedList {
     int value;
@@ -51,10 +51,9 @@ struct DoublyLinkedList {
 };
 ```
 
-### Features and rototypes
+### Features and prototypes
 
-Now, we'll talk about the prototype to implement in order to make our linked list work. No matters what methods you chosed previously (the idea stay the same but you have to thing slightly differently), this what you will need to implement:
-
+To make a linked list work, you need some basic operations. There is a list of the most important ones:
 ```
 - Initialization
 - Insertion
@@ -62,10 +61,21 @@ Now, we'll talk about the prototype to implement in order to make our linked lis
 - Clear and Free memory
 ```
 
+In practise, you can add more prototypes for a single feature so you can make more accurate manipulation of your linked list. For the Init and Insertion operation, I thought about what could be useful if I wanted to manipulate my linked list, and this what I have finded:
+```c
+void init_linked_list(struct DoublyLinkedList *linked_list);
+void set_data(struct DoublyLinkedList *linked_list, uint64_t data);
+int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
+int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data);
+int insert_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
+int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data);
+```
+As you can see, the Insert feature can be manipulated in many different ways.
+In the header file of my project, you can find more details about each prototypes.
 
 
 
-Some prototypes can be added but aren't mandatory:
+Some other prototypes can be added but aren't mandatory:
 ```c
 void print_doubly_linked(DoublyLinkedList *f);
 bool is_empty(const DoublyLinkedList *f);
@@ -77,9 +87,9 @@ Element find_previous(DoublyLinkedList *f, uint64_t v);
 
 
 # Sources
-- [Les listes doublement chaînées en C](https://nicolasj.developpez.com/articles/listedouble/#LIII-C)
+- [Les listes doublement chaînées en C - by Nicolas Joseph - 20 july 2005](https://nicolasj.developpez.com/articles/listedouble/#LIII-C)
 - [Programmation algorithmique/Listes doublement chaînées](https://fr.wikibooks.org/wiki/Programmation_algorithmique/Listes_doublement_cha%C3%AEn%C3%A9es)
 - [Linked List Basics - by Nick Parlante](http://cslibrary.stanford.edu/103/LinkedListBasics.pdf)
-- [Lecture Notes on Linked Lists - by Frank Pfenning, Rob Simmons, Andr´e Platzer, September 30, 2014](https://www.cs.cmu.edu/~rjsimmon/15122-f14/lec/11-linkedlist.pdf)
+- [Lecture Notes on Linked Lists - by Frank Pfenning, Rob Simmons, Andr´e Platzer - 30 september 2014](https://www.cs.cmu.edu/~rjsimmon/15122-f14/lec/11-linkedlist.pdf)
 - [Linked Lists - Computer Science E-22 - Harvard University, David G. Sullivan, Ph.D](https://cscie22.sites.fas.harvard.edu/files/lectures/04_linked_lists.pdf)
 - [Data Structures Tutorial](https://www.geeksforgeeks.org/data-structures/)

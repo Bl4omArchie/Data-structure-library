@@ -7,7 +7,7 @@ void init_linked_list(struct DoublyLinkedList *linked_list) {
     linked_list->tail = NULL;
 }
 
-int insert_data(struct DoublyLinkedList *linked_list, uint64_t data) {
+void set_data(struct DoublyLinkedList *linked_list, uint64_t data) {
     linked_list->data = data & 0x8000000000000000;
 }
 
@@ -87,12 +87,6 @@ void clear_linked_list(struct DoublyLinkedList *linked_list) {
 }
 
 
-void free_linked_list(struct DoublyLinkedList *linked_list) {
-    clear_linked_list(linked_list);
-    free(linked_list);
-}
-
-
 void clear_head_linked_list(struct DoublyLinkedList *linked_list) {
     DoublyLinkedList *current = linked_list;
     DoublyLinkedList *prev;
@@ -122,6 +116,11 @@ void clear_tail_linked_list(struct DoublyLinkedList *linked_list) {
         current = next;
     }
     init_linked_list(linked_list);
+}
+
+void free_linked_list(struct DoublyLinkedList *linked_list) {
+    clear_linked_list(linked_list);
+    free(linked_list);
 }
 
 void free_head_linked_list(struct DoublyLinkedList *linked_list) {
