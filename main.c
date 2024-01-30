@@ -1,15 +1,15 @@
 #include <stdio.h>
-#include "src/file_struct.h"
+#include "includes/file_struct.h"
 
 
 int main() {
-    DoublyLinkedList myList;
+    DoublyLinkedList myList, *head;
     init_linked_list(&myList);
 
     set_data(&myList, 4584799946);
     insert_data_tail(&myList, 674868);
 
-    //printf ("%ld", find_head(myList.tail)->data);
+    head = find_head(&myList);
 
     return 1;
 }

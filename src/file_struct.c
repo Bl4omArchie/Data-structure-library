@@ -1,4 +1,4 @@
-#include "../src/file_struct.h"
+#include "../includes/file_struct.h"
 
 
 void init_linked_list(struct DoublyLinkedList *linked_list) {
@@ -74,7 +74,7 @@ void remove_element(struct DoublyLinkedList *element) {
 
 
 void clear_linked_list(struct DoublyLinkedList *linked_list) {
-    find_head(linked_list);
+
 }
 
 
