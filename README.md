@@ -25,7 +25,7 @@ You also may heard of **Doubly Linked List**. This means that each item contains
 
 First we need to create a structure to represent the Linked list. We have two ways to do this.
 
-- with two structures:
+- with two representations:
 The first struct represent the Linked List itself and the second one represent an Element. The advantage of this method is that we keep an eye on the first and last element which can be an advantage depending on how you are implementing yours prototypes. But in the other hand, this method can be unconfortable for prototypes implemetations (ie: more steps for the adding feature).
 ```c
 typedef struct Element {
@@ -51,17 +51,18 @@ struct DoublyLinkedList {
 };
 ```
 
-### Prototypes
+### Features and rototypes
 
-Now, we'll talk about the prototype to implement in order to make our linked list functionnal. No matters what methods you chosed previously, the idea stay the same but you have to thing slighty differently.
+Now, we'll talk about the prototype to implement in order to make our linked list work. No matters what methods you chosed previously (the idea stay the same but you have to thing slightly differently), this what you will need to implement:
 
-```c
-void init_list(DoublyLinkedList *f);                            
-void insert_head(DoublyLinkedList *f, uint64_t v);    
-void insert_tail(DoublyLinkedList *f, uint64_t v);    
-void delete_element(DoublyLinkedList *f, Element to_delete);   
-void free_file(DoublyLinkedList *f);                            
 ```
+- Initialization
+- Insertion
+- Deletion
+- Clear and Free memory
+```
+
+
 
 
 Some prototypes can be added but aren't mandatory:

@@ -87,8 +87,49 @@ void clear_linked_list(struct DoublyLinkedList *linked_list) {
 }
 
 
-
 void free_linked_list(struct DoublyLinkedList *linked_list) {
     clear_linked_list(linked_list);
+    free(linked_list);
+}
+
+
+void clear_head_linked_list(struct DoublyLinkedList *linked_list) {
+    DoublyLinkedList *current = linked_list;
+    DoublyLinkedList *prev;
+
+    if (linked_list->tail != NULL)
+        linked_list->tail->head = NULL;
+
+    while (current != NULL) {
+        prev = current->head;
+        free(current);
+        current = prev;
+    }
+    init_linked_list(linked_list);
+
+}
+
+void clear_tail_linked_list(struct DoublyLinkedList *linked_list) {
+    DoublyLinkedList *current = linked_list;
+    DoublyLinkedList *next;
+
+    if (linked_list->head != NULL)
+        linked_list->head->tail = NULL;
+
+    while (current != NULL) {
+        next = current->tail;
+        free(current);
+        current = next;
+    }
+    init_linked_list(linked_list);
+}
+
+void free_head_linked_list(struct DoublyLinkedList *linked_list) {
+    clear_head_linked_list(linked_list);
+    free(linked_list);
+}
+
+void free_tail_linked_list(struct DoublyLinkedList *linked_list) {
+    clear_tail_linked_list(linked_list);
     free(linked_list);
 }

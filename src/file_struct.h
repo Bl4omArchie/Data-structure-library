@@ -11,6 +11,21 @@
 #include <sys/wait.h>
 
 
+/*
+Third struct ?
+
+typedef struct DoublyLinkedList {
+    uint64_t data;
+    struct DoublyLinkedList *head;
+    struct DoublyLinkedList *tail;
+    struct DoublyLinkedList *middle;
+} DoublyLinkedList;
+
+Parallelization for clear and free
+
+*/
+
+
 // A doubly linked list that handle positive numbers of 64 bits. 
 typedef struct DoublyLinkedList {
     uint64_t data;
@@ -42,13 +57,21 @@ int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data);
 int remove_element(struct DoublyLinkedList *element);
 
 
-/* Manual clear: 
-clear: nullify the given element and free every element from the next one to the tail
-free: same thing as clear but free the given element
+/* Manual: clear
+clear: nullify the head and free the memory of the rest
+clear_head: nullify the given element and free the memory of every element from head to this element
+clear_tail: same but for the tail
+
+free: free memory of the whole linked list
+free_head: free the given element and everything above it
+free_tail: same but for the tail
 */ 
 void clear_linked_list(struct DoublyLinkedList *linked_list);
 void free_linked_list(struct DoublyLinkedList *linked_list);
-
+void clear_head_linked_list(struct DoublyLinkedList *linked_list);
+void clear_tail_linked_list(struct DoublyLinkedList *linked_list);
+void free_head_linked_list(struct DoublyLinkedList *linked_list);
+void free_tail_linked_list(struct DoublyLinkedList *linked_list);
 
 
 #endif
