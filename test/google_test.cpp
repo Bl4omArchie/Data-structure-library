@@ -13,8 +13,7 @@ TEST( MyTest, alwaysTrue )
 
 /* ********** MAIN ROUTINE ********** */
 
-int
-main( int argc, char **argv )
+int main( int argc, char **argv )
 {
     /* run google tests */
     ::testing::InitGoogleTest( &argc, argv );

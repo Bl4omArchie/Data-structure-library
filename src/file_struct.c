@@ -7,6 +7,11 @@ void init_linked_list(struct DoublyLinkedList *linked_list) {
     linked_list->tail = NULL;
 }
 
+int insert_data(struct DoublyLinkedList *linked_list, uint64_t data) {
+    linked_list->data = data & 0x8000000000000000;
+}
+
+
 int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element) {
     if (linked_list == NULL || element == NULL) 
         return -1;
@@ -21,6 +26,7 @@ int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinke
     return 1;
 }
 
+
 int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data) {
     if (linked_list == NULL) 
         return -1;
@@ -31,16 +37,21 @@ int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data) {
     return insert_element_head(linked_list, newElement);
 }
 
+
 int insert_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element) {
     if (linked_list == NULL || element == NULL) 
         return -1;
     
-    linked_list->tail->head = element;
-    element->tail = linked_list->tail;
+    if (linked_list->tail != NULL) {
+        linked_list->tail->head = element;
+        element->tail = linked_list->tail;
+    }
+
     element->head = linked_list;
     linked_list->tail = element;
     return 1;
 }
+
 
 int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data) {
     if (linked_list == NULL) 
@@ -52,31 +63,32 @@ int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data) {
     return insert_element_tail(linked_list, newElement);
 }
 
-int remove_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
-int remove_data_head(struct DoublyLinkedList *linked_list, uint64_t data);
 
-int remove_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
-int remove_data_tail(struct DoublyLinkedList *linked_list, uint64_t data);
-
-
-void free_element(struct DoublyLinkedList *element) {
+int remove_element(struct DoublyLinkedList *element) {
     element->head->tail = element->tail;
     element->tail = element->head;
     free(element);
 }
 
-void free_linked_list(struct DoublyLinkedList *linked_list) {
-    DoublyLinkedList *current = linked_list->head;
+
+void clear_linked_list(struct DoublyLinkedList *linked_list) {
+    DoublyLinkedList *current = linked_list;
     DoublyLinkedList *next;
+
+    if (linked_list->head != NULL)
+        linked_list->head->tail = NULL;
 
     while (current != NULL) {
         next = current->tail;
         free(current);
         current = next;
     }
-    free(linked_list);
+    init_linked_list(linked_list);
 }
 
-void free_linked_list_fork(struct DoublyLinkedList *linked_list) {
 
+
+void free_linked_list(struct DoublyLinkedList *linked_list) {
+    clear_linked_list(linked_list);
+    free(linked_list);
 }

@@ -4,9 +4,10 @@
 
 int main() {
     DoublyLinkedList myList;
-
     init_linked_list(&myList);
-    insert_data_head(&myList, 65468498);
+
+    insert_data(&myList, -464646);
+    printf ("%ld\n", myList.data);
 
     return 1;
 }
