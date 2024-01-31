@@ -1,4 +1,4 @@
-#include "../includes/file_struct.h"
+include "../includes/file_struct.h"
 
 
 void init_linked_list(struct DoublyLinkedList *linked_list) {
@@ -35,7 +35,8 @@ int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data) {
 
     DoublyLinkedList *newElement = (DoublyLinkedList*)malloc(sizeof(DoublyLinkedList));
     init_linked_list(newElement);
-    newElement->data = data;
+    set_data(newElement, data);
+    
     return insert_element_head(linked_list, newElement);
 }
 
@@ -61,7 +62,8 @@ int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data) {
     
     DoublyLinkedList *newElement = (DoublyLinkedList*)malloc(sizeof(DoublyLinkedList));
     init_linked_list(newElement);
-    newElement->data = data;
+    set_data(newElement, data);
+
     return insert_element_tail(linked_list, newElement);
 }
 
@@ -73,37 +75,46 @@ void remove_element(struct DoublyLinkedList *element) {
 }
 
 
-void clear_linked_list(struct DoublyLinkedList *linked_list) {
 
+int clear_linked_list(struct DoublyLinkedList *linked_list) {
+    if (linked_list == NULL)
+        return -1;
+
+    DoublyLinkedList *head = find_head(linked_list);
+    return clear_tail_linked_list(head);
 }
 
 
-void clear_head_linked_list(struct DoublyLinkedList *linked_list) {
-    DoublyLinkedList *current = linked_list;
-    DoublyLinkedList *prev;
+int clear_head_linked_list(struct DoublyLinkedList *linked_list) {
+    if (linked_list == NULL || linked_list->head == NULL) 
+        return -1;
 
-    if (linked_list->tail != NULL)
-        linked_list->tail->head = NULL;
+    DoublyLinkedList *current = linked_list->head;
+    DoublyLinkedList *prev;
 
     while (current != NULL) {
         prev = current->head;
         free(current);
         current = prev;
     }
+    linked_list->head = NULL;
+    return 1;
 }
 
-void clear_tail_linked_list(struct DoublyLinkedList *linked_list) {
-    DoublyLinkedList *current = linked_list;
-    DoublyLinkedList *next;
+int clear_tail_linked_list(struct DoublyLinkedList *linked_list) {
+    if (linked_list == NULL || linked_list->tail == NULL) 
+        return -1;
 
-    if (linked_list->head != NULL)
-        linked_list->head->tail = NULL;
+    DoublyLinkedList *current = linked_list->tail;
+    DoublyLinkedList *next;
 
     while (current != NULL) {
         next = current->tail;
         free(current);
         current = next;
     }
+    linked_list->tail = NULL;
+    return 1;
 }
 
 void free_linked_list(struct DoublyLinkedList *linked_list) {
@@ -142,4 +153,15 @@ DoublyLinkedList *find_tail(struct DoublyLinkedList *linked_list) {
         prev = current->head;
     }
     return current;
+}
+
+void display_linked_list(struct DoublyLinkedList *linked_list) {
+    DoublyLinkedList *current = linked_list;
+    DoublyLinkedList *next;
+
+    while (current != NULL) {
+        next = current->tail;
+        printf ("%ld, ", current->data);
+        current = next;
+    }
 }

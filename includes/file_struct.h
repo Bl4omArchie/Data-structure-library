@@ -63,7 +63,7 @@ void remove_element(struct DoublyLinkedList *element);
 
 
 /* Manual: clear
-clear: nullify the head and free the memory of the rest
+clear: look for the head of the entire list, clear every element below and nullify the head
 clear_head: nullify the given element and free the memory of every element from head to this element
 clear_tail: same but for the tail
 
@@ -71,19 +71,25 @@ free: free memory of the whole linked list
 free_head: free the given element and everything above it
 free_tail: same but for the tail
 */ 
-void clear_linked_list(struct DoublyLinkedList *linked_list);
+int clear_linked_list(struct DoublyLinkedList *linked_list);
+int clear_head_linked_list(struct DoublyLinkedList *linked_list);
+int clear_tail_linked_list(struct DoublyLinkedList *linked_list);
+
 void free_linked_list(struct DoublyLinkedList *linked_list);
-void clear_head_linked_list(struct DoublyLinkedList *linked_list);
-void clear_tail_linked_list(struct DoublyLinkedList *linked_list);
 void free_head_linked_list(struct DoublyLinkedList *linked_list);
 void free_tail_linked_list(struct DoublyLinkedList *linked_list);
 
 
 /* Manual find:
-find_head:
-find_tail:
+find_head: look for the head element of the whole list
+find_tail: same for tail
 */
 DoublyLinkedList *find_head(struct DoublyLinkedList *linked_list);
+DoublyLinkedList *find_tail(struct DoublyLinkedList *linked_list);
+
+/* Manual display
+*/
+void display_linked_list(struct DoublyLinkedList *linked_list);
 
 
 #endif

@@ -1,17 +1,28 @@
 #include <stdio.h>
+#include <time.h>
 #include "includes/file_struct.h"
 
 
+uint64_t generateRandom64BitNumber() {
+    uint64_t randomNum = 0;
+
+    randomNum |= (uint64_t)rand() << 60;
+    randomNum |= rand();
+
+    return randomNum;
+}
+
 int main() {
-    DoublyLinkedList myList, *head;
+    DoublyLinkedList myList;
     init_linked_list(&myList);
+    set_data(&myList, generateRandom64BitNumber());
 
-    set_data(&myList, 4584799946);
-    insert_data_tail(&myList, 674868);
+    srand(time(NULL));
 
-    head = find_head(&myList);
-
-    clear_head_linked_list(&myList);
+    uint64_t N = 10000000;
+    for (int i=0; i<N; i++)
+        insert_data_tail(&myList, generateRandom64BitNumber());
+    display_linked_list(&myList);
 
     return 1;
 }
