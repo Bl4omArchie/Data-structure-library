@@ -1,4 +1,4 @@
-include "../includes/file_struct.h"
+#include "../includes/file_struct.h"
 
 
 void init_linked_list(struct DoublyLinkedList *linked_list) {

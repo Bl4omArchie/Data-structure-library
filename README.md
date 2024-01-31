@@ -1,6 +1,7 @@
 # Linked List implementation - Definition, techniques and examples
 
-This project goals is to understand linked list, examine techniques to implement it and finally, find an optimal way to implement this data structure.
+This project goals are to understand linked list, examine techniques to implement it and finally, find an optimal way to implement this data structure. Later I would like to use it for a bignum structure and also make improvements with parallelization. <br/>
+For the coding language, I'll use C and also C++ for tests with GoogleTest Framework.
 
 
 ## Introduction
@@ -16,14 +17,22 @@ The post is called: [Data Structures Tutorial](https://www.geeksforgeeks.org/dat
 So what is a linked list ?
 -> Linked list is a data structure where each element contains a data element of some type and a pointer to the next item in the list. It is easy to insert and delete elements in a linked list, which are not natural operations on arrays, since arrays have a fixed size. 
 
-You also may heard of **Doubly Linked List**. This means that each item contains not only a pointer to the next item but also on the previous one. In this project, we'll use a doubly linked list.
 
+### Types of Linked List
+
+There exists several types of Linked List:
+- Linked List: the most basic one where you have only one pointer that lead to the tail element
+- Doubly LL: point both at the tail and head element 
+- Circular LL: the last element of your linked list point to the head
+- XOR LL:  a doubly LL but the head and tail pointers of an element are xored together so you only have one pointer for both. This type if useful for memory optimization and small hardware
+
+Here I'm going to implement Doubly Linked List because it is more efficient for what I'm aiming to do later.
 
 ## Techniques and methods
 
 ### Structures
 
-First we need to create a structure to represent the Linked list. We have two ways to do this.
+First we need to create a structure that represent the Doubly Linked list. We have two ways to do this.
 
 - with two representations:
 The first struct represent the Linked List itself and the second one represent an Element. The advantage of this method is that we keep an eye on the first and last element which can be an advantage depending on how you are implementing yours prototypes. But in the other hand, this method can be unconfortable for prototypes implemetations (ie: more steps for the adding feature).
@@ -61,7 +70,7 @@ To make a linked list work, you need some basic operations. There is a list of t
 - Clear and Free memory
 ```
 
-In practise, you can add more prototypes for a single feature so you can make more accurate manipulation of your linked list. For the Init and Insertion operation, I thought about what could be useful if I wanted to manipulate my linked list, and this what I have finded:
+In practise, you can add more prototypes for a single feature so you can make more accurate manipulation of your linked list. For the Init and Insertion operation, I thought about what could be useful and I made those prototypes in C:
 ```c
 void init_linked_list(struct DoublyLinkedList *linked_list);
 void set_data(struct DoublyLinkedList *linked_list, uint64_t data);
@@ -74,15 +83,6 @@ As you can see, the Insert feature can be manipulated in many different ways.
 In the header file of my project, you can find more details about each prototypes.
 
 
-
-Some other prototypes can be added but aren't mandatory:
-```c
-void print_doubly_linked(DoublyLinkedList *f);
-bool is_empty(const DoublyLinkedList *f);
-Element find(DoublyLinkedList *f, uint64_t v);
-Element find_next(DoublyLinkedList *f, uint64_t v);
-Element find_previous(DoublyLinkedList *f, uint64_t v);
-```
 
 
 

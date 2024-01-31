@@ -19,10 +19,9 @@ int main() {
 
     srand(time(NULL));
 
-    uint64_t N = 10000000;
+    uint64_t N = 100000000;
     for (int i=0; i<N; i++)
         insert_data_tail(&myList, generateRandom64BitNumber());
-    display_linked_list(&myList);
 
     return 1;
 }
