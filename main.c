@@ -1,11 +1,11 @@
+#include "includes/file_struct.h"
+#include "includes/benchmark.h"
+
 #include <stdio.h>
 #include <time.h>
-#include "includes/file_struct.h"
-
 
 uint64_t generateRandom64BitNumber() {
     uint64_t randomNum = 0;
-
     randomNum |= (uint64_t)rand() << 60;
     randomNum |= rand();
 

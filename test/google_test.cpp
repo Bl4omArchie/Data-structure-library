@@ -1,15 +1,25 @@
 #include "../includes/google_test.hpp"
+ 
 
 
-class DoublyLinkedListTest : public ::testing::Test {
-    protected:
-        DoublyLinkedList linked_list;
+uint64_t get_random_number() {
+    std::random_device rd;
+    std::mt19937_64 gen(rd()); // Mersenne Twister 64-bit
+    std::uniform_int_distribution<uint64_t> dis;
 
-        void SetUp() override {
-            init_linked_list(&linked_list);
-        }
-};
+    return dis(gen);
+}
 
+
+/*
+Test routine:
+1) init two structs
+2) insert elements into head and tails
+3) insert values
+4) set some values
+5) remove somes
+6) clear for the first list and free for the second one  
+*/
 
 // Test Initialization 
 TEST_F(DoublyLinkedListTest, Initialization) {

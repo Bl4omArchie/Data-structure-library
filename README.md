@@ -3,6 +3,19 @@
 This project goals are to understand linked list, examine techniques to implement it and finally, find an optimal way to implement this data structure. Later I would like to use it for a bignum structure and also make improvements with parallelization. <br/>
 For the coding language, I'll use C and also C++ for tests with GoogleTest Framework.
 
+## Roadmap
+
+Main task:
+- Implement feature for Doubly Linked List
+- Write test to verify their correctness
+- Change the makefile so it can compile GoogleTest
+- Make the readme for performance evaluation
+
+Futur work:
+- Implement Xor Linked List
+- Allow different types: 64 bits, 32 bits, 16 bits and more complexe type like associative array etc
+- Translate my Java associative array in C for this project
+
 
 ## Introduction
 

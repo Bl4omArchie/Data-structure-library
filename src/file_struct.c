@@ -1,20 +1,20 @@
 #include "../includes/file_struct.h"
 
 
-void init_linked_list(struct DoublyLinkedList *linked_list) {
+void init_linked_list(DoublyLinkedList *linked_list) {
     linked_list->data = 0;
     linked_list->head = NULL;
     linked_list->tail = NULL;
 }
 
 
-void set_data(struct DoublyLinkedList *linked_list, uint64_t data) {
+void set_data(DoublyLinkedList *linked_list, uint64_t data) {
     // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
     linked_list->data = data & 0x7FFFFFFFFFFFFFFF;
 }
 
 
-int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element) {
+int insert_element_head(DoublyLinkedList *linked_list, DoublyLinkedList *element) {
     if (linked_list == NULL || element == NULL) 
         return -1;
     
@@ -29,7 +29,7 @@ int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinke
 }
 
 
-int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data) {
+int insert_data_head(DoublyLinkedList *linked_list, uint64_t data) {
     if (linked_list == NULL) 
         return -1;
 
@@ -41,7 +41,7 @@ int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data) {
 }
 
 
-int insert_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element) {
+int insert_element_tail(DoublyLinkedList *linked_list, DoublyLinkedList *element) {
     if (linked_list == NULL || element == NULL) 
         return -1;
     
@@ -56,7 +56,7 @@ int insert_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinke
 }
 
 
-int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data) {
+int insert_data_tail(DoublyLinkedList *linked_list, uint64_t data) {
     if (linked_list == NULL) 
         return -1;
     
@@ -68,7 +68,7 @@ int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data) {
 }
 
 
-void remove_element(struct DoublyLinkedList *element) {
+void remove_element(DoublyLinkedList *element) {
     element->head->tail = element->tail;
     element->tail = element->head;
     free(element);
@@ -76,7 +76,7 @@ void remove_element(struct DoublyLinkedList *element) {
 
 
 
-int clear_linked_list(struct DoublyLinkedList *linked_list) {
+int clear_linked_list(DoublyLinkedList *linked_list) {
     if (linked_list == NULL)
         return -1;
 
@@ -85,7 +85,7 @@ int clear_linked_list(struct DoublyLinkedList *linked_list) {
 }
 
 
-int clear_head_linked_list(struct DoublyLinkedList *linked_list) {
+int clear_head_linked_list(DoublyLinkedList *linked_list) {
     if (linked_list == NULL || linked_list->head == NULL) 
         return -1;
 
@@ -101,7 +101,7 @@ int clear_head_linked_list(struct DoublyLinkedList *linked_list) {
     return 1;
 }
 
-int clear_tail_linked_list(struct DoublyLinkedList *linked_list) {
+int clear_tail_linked_list(DoublyLinkedList *linked_list) {
     if (linked_list == NULL || linked_list->tail == NULL) 
         return -1;
 
@@ -117,23 +117,23 @@ int clear_tail_linked_list(struct DoublyLinkedList *linked_list) {
     return 1;
 }
 
-void free_linked_list(struct DoublyLinkedList *linked_list) {
+void free_linked_list(DoublyLinkedList *linked_list) {
     clear_linked_list(linked_list);
     free(linked_list);
 }
 
-void free_head_linked_list(struct DoublyLinkedList *linked_list) {
+void free_head_linked_list(DoublyLinkedList *linked_list) {
     clear_head_linked_list(linked_list);
     free(linked_list);
 }
 
-void free_tail_linked_list(struct DoublyLinkedList *linked_list) {
+void free_tail_linked_list(DoublyLinkedList *linked_list) {
     clear_tail_linked_list(linked_list);
     free(linked_list);
 }
 
 
-DoublyLinkedList *find_head(struct DoublyLinkedList *linked_list) {
+DoublyLinkedList *find_head(DoublyLinkedList *linked_list) {
     DoublyLinkedList *current = linked_list;
     DoublyLinkedList *next;
 
@@ -144,7 +144,7 @@ DoublyLinkedList *find_head(struct DoublyLinkedList *linked_list) {
     return current;
 }
 
-DoublyLinkedList *find_tail(struct DoublyLinkedList *linked_list) {
+DoublyLinkedList *find_tail(DoublyLinkedList *linked_list) {
     DoublyLinkedList *current = linked_list;
     DoublyLinkedList *prev;
 
@@ -155,7 +155,7 @@ DoublyLinkedList *find_tail(struct DoublyLinkedList *linked_list) {
     return current;
 }
 
-void display_linked_list(struct DoublyLinkedList *linked_list) {
+void display_linked_list(DoublyLinkedList *linked_list) {
     DoublyLinkedList *current = linked_list;
     DoublyLinkedList *next;
 

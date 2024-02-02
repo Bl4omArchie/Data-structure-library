@@ -1,21 +1,26 @@
 # Compilateur
 CC = gcc
 CXX = g++
-TEST_TARGET = test_suite.o
 
 # Dossiers
 SRCDIR = src
+BENCHDIR = bench
 INCDIR = includes
 BUILDDIR = build
 TESTDIR = test
+
 TARGET = file.o
 BENCH_TARGET = bench.o
+TEST_TARGET = test_suite.o
 
 SRCS = $(wildcard $(SRCDIR)/*.c)
+BENCH_SRCS = $(wildcard $(BENCHDIR)/*.c)
 TEST_SRCS = $(wildcard $(TESTDIR)/*.cpp)
 
-OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
-TEST_OBJS = $(patsubst $(TESTDIR)/%.cpp,$(BUILDDIR)/%.o,$(TEST_SRCS))
+
+OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
+BENCH_OBJS = $(patsubst $(BENCHDIR)/%.c, $(BUILDDIR)/%.o, $(BENCH_SRCS))
+TEST_OBJS = $(patsubst $(TESTDIR)/%.cpp, $(BUILDDIR)/%.o, $(TEST_SRCS))
 
 # Options de compilation
 CFLAGS = -I$(INCDIR)
@@ -32,11 +37,13 @@ $(BUILDDIR):
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+
 $(TARGET): $(OBJS)
 	$(CC) main.c -o $(TARGET) $(OBJS)
 
 $(BENCH_TARGET): $(OBJS)
 	$(CC) benchmark.c -o $(BENCH_TARGET) $(OBJS)
+
 
 $(BUILDDIR)/%.o: $(TESTDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
