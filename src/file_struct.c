@@ -1,6 +1,8 @@
 #include "../includes/file_struct.h"
 
 
+
+
 void init_linked_list(DoublyLinkedList *linked_list) {
     linked_list->data = 0;
     linked_list->head = NULL;

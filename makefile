@@ -49,6 +49,7 @@ $(BUILDDIR)/%.o: $(TESTDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 $(TEST_TARGET): $(TEST_OBJS) $(OBJS)
+	(git clone https://github.com/google/googletest.git ; cd googletest ; mkdir build ; cd build ; cmake .. ; make)
 	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) $(TEST_OBJS) $(OBJS)
 
 clean:
