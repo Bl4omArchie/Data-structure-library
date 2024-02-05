@@ -5,16 +5,20 @@ For the coding language, I'll use C and also C++ for tests with GoogleTest Frame
 
 ## Roadmap
 
-Main task:
-- Implement feature for Doubly Linked List
-- Write test to verify their correctness
-- Change the makefile so it can compile GoogleTest
-- Make the readme for performance evaluation
+### Main branch:
+Priority:
+- Implement features for Doubly Linked List
+- Continue benchmark
 
 Futur work:
 - Implement Xor Linked List
-- Allow different types: 64 bits, 32 bits, 16 bits and more complexe type like associative array etc
+- Allow different types: 64 bits, 32 bits, 16 bits
 - Translate my Java associative array in C for this project
+
+### GoogleTest:
+Priority:
+- Import and compile GoogleTest
+- Write more tests
 
 
 ## Introduction
