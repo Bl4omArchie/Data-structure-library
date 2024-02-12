@@ -30,6 +30,7 @@ for parallelization
 Note: the third pointer middle may not be necessary, I think the structure we already using is enough bout I need to thing more on how could I perform scalable parallelization.
 */
 
+
 // A doubly linked list that handle positive nu vmbers of 64 bits. 
 typedef struct DoublyLinkedList {
     uint64_t data;
