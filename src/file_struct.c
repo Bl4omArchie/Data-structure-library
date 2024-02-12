@@ -161,7 +161,9 @@ void display_linked_list(DoublyLinkedList linked_list) {
 
     while (current != NULL) {
         next = current->tail;
-        printf ("%ld, ", current->data);
+        printf ("%ld", current->data);
         current = next;
+        if (current != NULL)
+            printf (" -> ");
     }
 }

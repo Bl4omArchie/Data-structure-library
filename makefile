@@ -3,7 +3,6 @@ CC = gcc
 
 # Dossiers
 SRCDIR = src
-BENCHDIR = bench
 INCDIR = includes
 BUILDDIR = build
 
@@ -11,11 +10,7 @@ TARGET = file.o
 BENCH_TARGET = bench.o
 
 SRCS = $(wildcard $(SRCDIR)/*.c)
-BENCH_SRCS = $(wildcard $(BENCHDIR)/*.c)
-
-
 OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
-BENCH_OBJS = $(patsubst $(BENCHDIR)/%.c, $(BUILDDIR)/%.o, $(BENCH_SRCS))
 
 # Options de compilation
 CFLAGS = -I$(INCDIR)
@@ -39,6 +34,6 @@ $(BENCH_TARGET): $(OBJS)
 
 
 clean:
-	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET)
+	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET) .vscode/
 
 .PHONY: all clean
