@@ -7,7 +7,15 @@
 
 
 int main() {
-    file_list(1000);
+    DoublyLinkedList myList;
+    init_linked_list(&myList);
+
+    set_data(&myList, 75345649876);
+    insert_data_tail(&myList, 5434567);
+    insert_data_tail(myList.tail, 9876543);
+
+    add_tail(&myList);
+    display_linked_list(myList);
 
     return 1;
 }

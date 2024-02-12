@@ -155,8 +155,8 @@ DoublyLinkedList *find_tail(DoublyLinkedList *linked_list) {
     return current;
 }
 
-void display_linked_list(DoublyLinkedList *linked_list) {
-    DoublyLinkedList *current = linked_list;
+void display_linked_list(DoublyLinkedList linked_list) {
+    DoublyLinkedList *current = &linked_list;
     DoublyLinkedList *next;
 
     while (current != NULL) {
