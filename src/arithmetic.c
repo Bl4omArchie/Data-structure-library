@@ -27,8 +27,10 @@ int add_tail(DoublyLinkedList *res) {
     return 1;
 }
 
-int add_elements_range(DoublyLinkedList *res, DoublyLinkedList from, DoublyLinkedList to) {
+int add_elements_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem) {
+    if (res == NULL || &start_elem == NULL || &end_elem == NULL)
+        return -1;
 
+
+    return 1;
 }
-
-
