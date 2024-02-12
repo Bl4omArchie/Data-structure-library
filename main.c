@@ -15,6 +15,7 @@ int main() {
     insert_data_tail(myList.tail, 9876543);
 
     add_tail(&myList);
+    add_head(myList.tail);
     display_linked_list(myList);
 
     return 1;
