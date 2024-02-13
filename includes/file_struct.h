@@ -88,15 +88,3 @@ add_elements_range: add into res every elements from A to B (included)
 int add_head(DoublyLinkedList *res);
 int add_tail(DoublyLinkedList *res);
 int add_elements_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
-
-
-
-// ##################### Xor Linked List #####################
-
-
-// Init xor linked list
-void init_xll(XorLinkedLinked *xll);
-
-int xll_insert_data_head(XorLinkedLinked *xll, uint64_t data);
-int xll_insert_data_tail(XorLinkedLinked *xll, uint64_t data);
-#endif
