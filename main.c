@@ -7,16 +7,10 @@
 
 
 int main() {
-    DoublyLinkedList myList;
-    init_linked_list(&myList);
+    XorLinkedList myList;
+    xll_init(&myList);
 
-    set_data(&myList, 75345649876);
-    insert_data_tail(&myList, 5434567);
-    insert_data_tail(myList.tail, 9876543);
-
-    add_tail(&myList);
-    add_head(myList.tail);
-    display_linked_list(myList);
+    xll_set_data(&myList, 75345649876);
 
     return 1;
 }

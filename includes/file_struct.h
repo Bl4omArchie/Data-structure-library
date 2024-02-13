@@ -19,10 +19,10 @@ typedef struct DoublyLinkedList {
     struct DoublyLinkedList *tail;
 } DoublyLinkedList;
 
-typedef struct XorLinkedLinked {
+typedef struct XorLinkedList {
     uint64_t data;
-    struct DoublyLinkedList *xored_ptr;
-} XorLinkedLinked;
+    struct XorLinkedList *xored_ptr;
+} XorLinkedList;
 
 
 // ##################### Doubly Linked List #####################
@@ -80,11 +80,33 @@ DoublyLinkedList *find_tail(DoublyLinkedList *linked_list);
 void display_linked_list(DoublyLinkedList linked_list);
 
 
-/*Arithmetic with Linked List
-add_head: from this Element, add every elements of the head
-add_tail: same with tail
-add_elements_range: add into res every elements from A to B (included)
-*/
-int add_head(DoublyLinkedList *res);
-int add_tail(DoublyLinkedList *res);
-int add_elements_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
+
+// ##################### Xor Linked List #####################
+
+
+// Init xor linked list
+void xll_init(XorLinkedList *xll);
+
+
+// Insertion
+int xll_set_data(XorLinkedList *xll, uint64_t data);
+int xll_insert_data_head(XorLinkedList *xll, uint64_t data);
+int xll_insert_data_tail(XorLinkedList *xll, uint64_t data);
+int xll_insert_element_head(XorLinkedList *xll, XorLinkedList  *to_insert);
+int xll_insert_element_tail(XorLinkedList *xll, XorLinkedList  *to_insert);
+
+// Remove
+int xll_remove_element(XorLinkedList *to_remove);
+
+
+// Clear and free
+int xll_clear(XorLinkedList *xll);
+int xll_head_clear(XorLinkedList *xll);
+int xll_tail_clear(XorLinkedList *xll);
+
+void xll_free(XorLinkedList *xll);
+void xll_head_free(XorLinkedList *xll);
+void xll_tail_free(XorLinkedList *xll);
+
+
+#endif
