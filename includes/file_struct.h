@@ -19,10 +19,6 @@ typedef struct DoublyLinkedList {
     struct DoublyLinkedList *tail;
 } DoublyLinkedList;
 
-typedef struct XorLinkedLinked {
-    uint64_t data;
-    struct DoublyLinkedList *xored_ptr;
-} XorLinkedLinked;
 
 
 // ##################### Doubly Linked List #####################
@@ -88,3 +84,6 @@ add_elements_range: add into res every elements from A to B (included)
 int add_head(DoublyLinkedList *res);
 int add_tail(DoublyLinkedList *res);
 int add_elements_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
+
+
+#endif
