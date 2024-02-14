@@ -19,12 +19,15 @@ int xll_insert_data_head(XorLinkedList *xll, uint64_t data) {
     if (xll == NULL)
         return -1;
 
-    
+    XorLinkedList *newElement = (XorLinkedList*)malloc(sizeof(XorLinkedList));
+    newElement->data = data;
+
 }
 
 int xll_insert_data_tail(XorLinkedList *xll, uint64_t data) {
     if (xll == NULL)
         return -1;
 
-    
+    XorLinkedList *newElement = (XorLinkedList*)malloc(sizeof(XorLinkedList));
+    newElement->data = data; 
 }

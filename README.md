@@ -44,6 +44,7 @@ There exists several types of Linked List:
 - XOR LL:  a doubly LL but the head and tail pointers of an element are xored together so you only have one pointer for both. This type if useful for memory optimization and small hardware
 
 Here I'm going to implement Doubly Linked List because it is more efficient for what I'm aiming to do later.
+This branch is dedicated for the implementation of a Xored Linked List. Actually I'm a bit in a struggle tu understand how it works.
 
 ## Techniques and methods
 
