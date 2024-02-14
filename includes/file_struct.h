@@ -12,7 +12,7 @@
 // Note: pointer on certain elements for scalable parallelization
 
 
-// A doubly linked list that handle ONLY positive nubmbers of 64 bits.
+// A doubly linked list that handle POSITIVE nubmbers of 64 bits.
 typedef struct DoublyLinkedList {
     uint64_t data;
     struct DoublyLinkedList *head;
@@ -86,5 +86,11 @@ int add_head(DoublyLinkedList *res);
 int add_tail(DoublyLinkedList *res);
 int add_head_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
 int add_tail_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
+
+
+// Forked version of linked list addition
+int add_head_fork(DoublyLinkedList *res);
+int add_tail_fork(DoublyLinkedList *res);
+
 
 #endif

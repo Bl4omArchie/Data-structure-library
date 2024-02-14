@@ -52,3 +52,11 @@ int add_tail_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLin
     }
     return 1;
 }
+
+int add_head_fork(DoublyLinkedList *res) {
+
+}
+
+int add_tail_fork(DoublyLinkedList *res) {
+
+}
