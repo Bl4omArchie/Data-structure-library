@@ -138,23 +138,29 @@ void free_tail_linked_list(DoublyLinkedList *linked_list) {
 
 
 DoublyLinkedList *find_head(DoublyLinkedList *linked_list) {
+    if (linked_list == NULL)
+        return NULL;
+
     DoublyLinkedList *current = linked_list;
-    DoublyLinkedList *next;
+    DoublyLinkedList *prev;
 
     while (current->head != NULL) {
-        current = next;
-        next = current->tail;
+        current = prev;
+        prev = current->head;
     }
     return current;
 }
 
 DoublyLinkedList *find_tail(DoublyLinkedList *linked_list) {
+    if (linked_list == NULL)
+        return NULL;
+
     DoublyLinkedList *current = linked_list;
-    DoublyLinkedList *prev;
+    DoublyLinkedList *next;
 
     while (current->tail != NULL) {
-        current = prev;
-        prev = current->head;
+        current = next;
+        next = current->tail;
     }
     return current;
 }
