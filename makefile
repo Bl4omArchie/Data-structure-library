@@ -30,7 +30,7 @@ $(TARGET): $(OBJS)
 	$(CC) main.c -o $(TARGET) $(OBJS)
 
 $(BENCH_TARGET): $(OBJS)
-	$(CC) benchmark.c -o $(BENCH_TARGET) $(OBJS)
+	$(CC) bench.c -o $(BENCH_TARGET) $(OBJS)
 
 
 clean:
