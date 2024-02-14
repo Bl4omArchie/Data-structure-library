@@ -7,15 +7,21 @@
 
 
 int main() {
-    DoublyLinkedList myList;
+    DoublyLinkedList myList, end;
     init_linked_list(&myList);
+    init_linked_list(&end);
 
-    set_data(&myList, 75345649876);
-    insert_data_tail(&myList, 5434567);
-    insert_data_tail(myList.tail, 9876543);
+    set_data(&myList, 1);
+    set_data(&end, 4);
+    
+    insert_data_tail(&myList, 2);
+    insert_data_tail(myList.tail, 3);
+    insert_element_tail(myList.tail->tail, &end);
 
-    add_tail(&myList);
-    add_head(myList.tail);
+
+    printf ("%ld\n", find_tail(&myList)->data);
+
+    add_tail_range(&myList, myList, end);
     display_linked_list(myList);
 
     return 1;

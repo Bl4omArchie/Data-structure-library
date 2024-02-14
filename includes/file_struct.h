@@ -37,8 +37,9 @@ insert_data: same utility but you only provide a value and it create a new eleme
 */
 void set_data(DoublyLinkedList *linked_list, uint64_t data);
 int insert_element_head(DoublyLinkedList *linked_list, DoublyLinkedList *element);
-int insert_data_head(DoublyLinkedList *linked_list, uint64_t data);
 int insert_element_tail(DoublyLinkedList *linked_list, DoublyLinkedList *element);
+
+int insert_data_head(DoublyLinkedList *linked_list, uint64_t data);
 int insert_data_tail(DoublyLinkedList *linked_list, uint64_t data);
 
 
@@ -77,13 +78,13 @@ void display_linked_list(DoublyLinkedList linked_list);
 
 
 /*Arithmetic with Linked List
-add_head: from this Element, add every elements of the head
+add_head: add into the given element, every head's value
 add_tail: same with tail
 add_elements_range: add into res every elements from A to B (included)
 */
 int add_head(DoublyLinkedList *res);
 int add_tail(DoublyLinkedList *res);
-int add_elements_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
-
+int add_head_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
+int add_tail_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
 
 #endif
