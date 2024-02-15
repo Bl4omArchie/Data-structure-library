@@ -5,11 +5,11 @@ int add_head(DoublyLinkedList *res) {
     if (res == NULL)
         return -1;
 
-    DoublyLinkedList *next = res->head;
+    DoublyLinkedList *current = res->head;
 
-    while (next != NULL) {
-        res->data += next->data;
-        next = next->head;
+    while (current != NULL) {
+        res->data += current->data;
+        current = current->head;
     }
     return 1;
 }
@@ -18,11 +18,11 @@ int add_tail(DoublyLinkedList *res) {
     if (res == NULL)
         return -1;
 
-    DoublyLinkedList *prev = res->tail;
+    DoublyLinkedList *current = res->tail;
 
-    while (prev != NULL) {
-        res->data += prev->data;
-        prev = prev->tail;
+    while (current != NULL) {
+        res->data += current->data;
+        current = current->tail;
     }
     return 1;
 }
