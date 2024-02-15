@@ -2,26 +2,31 @@
 #include "includes/benchmark.h"
 
 #include <stdio.h>
-#include <time.h>
 
-uint64_t generateRandom64BitNumber() {
-    uint64_t randomNum = 0;
-    randomNum |= (uint64_t)rand() << 60;
-    randomNum |= rand();
 
-    return randomNum;
-}
+
 
 int main() {
-    DoublyLinkedList myList;
+    DoublyLinkedList myList, start, end;
     init_linked_list(&myList);
-    set_data(&myList, generateRandom64BitNumber());
+    init_linked_list(&start);
+    init_linked_list(&end);
 
-    srand(time(NULL));
+    set_data(&myList, 0);
+    set_data(&start, 1);
+    set_data(&end, 5);
+    
 
-    uint64_t N = 100000000;
-    for (int i=0; i<N; i++)
-        insert_data_tail(&myList, generateRandom64BitNumber());
+    insert_element_tail(&myList, &end);
+    insert_data_tail(&myList, 4);
+    insert_data_tail(&myList, 3);
+    insert_data_tail(&myList, 2);
+    insert_element_tail(&myList, &start);
+    
+    
+
+    add_tail_range(&myList, start, end);
+    display_linked_list(myList);
 
     return 1;
 }

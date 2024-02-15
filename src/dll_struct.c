@@ -1,6 +1,7 @@
 #include "../includes/file_struct.h"
 
 
+// Doubly Linked List struct
 
 
 void init_linked_list(DoublyLinkedList *linked_list) {
@@ -136,34 +137,44 @@ void free_tail_linked_list(DoublyLinkedList *linked_list) {
 
 
 DoublyLinkedList *find_head(DoublyLinkedList *linked_list) {
-    DoublyLinkedList *current = linked_list;
-    DoublyLinkedList *next;
+    if (linked_list == NULL)
+        return NULL;
 
-    while (current->head != NULL) {
-        current = next;
-        next = current->tail;
-    }
-    return current;
-}
-
-DoublyLinkedList *find_tail(DoublyLinkedList *linked_list) {
     DoublyLinkedList *current = linked_list;
     DoublyLinkedList *prev;
 
-    while (current->tail != NULL) {
+    while (current->head != NULL) {
         current = prev;
         prev = current->head;
     }
     return current;
 }
 
-void display_linked_list(DoublyLinkedList *linked_list) {
+DoublyLinkedList *find_tail(DoublyLinkedList *linked_list) {
+    if (linked_list == NULL)
+        return NULL;
+
     DoublyLinkedList *current = linked_list;
+    DoublyLinkedList *next;
+
+    while (current->tail != NULL) {
+        current = next;
+        next = current->tail;
+    }
+    return current;
+}
+
+void display_linked_list(DoublyLinkedList linked_list) {
+    DoublyLinkedList *current = &linked_list;
     DoublyLinkedList *next;
 
     while (current != NULL) {
         next = current->tail;
-        printf ("%ld, ", current->data);
+        printf ("%ld", current->data);
         current = next;
+        
+        if (current != NULL)
+            printf (" -> ");
     }
+    printf (" \n");
 }

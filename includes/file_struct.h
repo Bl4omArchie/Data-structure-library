@@ -1,42 +1,27 @@
 #ifndef FILE_STRUCT_H
 #define FILE_STRUCT_H
 
-#include <stdbool.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <unistd.h>
 
-#include <sys/types.h>
-#include <sys/wait.h>
 
 
-/*
-Third type of struct ?
+// Note: pointer on certain elements for scalable parallelization
 
-struct Element {
-    Element *head;
-    Element *tail;
-} Element;
 
-typedef struct DoublyLinkedList {
-    struct Element *head;
-    struct Element *tail;
-    struct Element *middle;
-} DoublyLinkedList;
-
-for parallelization
-
-Note: the third pointer middle may not be necessary, I think the structure we already using is enough bout I need to thing more on how could I perform scalable parallelization.
-*/
-
-// A doubly linked list that handle positive nu vmbers of 64 bits. 
+// A doubly linked list that handle POSITIVE nubmbers of 64 bits.
 typedef struct DoublyLinkedList {
     uint64_t data;
     struct DoublyLinkedList *head;
     struct DoublyLinkedList *tail;
 } DoublyLinkedList;
 
+
+
+// ##################### Doubly Linked List #####################
 
 /* Manual: init_linked_list
 Use for the first element of the linked list.
@@ -52,8 +37,9 @@ insert_data: same utility but you only provide a value and it create a new eleme
 */
 void set_data(DoublyLinkedList *linked_list, uint64_t data);
 int insert_element_head(DoublyLinkedList *linked_list, DoublyLinkedList *element);
-int insert_data_head(DoublyLinkedList *linked_list, uint64_t data);
 int insert_element_tail(DoublyLinkedList *linked_list, DoublyLinkedList *element);
+
+int insert_data_head(DoublyLinkedList *linked_list, uint64_t data);
 int insert_data_tail(DoublyLinkedList *linked_list, uint64_t data);
 
 
@@ -86,9 +72,25 @@ find_tail: same for tail
 DoublyLinkedList *find_head(DoublyLinkedList *linked_list);
 DoublyLinkedList *find_tail(DoublyLinkedList *linked_list);
 
-/* Manual display
+
+// Manual display: print from the given element until the end
+void display_linked_list(DoublyLinkedList linked_list);
+
+
+/*Arithmetic with Linked List
+add_head: add into the given element, every head's value
+add_tail: same with tail
+add_elements_range: add into res every elements from A to B (included)
 */
-void display_linked_list(DoublyLinkedList *linked_list);
+int add_head(DoublyLinkedList *res);
+int add_tail(DoublyLinkedList *res);
+int add_head_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
+int add_tail_range(DoublyLinkedList *res, DoublyLinkedList start_elem, DoublyLinkedList end_elem);
+
+
+// Forked version of linked list addition
+int add_head_fork(DoublyLinkedList *res);
+int add_tail_fork(DoublyLinkedList *res);
 
 
 #endif
