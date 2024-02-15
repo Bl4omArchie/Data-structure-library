@@ -1,5 +1,6 @@
 # Compilateur
 CC = gcc
+CXX = g++
 
 # Dossiers
 SRCDIR = src
@@ -8,15 +9,19 @@ BUILDDIR = build
 
 TARGET = file.o
 BENCH_TARGET = bench.o
+TEST_TARGET = test_suite.o
 
 SRCS = $(wildcard $(SRCDIR)/*.c)
 OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
+TEST_SRCS = $(wildcard $(TESTDIR)/*.cpp)
 
 # Options de compilation
 CFLAGS = -I$(INCDIR)
+CXXFLAGS = -I$(INCDIR) -pthread -lgtest_main -lgtest
 
 # Règles de construction
 all: $(BUILDDIR) $(TARGET)
+test: $(BUILDDIR) $(TEST_TARGET)
 bench: $(BUILDDIR) $(BENCH_TARGET)
 
 $(BUILDDIR):
@@ -41,6 +46,6 @@ $(TEST_TARGET): $(TEST_OBJS) $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) $(TEST_OBJS) $(OBJS)
 
 clean:
-	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET) .vscode/
+	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET) .vscode/ googletest/
 
 .PHONY: all clean
