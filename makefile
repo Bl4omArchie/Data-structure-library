@@ -30,6 +30,9 @@ $(BUILDDIR):
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+$(BUILDDIR)/%.o: $(TESTDIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
 
 $(TARGET): $(OBJS)
 	$(CC) main.c -o $(TARGET) $(OBJS)
@@ -38,12 +41,9 @@ $(BENCH_TARGET): $(OBJS)
 	$(CC) bench.c -o $(BENCH_TARGET) $(OBJS)
 
 
-$(BUILDDIR)/%.o: $(TESTDIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
-
-$(TEST_TARGET): $(TEST_OBJS) $(OBJS)
+$(TEST_TARGET): $(OBJS)
 	(git clone https://github.com/google/googletest.git ; cd googletest ; mkdir build ; cd build ; cmake .. ; make)
-	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) $(TEST_OBJS) $(OBJS)
+	$(CXX) test.cpp -o $(TEST_TARGET) $(OBJS)
 
 clean:
 	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET) .vscode/ googletest/
