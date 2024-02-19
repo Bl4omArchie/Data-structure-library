@@ -109,6 +109,7 @@ In the header file of my project, you can find further details about each protot
 - [Les listes doublement chaînées en C - by Nicolas Joseph - 20 july 2005](https://nicolasj.developpez.com/articles/listedouble/#LIII-C)
 - [Programmation algorithmique/Listes doublement chaînées](https://fr.wikibooks.org/wiki/Programmation_algorithmique/Listes_doublement_cha%C3%AEn%C3%A9es)
 - [Linked List Basics - by Nick Parlante](http://cslibrary.stanford.edu/103/LinkedListBasics.pdf)
-- [Lecture Notes on Linked Lists - by Frank Pfenning, Rob Simmons, Andr´e Platzer - 30 september 2014](https://www.cs.cmu.edu/~rjsimmon/15122-f14/lec/11-linkedlist.pdf)
+- [Lecture Notes on Linked Lists - by Frank Pfenning, Rob Simmons, Andre Platzer - 30 september 2014](https://www.cs.cmu.edu/~rjsimmon/15122-f14/lec/11-linkedlist.pdf)
 - [Linked Lists - Computer Science E-22 - Harvard University, David G. Sullivan, Ph.D](https://cscie22.sites.fas.harvard.edu/files/lectures/04_linked_lists.pdf)
 - [Data Structures Tutorial](https://www.geeksforgeeks.org/data-structures/)
+- [Parallel linked lists - Lecture 10 of TDA384/DIT391 Principles of Concurrent Programming, Gerardo Schneider](https://www.cse.chalmers.se/edu/course/TDA384_LP1/files/lectures/Lecture10-parallel_lists.pdf)
