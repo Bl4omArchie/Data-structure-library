@@ -11,7 +11,6 @@ Priority:
 - Continue benchmark
 
 Futur work:
-- Implement Xor Linked List
 - Allow different types: 64 bits, 32 bits, 16 bits
 - Translate my Java associative array in C for this project
 
@@ -19,6 +18,11 @@ Futur work:
 Priority:
 - Import and compile GoogleTest
 - Write more tests
+
+### Xor Linked List
+Minor priority:
+- Understand how to implement xll
+- Test if replacing dll with wll worth it
 
 
 ## Introduction
@@ -87,17 +91,15 @@ To make a linked list work, you need some basic operations. There is a list of t
 - Clear and Free memory
 ```
 
-In practise, you can add more prototypes for a single feature so you can make more accurate manipulation of your linked list. For the Init and Insertion operation, I thought about what could be useful and I made those prototypes in C:
+For each operation, you have several prototypes to make depending on where and how your perform the operation. For instance, you can Insert a data (int) or an element (struct) to your list at the head or at the tail. Which give us this:
 ```c
-void init_linked_list(struct DoublyLinkedList *linked_list);
-void set_data(struct DoublyLinkedList *linked_list, uint64_t data);
-int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
-int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data);
-int insert_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
-int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data);
+int insert_element_head(DoublyLinkedList *linked_list, DoublyLinkedList *element);
+int insert_element_tail(DoublyLinkedList *linked_list, DoublyLinkedList *element);
+int insert_data_head(DoublyLinkedList *linked_list, uint64_t data);
+int insert_data_tail(DoublyLinkedList *linked_list, uint64_t data);
 ```
-As you can see, the Insert feature can be manipulated in many different ways.
-In the header file of my project, you can find more details about each prototypes.
+
+In the header file of my project, you can find further details about each prototypes.
 
 
 
