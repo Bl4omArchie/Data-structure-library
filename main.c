@@ -7,7 +7,7 @@
 
 
 int main() {
-    DoublyLinkedList myList, start, end;
+    DLL myList, start, end;
     init_linked_list(&myList);
     init_linked_list(&start);
     init_linked_list(&end);
