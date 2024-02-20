@@ -7,18 +7,13 @@
 #include <stdint.h> 
 #include <unistd.h>
 
-
+#include <sys/types.h>
 
 // Note: pointer on certain elements for scalable parallelization
 
 
-// Allowed types
-#define DATA_TYPE_16 uint16_t
-#define DATA_TYPE_32 uint32_t
-#define DATA_TYPE_64 uint64_t
 
-
-// A doubly linked list that handle POSITIVE nubmbers of 16/32/64 bits.
+// A doubly linked list that handle POSITIVE nubmbers of 64 bits.
 typedef struct DoublyLinkedList {
     uint64_t data;
     struct DoublyLinkedList *head;
@@ -88,8 +83,8 @@ add_head: add into the given element, every head's value
 add_tail: same with tail
 add_elements_range: add into res every elements from A to B (included)
 */
-int add_head(DLL *res);
-int add_tail(DLL *res);
+int add_head(DLL *res, DLL start);
+int add_tail(DLL *res, DLL start);
 int add_head_range(DLL *res, DLL start_elem, DLL end_elem);
 int add_tail_range(DLL *res, DLL start_elem, DLL end_elem);
 

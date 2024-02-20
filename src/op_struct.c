@@ -1,11 +1,11 @@
 #include "../includes/file_struct.h"
 
 
-int add_head(DLL *res) {
+int add_head(DLL *res, DLL start) {
     if (res == NULL)
         return -1;
 
-    DLL *current = res->head;
+    DLL *current = start.head;
 
     while (current != NULL) {
         res->data += current->data;
@@ -14,11 +14,11 @@ int add_head(DLL *res) {
     return 1;
 }
 
-int add_tail(DLL *res) {
+int add_tail(DLL *res, DLL start) {
     if (res == NULL)
         return -1;
 
-    DLL *current = res->tail;
+    DLL *current = start.tail;
 
     while (current != NULL) {
         res->data += current->data;
@@ -54,7 +54,26 @@ int add_tail_range(DLL *res, DLL start_elem, DLL end_elem) {
 }
 
 int add_head_fork(DLL *res) {
+    int max_processes = 10;
+    int iter = 0;
     
+    while (iter < max_processes) {
+        pid_t pid = fork();
+        iter++;
+
+        if (pid == -1) {
+            perror("fork");
+            break;
+        } 
+        
+        else if (pid == 0) {
+            // add_head();
+            exit(0);
+        } 
+        
+        else
+            max_processes++;
+    }
 }
 
 int add_tail_fork(DLL *res) {
