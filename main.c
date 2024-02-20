@@ -2,11 +2,40 @@
 #include "includes/benchmark.h"
 
 #include <stdio.h>
+#include <sys/time.h>
 
 
+int time_test() {
+    int a = 0xabc4baf;
+    int b = 0xabcffff;
+    struct timeval tv_start, tv_end;
 
+    printf ("%d, %d\n", a, b);
+    printf ("%d", (a+b));
+
+    gettimeofday(&tv_start, NULL);
+
+    printf ("%d\n", predict_carry(a, b));
+
+    gettimeofday(&tv_end, NULL);
+    double mtime = (tv_end.tv_sec - tv_start.tv_sec) * 1000000.0 + (tv_end.tv_usec - tv_start.tv_usec) / 1000000.0; // in ms
+    printf ("%f\n", mtime);
+
+    
+    gettimeofday(&tv_start, NULL);
+
+    printf ("%d\n", predict_carry_v2(a, b));
+
+    gettimeofday(&tv_end, NULL);
+    mtime = (tv_end.tv_sec - tv_start.tv_sec) * 1000000.0 + (tv_end.tv_usec - tv_start.tv_usec) / 1000000.0; // in ms
+    printf ("%f\n", mtime);
+    
+}
 
 int main() {
+    time_test();
+
+
     DLL myList, start, end;
     init_linked_list(&myList);
     init_linked_list(&start);

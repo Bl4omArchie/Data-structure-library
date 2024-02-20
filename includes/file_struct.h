@@ -22,7 +22,7 @@ typedef struct DoublyLinkedList {
 
 
 
-// ##################### Doubly Linked List #####################
+// ################### Doubly Linked List #####################
 
 /* Manual: init_linked_list
 Used for the first element of the linked list.
@@ -88,10 +88,13 @@ int add_tail(DLL *res, DLL start);
 int add_head_range(DLL *res, DLL start_elem, DLL end_elem);
 int add_tail_range(DLL *res, DLL start_elem, DLL end_elem);
 
+// For two 64 bits number a and b, predict if the addition of those two numbers will give a carry or not
+int predict_carry(uint64_t a, uint64_t b);
+int predict_carry_v2(uint64_t a, uint64_t b);
 
 // Forked version of linked list addition
-int add_head_fork(DLL *res);
-int add_tail_fork(DLL *res);
+int add_head_fork(DLL *res, DLL start);
+int add_tail_fork(DLL *res, DLL start);
 
 
 #endif

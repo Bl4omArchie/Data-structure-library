@@ -53,8 +53,37 @@ int add_tail_range(DLL *res, DLL start_elem, DLL end_elem) {
     return 1;
 }
 
-int add_head_fork(DLL *res) {
-    int max_processes = 10;
+
+// ################### Fork #####################
+
+int predict_carry(uint64_t a, uint64_t b) {
+    int c = 0;
+
+    for (int i=0; i<64; i++) {
+        c = (a & 1) + (b & 1) + c;
+        c >>= 1;
+        a >>= 1;
+        b >>= 1;
+    }
+    return c;
+}
+
+int predict_carry_v2(uint64_t a, uint64_t b) {
+    int c = 0;
+    uint64_t mask = 1ULL << 63;
+
+    while ((a & mask) || (b & mask)) {
+        c = (a & mask) + (b & mask) + c;
+        c >>= 1;
+        a <<= 1;
+        b <<= 1;
+    }
+    return c;
+}
+
+
+int add_head_fork(DLL *res, DLL start) {
+    int max_processes = 15;
     int iter = 0;
     
     while (iter < max_processes) {
@@ -76,6 +105,6 @@ int add_head_fork(DLL *res) {
     }
 }
 
-int add_tail_fork(DLL *res) {
+int add_tail_fork(DLL *res, DLL start) {
 
 }
