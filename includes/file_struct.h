@@ -18,7 +18,7 @@
 // Data can be less than 64 bits but it need to be specified
 typedef struct DoublyLinkedList {
     uint64_t data;
-    int bit_size_data;
+    int byte_size_data;
     struct DoublyLinkedList *head;
     struct DoublyLinkedList *tail;
 } DLL;  

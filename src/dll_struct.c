@@ -14,6 +14,7 @@ void init_linked_list(DLL *linked_list) {
 void set_data(DLL *linked_list, uint64_t data) {
     // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
     linked_list->data = data & 0x7FFFFFFFFFFFFFFF;
+    linked_list->bit_size_data = sizeof(linked_list->data);
 }
 
 

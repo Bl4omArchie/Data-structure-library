@@ -8,7 +8,7 @@ int add_head(DLL *res, DLL start_elem) {
     DLL *current = start_elem.head;
 
     while (current != NULL) {
-        res->data += current->data;
+        set_data(res, res->data+current->data);
         current = current->head;
     }
     return 1;
@@ -21,7 +21,7 @@ int add_tail(DLL *res, DLL start_elem) {
     DLL *current = start_elem.tail;
 
     while (current != NULL) {
-        res->data += current->data;
+        set_data(res, res->data+current->data);
         current = current->tail;
     }
     return 1;
@@ -35,7 +35,7 @@ int add_head_range(DLL *res, DLL start_elem, DLL end_elem) {
     DLL *current = &start_elem;
 
     while (current != &end_elem && current != NULL) {
-        res->data += current->data;
+        set_data(res, res->data+current->data);
         current = current->head;
     }
     return 1;
@@ -48,7 +48,7 @@ int add_tail_range(DLL *res, DLL start_elem, DLL end_elem) {
     DLL *current = &start_elem;
 
     while (current != &end_elem && current != NULL) {
-        res->data += current->data;
+        set_data(res, res->data+current->data);
         current = current->tail;
     }
     return 1;

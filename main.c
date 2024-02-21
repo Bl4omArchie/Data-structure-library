@@ -44,6 +44,7 @@ void add_tail_test() {
     
     add_tail_range(&myList, start, end);
     display_linked_list(myList);
+    printf ("%d\n", myList.bit_size_data);
 }
 
 int main() {
@@ -51,7 +52,7 @@ int main() {
     uint64_t b = 0b10000000;
 
     printf ("%d\n", predict_carry(a, b, 8));
-    time_test();
+    add_tail_test();
 
     return 1;
 }
