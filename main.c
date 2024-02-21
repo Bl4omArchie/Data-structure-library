@@ -1,17 +1,26 @@
 #include "includes/file_struct.h"
 #include "includes/benchmark.h"
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/time.h>
 
+uint64_t bigEndianToLittleEndian(uint64_t bigEndianNumber) {
+    return ((bigEndianNumber & 0x00000000000000FFULL) << 56) |
+           ((bigEndianNumber & 0x000000000000FF00ULL) << 40) |
+           ((bigEndianNumber & 0x0000000000FF0000ULL) << 24) |
+           ((bigEndianNumber & 0x00000000FF000000ULL) << 8)  |
+           ((bigEndianNumber & 0x000000FF00000000ULL) >> 8)  |
+           ((bigEndianNumber & 0x0000FF0000000000ULL) >> 24) |
+           ((bigEndianNumber & 0x00FF000000000000ULL) >> 40) |
+           ((bigEndianNumber & 0xFF00000000000000ULL) >> 56);
+}
 
 int time_test() {
-    int a = 0xabc4baf;
-    int b = 0xabcffff;
+    uint64_t a = 0b1111111101101011111111111111111111111111111111111111111111110000;
+    uint64_t b = 0b1111111110101111110110111111111111111111111111111111111111111111;
     struct timeval tv_start, tv_end;
 
-    printf ("%d, %d\n", a, b);
-    printf ("%d", (a+b));
 
     gettimeofday(&tv_start, NULL);
 
@@ -29,7 +38,12 @@ int time_test() {
     gettimeofday(&tv_end, NULL);
     mtime = (tv_end.tv_sec - tv_start.tv_sec) * 1000000.0 + (tv_end.tv_usec - tv_start.tv_usec) / 1000000.0; // in ms
     printf ("%f\n", mtime);
-    
+
+    gettimeofday(&tv_start, NULL);
+    printf ("%d\n", predict_carry_v3(a, b));
+    gettimeofday(&tv_end, NULL);
+    mtime = (tv_end.tv_sec - tv_start.tv_sec) * 1000000.0 + (tv_end.tv_usec - tv_start.tv_usec) / 1000000.0; // in ms
+    printf ("%f\n", mtime);
 }
 
 int main() {
