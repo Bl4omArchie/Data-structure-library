@@ -44,15 +44,27 @@ void add_tail_test() {
     
     add_tail_range(&myList, start, end);
     display_linked_list(myList);
-    printf ("%d\n", myList.bit_size_data);
+    printf ("%d\n", myList.byte_size_data);
 }
 
 int main() {
-    uint64_t a = 0b11000101;
-    uint64_t b = 0b10000000;
+    DLL a, b, *res;
+    init_linked_list(&a);
+    init_linked_list(&b);
 
-    printf ("%d\n", predict_carry(a, b, 8));
-    add_tail_test();
+    set_data(&a, 10);
+    set_data(&b, 15);
+
+
+    insert_data_tail(&a, 20);
+    insert_data_tail(&a, 26);
+    insert_data_tail(&a, 86);
+
+    insert_data_tail(&b, 10);
+    insert_data_tail(&b, 12);
+    insert_data_tail(&b, 50);
+
+    add_linked_list(res, a, b);
 
     return 1;
 }

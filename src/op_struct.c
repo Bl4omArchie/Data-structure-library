@@ -59,7 +59,22 @@ int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
     if (res == NULL || &first_list == NULL || &second_list == NULL)
         return -1;
 
-    
+    DLL *a_c = &first_list;
+    DLL *b_c = &second_list;
+
+    printf ("ok2");
+
+    while ( a_c != NULL || b_c != NULL) {
+        set_data(res, a_c->data + b_c->data);
+        res = res->tail;
+
+        printf ("ok3");
+        
+        a_c = a_c->tail;
+        b_c = b_c->tail;
+    }
+
+    printf ("ok final");
 }
 
 
