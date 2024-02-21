@@ -7,7 +7,7 @@ For the coding language, I'll use C and also C++ for tests with GoogleTest Frame
 
 ### Main branch:
 Priority:
-- Implement features for Doubly Linked List
+- Make operation between linked list parallerlized 
 - Continue benchmark
 
 Futur work:
@@ -32,6 +32,8 @@ Minor priority:
 Data structure are a way to store informations. Actually there are differents techniques to do so: array, hash tables, graphs, stacks/queues, trees and linked list. Each of them has their own specificities but here we have a fixed subject: linked list, so we won't talk about differences between data structure. 
 For further reading I suggest you geeksforgeeks's website which resume and lead to various documentation about each type of data structure.
 The post is called: [Data Structures Tutorial](https://www.geeksforgeeks.org/data-structures/).
+
+**NOTE** The code in this readme is evolving, first I give a simple definition and implementation but when I add new features, the code can change. So for instance the structures I'm presenting below are no more in the last version of my code. 
 
 ### Definition 
 
@@ -98,11 +100,12 @@ int insert_element_tail(DoublyLinkedList *linked_list, DoublyLinkedList *element
 int insert_data_head(DoublyLinkedList *linked_list, uint64_t data);
 int insert_data_tail(DoublyLinkedList *linked_list, uint64_t data);
 ```
-
 In the header file of my project, you can find further details about each prototypes.
 
 
+### Parallelization
 
+Adding two linked list to each other is cool but adding them in parallel is cooler. So let's do this.
 
 
 # Sources
