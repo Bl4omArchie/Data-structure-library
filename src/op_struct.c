@@ -1,11 +1,11 @@
 #include "../includes/file_struct.h"
 
 
-int add_head(DLL *res, DLL start) {
-    if (res == NULL)
+int add_head(DLL *res, DLL start_elem) {
+    if (res == NULL || &start_elem == NULL)
         return -1;
 
-    DLL *current = start.head;
+    DLL *current = start_elem.head;
 
     while (current != NULL) {
         res->data += current->data;
@@ -14,11 +14,11 @@ int add_head(DLL *res, DLL start) {
     return 1;
 }
 
-int add_tail(DLL *res, DLL start) {
-    if (res == NULL)
+int add_tail(DLL *res, DLL start_elem) {
+    if (res == NULL || &start_elem == NULL)
         return -1;
 
-    DLL *current = start.tail;
+    DLL *current = start_elem.tail;
 
     while (current != NULL) {
         res->data += current->data;
@@ -26,6 +26,7 @@ int add_tail(DLL *res, DLL start) {
     }
     return 1;
 }
+
 
 int add_head_range(DLL *res, DLL start_elem, DLL end_elem) {
     if (res == NULL || &start_elem == NULL || &end_elem == NULL)
@@ -54,49 +55,36 @@ int add_tail_range(DLL *res, DLL start_elem, DLL end_elem) {
 }
 
 
+int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
+    if (res == NULL || &first_list == NULL || &second_list == NULL)
+        return -1;
+
+    
+}
+
+
 // ################### Fork #####################
 
 
-int predict_carry(uint64_t a, uint64_t b) {
+int predict_carry(uint64_t a, uint64_t b, int bit_size) {
     // v2
-    int i = 63;
+    int i = bit_size-1;
     int c = 0;
 
-    while ( ((a>>i)&1 || (b>>i)&1) && i > 0 ) {
+    while ( ((a>>i)&1 || (b>>i)&1) && i > 0 && c == 0) {
         c = ((a>>i)&1) && ((b>>i)&1);
         i--;
     }
     return c;
 }
 
-int predict_carry_v1(uint64_t a, uint64_t b) {
-    int c = 0;
 
-    for (int i=0; i<64; i++) {
-        c = (a & 1) + (b & 1) + c;
-        c >>= 1;
-        a >>= 1;
-        b >>= 1;
-    }
-    return c;
-}
 
-int predict_carry_v3(uint64_t a, uint64_t b) {
-    int i = 63;
-    int c = 0;
-    uint64_t a_x, b_x;
+int add_head_fork(DLL *res, DLL start_elem) {
+    if (res == NULL || &start_elem == NULL)
+        return -1;
 
-    do {
-        i--;
-        a_x = (a >> i)&1;
-        b_x = (b >> i)&1;
-        c = a_x && b_x;
-    } 
-    while ((a_x || b_x) && i > 0);
-    return c;
-}
 
-int add_head_fork(DLL *res, DLL start) {
     int max_processes = 15;
     int iter = 0;
     
@@ -119,6 +107,6 @@ int add_head_fork(DLL *res, DLL start) {
     }
 }
 
-int add_tail_fork(DLL *res, DLL start) {
+int add_tail_fork(DLL *res, DLL start_elem) {
 
 }

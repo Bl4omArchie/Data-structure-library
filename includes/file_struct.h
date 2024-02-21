@@ -12,10 +12,13 @@
 // Note: pointer on certain elements for scalable parallelization
 
 
+#define BIT_PER_ELEMENT 64
 
 // A doubly linked list that handle POSITIVE nubmbers of 64 bits.
+// Data can be less than 64 bits but it need to be specified
 typedef struct DoublyLinkedList {
     uint64_t data;
+    int bit_size_data;
     struct DoublyLinkedList *head;
     struct DoublyLinkedList *tail;
 } DLL;  
@@ -83,17 +86,19 @@ add_head: add into the given element, every head's value
 add_tail: same with tail
 add_elements_range: add into res every elements from A to B (included)
 */
-int add_head(DLL *res, DLL start);
-int add_tail(DLL *res, DLL start);
+int add_head(DLL *res, DLL start_elem);
+int add_tail(DLL *res, DLL start_elem);
 int add_head_range(DLL *res, DLL start_elem, DLL end_elem);
 int add_tail_range(DLL *res, DLL start_elem, DLL end_elem);
 
+int add_linked_list(DLL *res, DLL first_list, DLL second_list);
+
 // For two 64 bits number a and b, predict if the addition of those two numbers will give a carry or not
-int predict_carry(uint64_t a, uint64_t b);
+int predict_carry(uint64_t a, uint64_t b, int bit_size);
 
 // Forked version of linked list addition
-int add_head_fork(DLL *res, DLL start);
-int add_tail_fork(DLL *res, DLL start);
+int add_head_fork(DLL *res, DLL start_elem);
+int add_tail_fork(DLL *res, DLL start_elem);
 
 
 #endif

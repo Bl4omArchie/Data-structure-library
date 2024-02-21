@@ -16,7 +16,7 @@ int time_test() {
     gettimeofday(&tv_start, NULL);
 
     //function to test
-    printf ("%d\n", predict_carry(a, b));
+    printf ("%d\n", predict_carry(a, b, 64));
 
     gettimeofday(&tv_end, NULL);
     double mtime = (tv_end.tv_sec - tv_start.tv_sec) * 1000000.0 + (tv_end.tv_usec - tv_start.tv_usec) / 1000000.0; // in ms
@@ -47,7 +47,11 @@ void add_tail_test() {
 }
 
 int main() {
+    uint64_t a = 0b11000101;
+    uint64_t b = 0b10000000;
 
+    printf ("%d\n", predict_carry(a, b, 8));
+    time_test();
 
     return 1;
 }
