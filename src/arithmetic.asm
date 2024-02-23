@@ -9,7 +9,7 @@ section .text
 ; ret a
 
 
-add_binary_optimized:   
+add_binary_optimized:
     push rbp
     mov rbp, rsp
 

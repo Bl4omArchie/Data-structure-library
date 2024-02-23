@@ -26,7 +26,7 @@ typedef struct DoublyLinkedList {
 
 // ################### Assembly function  #####################
 
-extern void add_binary_optimized(uint64_t a, uint64_t b);
+extern uint64_t add_binary_optimized(uint64_t a, uint64_t b);
 
 
 // ################### Doubly Linked List #####################
