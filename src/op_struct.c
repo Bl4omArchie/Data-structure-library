@@ -56,25 +56,29 @@ int add_tail_range(DLL *res, DLL start_elem, DLL end_elem) {
 
 
 int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
-    if (res == NULL || &first_list == NULL || &second_list == NULL)
+    if (&first_list == NULL || &second_list == NULL)
         return -1;
 
-    DLL *a_c = &first_list;
-    DLL *b_c = &second_list;
+    DLL *a_next = &first_list;
+    DLL *b_next = &second_list;
 
-    printf ("ok2");
+    int carry = 0;
+    uint64_t sum = 0;
 
-    while ( a_c != NULL || b_c != NULL) {
-        set_data(res, a_c->data + b_c->data);
-        res = res->tail;
 
-        printf ("ok3");
+    while ( a_next != NULL || b_next != NULL) {
+        if (res == NULL) 
+            res = (struct DLL*)malloc(sizeof(DLL));
+            
+        carry = (a_next->data > UINT64_MAX - b_next->data) ? 1 : 0;
+
+        set_data(res, sum);
         
-        a_c = a_c->tail;
-        b_c = b_c->tail;
+        
+        res = res->tail;
+        a_next = a_next->tail;
+        b_next = b_next->tail;
     }
-
-    printf ("ok final");
 }
 
 
@@ -98,7 +102,6 @@ int predict_carry(uint64_t a, uint64_t b, int bit_size) {
 int add_head_fork(DLL *res, DLL start_elem) {
     if (res == NULL || &start_elem == NULL)
         return -1;
-
 
     int max_processes = 15;
     int iter = 0;

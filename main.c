@@ -42,12 +42,13 @@ void add_tail_test() {
     insert_element_tail(&myList, &start);
     
     
-    add_tail_range(&myList, start, end);
+    //add_tail_range(&myList, start, end);
+    add_tail(&myList, start);
     display_linked_list(myList);
-    printf ("%d\n", myList.byte_size_data);
 }
 
-int main() {
+
+void add_dll_test() {
     DLL a, b, *res;
     init_linked_list(&a);
     init_linked_list(&b);
@@ -65,6 +66,15 @@ int main() {
     insert_data_tail(&b, 50);
 
     add_linked_list(res, a, b);
+}
 
+
+int main() {
+    uint64_t a = 0xfbff4a, b = 0xfaff3b;
+
+    // a > INT_MAX - b
+    // printf ("%d\n", a > 0); 
+
+    add_dll_test();
     return 1;
 }
