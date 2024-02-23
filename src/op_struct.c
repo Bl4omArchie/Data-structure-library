@@ -68,8 +68,8 @@ int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
 
     while ( a_next != NULL || b_next != NULL) {
         if (res == NULL) 
-            res = (struct DLL*)malloc(sizeof(DLL));
-            
+            res = (DLL*)malloc(sizeof(DLL));
+
         carry = (a_next->data > UINT64_MAX - b_next->data) ? 1 : 0;
 
         set_data(res, sum);
