@@ -7,7 +7,8 @@ For the coding language, I'll use C and also C++ for tests with GoogleTest Frame
 
 ### Main branch:
 Priority:
-- Make operation between linked list parallerlized 
+- Finish add_linked_list
+- Make assembly optimization for arithmetic operations
 - Continue benchmark
 
 Futur work:
