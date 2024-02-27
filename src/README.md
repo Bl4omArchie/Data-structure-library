@@ -86,3 +86,8 @@ int predict_carry(uint64_t a, uint64_t b) {
 ```
 
 Maybe I can make further optimization by removing some steps with the many shift and AND operations.
+
+
+### Assembly optimization
+
+## Addition

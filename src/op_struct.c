@@ -64,13 +64,15 @@ int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
     int carry = 0;
 
     while ( a_next != NULL || b_next != NULL) {
-        if (res == NULL) 
-            res = (DLL*)malloc(sizeof(DLL));
+        if (res == NULL)
+            insert_element_tail(res, (DLL*)malloc(sizeof(DLL)));
+
+        printf ("ok\n");
 
         set_data(res, add_binary_optimized(a_next->data, b_next->data) + carry);
         carry = (a_next->data > UINT64_MAX - b_next->data) ? 1 : 0;
         
-        res = res->tail;
+        //res = res->tail;
         a_next = a_next->tail;
         b_next = b_next->tail;
     }

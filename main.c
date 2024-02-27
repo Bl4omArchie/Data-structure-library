@@ -49,32 +49,37 @@ void add_tail_test() {
 
 
 void add_dll_test() {
-    DLL a, b, *res;
+    DLL a, b, res;
     init_linked_list(&a);
     init_linked_list(&b);
+    init_linked_list(&res);
 
-    set_data(&a, 10);
-    set_data(&b, 15);
+    set_data(&a, 0xFFFFFFFFFFFF);
+    set_data(&b, 0xFFFFFFFFFFFF);
 
 
-    insert_data_tail(&a, 20);
-    insert_data_tail(&a, 26);
-    insert_data_tail(&a, 86);
+    insert_data_tail(&a, 0xFFFFFFFFFFFF);
+    insert_data_tail(&a, 0xFFFFFFFFFFFF);
+    insert_data_tail(&a, 0xFFFFFFFFFFFF);
 
-    insert_data_tail(&b, 10);
-    insert_data_tail(&b, 12);
-    insert_data_tail(&b, 50);
+    insert_data_tail(&b, 0xFFFFFFFFFFFF);
+    insert_data_tail(&b, 0xFFFFFFFFFFFF);
+    insert_data_tail(&b, 0xFFFFFFFFFFFF);
 
-    add_linked_list(res, a, b);
+    add_linked_list(&res, a, b);
+    display_linked_list(a);
+    display_linked_list(b);
+    display_linked_list(res);
 }
 
 
 int main() {
-    uint64_t a = 0xfbff4a, b = 0xfaff3b;
-
-    // a > INT_MAX - b
-    // printf ("%d\n", a > 0); 
+    uint64_t a = 0xFFFFFFFFFFFF, b = 0xFFFFFFFFFFFF, c = 0;
 
     add_dll_test();
+
+    c = add_binary_optimized(a, b);
+    printf ("%ld + %ld = %ld\n", a, b, c);
+
     return 1;
 }
