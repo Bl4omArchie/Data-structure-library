@@ -13,7 +13,7 @@ BENCH_TARGET = bench.o
 SRCS = $(wildcard $(SRCDIR)/*.c)
 ASMS := $(wildcard $(SRCDIR)/*.asm)
 
-OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS)) #$(patsubst $(SRCDIR)/%.asm, $(BUILDDIR)/%.o, $(ASMS))
+OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS)) $(patsubst $(SRCDIR)/%.asm, $(BUILDDIR)/%.o, $(ASMS))
 
 # Options de compilation
 CFLAGS = -I$(INCDIR)
@@ -38,6 +38,6 @@ $(BENCH_TARGET): $(OBJS)
 	$(CC) bench.c -o $(BENCH_TARGET) $(OBJS)
 
 clean:
-	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET) .vscode/
+	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET) .vscode/ *.o
 
 .PHONY: all clean
