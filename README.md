@@ -8,6 +8,7 @@ For the coding language, I'll use C and also C++ for tests with GoogleTest Frame
 ### Main branch:
 Priority:
 - Finish add_linked_list
+- Fixing makefile for assembly compilation
 - Make assembly optimization for arithmetic operations
 - Continue benchmark
 
@@ -102,11 +103,6 @@ int insert_data_head(DoublyLinkedList *linked_list, uint64_t data);
 int insert_data_tail(DoublyLinkedList *linked_list, uint64_t data);
 ```
 In the header file of my project, you can find further details about each prototypes.
-
-
-### Parallelization
-
-Adding two linked list to each other is cool but adding them in parallel is cooler. So let's do this.
 
 
 # Sources
