@@ -54,15 +54,15 @@ void add_dll_test() {
     init_linked_list(&b);
     init_linked_list(&res);
 
-    set_data(&a, 0xFFFFFFFFFFFF);
-    set_data(&b, 0xFFFFFFFFFFFF);
+    set_data(&a, 0xFFFFFFFFFFFa);
+    set_data(&b, 0xFFFFFFFFFFFb);
 
 
-    insert_data_tail(&a, 0xFFFFFFFFFFFF);
-    insert_data_tail(&a, 0xFFFFFFFFFFFF);
+    insert_data_tail(&a, 0xFFFFFFFFFFFc);
+    insert_data_tail(&a, 0xFFFFFFFFFFFd);
     insert_data_tail(&a, 0xFFFFFFFFFFFF);
 
-    insert_data_tail(&b, 0xFFFFFFFFFFFF);
+    insert_data_tail(&b, 0xFFFFFFFFFFFe);
     insert_data_tail(&b, 0xFFFFFFFFFFFF);
     insert_data_tail(&b, 0xFFFFFFFFFFFF);
 
@@ -78,8 +78,8 @@ int main() {
 
     add_dll_test();
 
-    c = add_binary_optimized(a, b);
-    printf ("%ld + %ld = %ld\n", a, b, c);
+    //c = add_binary_optimized(a, b);
+    //printf ("%ld + %ld = %ld\n", a, b, c);
 
     return 1;
 }

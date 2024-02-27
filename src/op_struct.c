@@ -67,10 +67,10 @@ int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
         if (res == NULL)
             insert_element_tail(res, (DLL*)malloc(sizeof(DLL)));
 
-        printf ("ok\n");
-
         set_data(res, add_binary_optimized(a_next->data, b_next->data) + carry);
         carry = (a_next->data > UINT64_MAX - b_next->data) ? 1 : 0;
+
+        printf ("%ld\n", a_next->data);
         
         //res = res->tail;
         a_next = a_next->tail;
@@ -80,7 +80,6 @@ int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
 
 
 // ################### Fork #####################
-
 
 int predict_carry(uint64_t a, uint64_t b, int bit_size) {
     // v2

@@ -47,6 +47,10 @@ Potential revision on every Algorithm 1 depeding on how the struct is evolving.
         - 1.3.2) insert_element_tail
         - 1.3.3) insert_data_head
         - 1.3.4) insert_data_tail
+        - 1.3.5) insert_data_linked_list_head
+        - 1.3.6) insert_data_linked_list_tail
+        - 1.3.7) insert_element_linked_list_head
+        - 1.3.8) insert_element_linked_list_tail
     - 1.4) remove
     - 1.5) clear
         - 1.5.1) clear_linked_list

@@ -38,6 +38,7 @@ void init_linked_list(DLL *linked_list);
 set_data: set the given value into your element (positive number only)
 insert_element: insert a given element (DLL) into the head or the tail of the given linked list
 insert_data: same utility but you only provide a value and it create a new element
+insert_linked_list: instead of inserting a new data/element at the head/tail of the element, it insert the value at the head/tail of the whole DLL
 */
 void set_data(DLL *linked_list, uint64_t data);
 int insert_element_head(DLL *linked_list, DLL *element);
@@ -45,6 +46,12 @@ int insert_element_tail(DLL *linked_list, DLL *element);
 
 int insert_data_head(DLL *linked_list, uint64_t data);
 int insert_data_tail(DLL *linked_list, uint64_t data);
+
+int insert_data_linked_list_head(DLL *linked_list, uint64_t data);
+int insert_data_linked_list_tail(DLL *linked_list, uint64_t data);
+
+int insert_element_linked_list_head(DLL *linked_list, uint64_t data);
+int insert_element_linked_list_tail(DLL *linked_list, uint64_t data);
 
 
 // Manual deletion: remove the given element and link the head to the tail

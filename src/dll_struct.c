@@ -71,13 +71,39 @@ int insert_data_tail(DLL *linked_list, uint64_t data) {
     return insert_element_tail(linked_list, newElement);
 }
 
-
-void remove_element(DLL *element) {
-    element->head->tail = element->tail;
-    element->tail = element->head;
-    free(element);
+int insert_data_linked_list_head(DLL *linked_list, uint64_t data) {
+    if (linked_list == NULL) 
+        return -1;
+    
+    DLL *head = find_head();
+    insert_data_head(head, data);
+    return 1;
 }
 
+int insert_data_linked_list_tail(DLL *linked_list, uint64_t data) {
+    if (linked_list == NULL) 
+        return -1;
+    
+    DLL *tail = find_tail();
+    insert_data_head(tail, data);
+    return 1;
+}
+
+int insert_element_linked_list_head(DLL *linked_list, DLL *element) {
+    if (linked_list == NULL) 
+        return -1;
+    DLL *head = find_head();
+    insert_element_head(head, data);
+    return 1; 
+}
+
+int insert_element_linked_list_tail(DLL *linked_list, DLL *element) {
+    if (linked_list == NULL) 
+        return -1;
+    DLL *tail = find_tail();
+    insert_element_tail(tail, data);
+    return 1; 
+}
 
 
 int clear_linked_list(DLL *linked_list) {
