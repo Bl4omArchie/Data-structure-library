@@ -21,15 +21,11 @@ typedef struct DoublyLinkedList {
     int byte_size_data;
     struct DoublyLinkedList *head;
     struct DoublyLinkedList *tail;
-} DLL;  
+} DLL;
 
 
-// ################### Assembly function  #####################
 
-extern uint64_t add_binary_optimized(uint64_t a, uint64_t b);
-
-
-// ################### Doubly Linked List #####################
+// ################### 1 - Linked List #####################
 
 /* Manual: init_linked_list
 Used for the first element of the linked list.
@@ -85,7 +81,10 @@ DLL *find_tail(DLL *linked_list);
 void display_linked_list(DLL linked_list);
 
 
-/*Arithmetic with Linked List
+
+// ################### 2 - Operation #####################
+
+/* Addition with Linked List
 add_head: add into the given element, every head's value
 add_tail: same with tail
 add_elements_range: add into res every elements from A to B (included)
@@ -103,6 +102,13 @@ int predict_carry(uint64_t a, uint64_t b, int bit_size);
 // Forked version of linked list addition
 int add_head_fork(DLL *res, DLL start_elem);
 int add_tail_fork(DLL *res, DLL start_elem);
+
+
+
+// ################### 3 - Assembly  #####################
+
+extern uint64_t add_binary_optimized(uint64_t a, uint64_t b);
+
 
 
 #endif
