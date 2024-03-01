@@ -17,9 +17,8 @@ add_binary_optimized:
     mov edx, esi
 
     add_loop:
+        mov ecx, eax        ; a into ecx
         xor eax, edx        ; a ^ b into a
-        mov ecx, edx        ; b into ecx
-        xor ecx, eax        ; b ^ a into ecx
         and edx, ecx        ; ecx & b into b
         shl edx, 1          ; b << 1 into b
         
