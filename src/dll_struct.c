@@ -1,8 +1,8 @@
 #include "../includes/file_struct.h"
 
 
-// Doubly Linked List struct
 
+// ################### Algorithm 1 #####################
 
 void init_linked_list(DLL *linked_list) {
     linked_list->data = 0;

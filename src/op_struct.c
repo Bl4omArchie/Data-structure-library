@@ -1,6 +1,9 @@
 #include "../includes/file_struct.h"
 
 
+// ################### Algorithm 2 #####################
+
+/*2.1.1*/
 int add_head(DLL *res, DLL start_elem) {
     if (res == NULL || &start_elem == NULL)
         return -1;
@@ -14,6 +17,7 @@ int add_head(DLL *res, DLL start_elem) {
     return 1;
 }
 
+/*2.1.2*/
 int add_tail(DLL *res, DLL start_elem) {
     if (res == NULL || &start_elem == NULL)
         return -1;
@@ -27,7 +31,7 @@ int add_tail(DLL *res, DLL start_elem) {
     return 1;
 }
 
-
+/*2.1.3*/
 int add_head_range(DLL *res, DLL start_elem, DLL end_elem) {
     if (res == NULL || &start_elem == NULL || &end_elem == NULL)
         return -1;
@@ -41,6 +45,7 @@ int add_head_range(DLL *res, DLL start_elem, DLL end_elem) {
     return 1;
 }
 
+/*2.1.4*/
 int add_tail_range(DLL *res, DLL start_elem, DLL end_elem) {
     if (res == NULL || &start_elem == NULL || &end_elem == NULL)
         return -1;
@@ -54,7 +59,7 @@ int add_tail_range(DLL *res, DLL start_elem, DLL end_elem) {
     return 1;
 }
 
-
+/*2.1.5*/
 int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
     if (&first_list == NULL || &second_list == NULL)
         return -1;
@@ -81,20 +86,7 @@ int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
 
 // ################### Fork #####################
 
-int predict_carry(uint64_t a, uint64_t b, int bit_size) {
-    // v2
-    int i = bit_size-1;
-    int c = 0;
-
-    while ( ((a>>i)&1 || (b>>i)&1) && i > 0 && c == 0) {
-        c = ((a>>i)&1) && ((b>>i)&1);
-        i--;
-    }
-    return c;
-}
-
-
-
+// 2.2.1
 int add_head_fork(DLL *res, DLL start_elem) {
     if (res == NULL || &start_elem == NULL)
         return -1;
@@ -121,6 +113,25 @@ int add_head_fork(DLL *res, DLL start_elem) {
     }
 }
 
+// 2.2.2
 int add_tail_fork(DLL *res, DLL start_elem) {
 
+}
+
+// 2.2.3
+int add_linked_list_fork(DLL *res, DLL start_elem) {
+
+}
+
+// 2.3
+int predict_carry(uint64_t a, uint64_t b, int bit_size) {
+    // v2
+    int i = bit_size-1;
+    int c = 0;
+
+    while ( ((a>>i)&1 || (b>>i)&1) && i > 0 && c == 0) {
+        c = ((a>>i)&1) && ((b>>i)&1);
+        i--;
+    }
+    return c;
 }

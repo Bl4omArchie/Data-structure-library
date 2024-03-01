@@ -100,15 +100,15 @@ int add_head(DLL *res, DLL start_elem);
 int add_tail(DLL *res, DLL start_elem);
 int add_head_range(DLL *res, DLL start_elem, DLL end_elem);
 int add_tail_range(DLL *res, DLL start_elem, DLL end_elem);
-
 int add_linked_list(DLL *res, DLL first_list, DLL second_list);
-
-// For two 64 bits number a and b, predict if the addition of those two numbers will give a carry or not
-int predict_carry(uint64_t a, uint64_t b, int bit_size);
 
 // Forked version of linked list addition
 int add_head_fork(DLL *res, DLL start_elem);
 int add_tail_fork(DLL *res, DLL start_elem);
+int add_linked_list_fork(DLL *res, DLL start_elem);
+
+// For two 64 bits number a and b, predict if the addition of those two numbers will give a carry or not
+int predict_carry(uint64_t a, uint64_t b, int bit_size);
 
 
 
