@@ -16,7 +16,7 @@ add_binary_optimized:
     mov eax, edi
     mov edx, esi
 
-    while_loop:
+    add_loop:
         xor eax, edx        ; a ^ b into a
         mov ecx, edx        ; b into ecx
         xor ecx, eax        ; b ^ a into ecx
@@ -24,7 +24,7 @@ add_binary_optimized:
         shl edx, 1          ; b << 1 into b
         
         test edx, edx
-        jnz while_loop
+        jnz add_loop
 
     pop rbp
     ret
@@ -44,13 +44,13 @@ sub_binary_optimized:
     mov eax, edi
     mov edx, esi
 
-    while_loop:
+    sub_loop:
         xor eax, edx        ; a ^ b into a
         and edx, eax        ; a & b into b
         shl edx, 1          ; b << 1 into b
         
         test edx, edx
-        jnz while_loop
+        jnz sub_loop
 
     pop rbp
     ret

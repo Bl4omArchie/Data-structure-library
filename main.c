@@ -76,10 +76,10 @@ void add_dll_test() {
 int main() {
     uint64_t a = 0xFFFFFFFFFFFF, b = 0xFFFFFFFFFFFF, c = 0;
 
-    add_dll_test();
+    //add_dll_test();
 
-    //c = add_binary_optimized(a, b);
-    //printf ("%ld + %ld = %ld\n", a, b, c);
+    c = sub_binary_optimized(a, b);
+    printf ("%ld - %ld = %ld\n", a, b, c);
 
     return 1;
 }
