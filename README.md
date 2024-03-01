@@ -73,7 +73,8 @@ Potential revision on every Algorithm 1 depeding on how the struct is evolving.
     - 2.3) predict_carry
 
 - 3)Assembly:
-    - 3.1) add
+    - 3.1) add_binary_optimized
+    - 3.2) sub_binary_optimized
 
 
 ## 📣 Author

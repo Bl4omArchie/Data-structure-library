@@ -1,18 +1,18 @@
 section .text
     global add_binary_optimized
+    global sub_binary_optimized
 
 
-; var: a, b, mask (uint_64)
+; Algorithm 3.1:
+; var: a, b
 ; while (b):
 ;   a = a ^ b
-;   b = (((a^b)& b) << 1)
+;   b = ((a^b)& b) << 1
 ; ret a
-
 
 add_binary_optimized:
     push rbp
     mov rbp, rsp
-
     mov eax, edi
     mov edx, esi
 
@@ -21,6 +21,32 @@ add_binary_optimized:
         mov ecx, edx        ; b into ecx
         xor ecx, eax        ; b ^ a into ecx
         and edx, ecx        ; ecx & b into b
+        shl edx, 1          ; b << 1 into b
+        
+        test edx, edx
+        jnz while_loop
+
+    pop rbp
+    ret
+
+
+
+; Algorithm 3.2:
+; var: a, b
+; while (b):
+;   a = a ^ b
+;   b = (a & b) << 1
+; ret a
+
+sub_binary_optimized:
+    push rbp
+    mov rbp, rsp
+    mov eax, edi
+    mov edx, esi
+
+    while_loop:
+        xor eax, edx        ; a ^ b into a
+        and edx, eax        ; a & b into b
         shl edx, 1          ; b << 1 into b
         
         test edx, edx
