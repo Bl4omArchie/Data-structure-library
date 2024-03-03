@@ -29,14 +29,14 @@ Minor priority:
 ## 🚧 TODO
 
 Algorithms I'm coding actually:
-- Algorithm 2.1.5
-- Algorithm 2.2.3
-- Algorithm 3.1
+- Algorithm 2.2.1, 2.2.2 and 2.2.3
+- Algorithm 3.1 and 3.2
 
 Revision todo:
-- Algorithm 2.3
+- Algorithm 2.3: may have some improvements
 
 Potential revision on every Algorithm 1 depeding on how the struct is evolving.
+Plus I need to implement more data structure (ie: associative array)
 
 ## 📋 Algorithm listing
 - 1)Linked List:
@@ -82,6 +82,7 @@ Potential revision on every Algorithm 1 depeding on how the struct is evolving.
 
 - 3)Assembly:
     - 3.1) add_binary_optimized
+    - 3.2) sub_binary_optimized
 
 
 ## 📣 Author
