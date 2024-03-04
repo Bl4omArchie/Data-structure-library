@@ -67,7 +67,7 @@ Plus I need to implement more data structure (ie: associative array)
 
 <br/>
 
-- 2)Operation:
+- 2)Linked List Operation:
     - 2.1) add
         - 2.1.1) add_head
         - 2.1.2) add_tail
@@ -83,6 +83,9 @@ Plus I need to implement more data structure (ie: associative array)
 - 3)Assembly:
     - 3.1) add_binary_optimized
     - 3.2) sub_binary_optimized
+
+- 4)Associative array:
+  - 4.1) init_associative_array
 
 ## Installation
 

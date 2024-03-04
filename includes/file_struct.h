@@ -11,9 +11,6 @@
 
 // Note: pointer on certain elements for scalable parallelization
 
-
-#define BIT_PER_ELEMENT 64
-
 // A doubly linked list that handle POSITIVE nubmbers of 64 bits.
 // Data can be less than 64 bits but it need to be specified
 typedef struct DoublyLinkedList {
@@ -23,6 +20,12 @@ typedef struct DoublyLinkedList {
     struct DoublyLinkedList *tail;
 } DLL;
 
+typedef struct AssociativeArray {
+    int *Values;
+    int *Key;
+    int actual_capacity;
+    int max_capacity;
+} AA;
 
 
 // ################### 1 - Linked List #####################
@@ -89,7 +92,7 @@ void display_linked_list(DLL linked_list);
 
 
 
-// ################### 2 - Operation #####################
+// ################### 2 - Linked list Operation #####################
 
 /* Addition with Linked List
 add_head: add into the given element, every head's value
@@ -117,6 +120,10 @@ int predict_carry(uint64_t a, uint64_t b, int bit_size);
 extern uint64_t add_binary_optimized(uint64_t a, uint64_t b);
 extern uint64_t sub_binary_optimized(uint64_t a, uint64_t b);
 
+
+// ################### 4 - Associative Array  #####################
+
+int init_associative_array(AA *associative_array);
 
 
 #endif
