@@ -11,6 +11,11 @@
 
 // Note: pointer on certain elements for scalable parallelization
 
+
+
+// ################### 1 - Linked List #####################
+
+
 // A doubly linked list that handle POSITIVE nubmbers of 64 bits.
 // Data can be less than 64 bits but it need to be specified
 typedef struct DoublyLinkedList {
@@ -20,21 +25,11 @@ typedef struct DoublyLinkedList {
     struct DoublyLinkedList *tail;
 } DLL;
 
-typedef struct AssociativeArray {
-    int *Values;
-    int *Key;
-    int actual_capacity;
-    int max_capacity;
-} AA;
-
-
-// ################### 1 - Linked List #####################
-
-/* Manual: init_linked_list
+/* Manual: init_dll
 Used for the first element of the linked list.
 It nullify the head and the tail
 */
-void init_linked_list(DLL *linked_list);
+void init_dll(DLL *linked_list);
 
 
 /* Manual insertion
@@ -121,9 +116,24 @@ extern uint64_t add_binary_optimized(uint64_t a, uint64_t b);
 extern uint64_t sub_binary_optimized(uint64_t a, uint64_t b);
 
 
+
 // ################### 4 - Associative Array  #####################
 
-int init_associative_array(AA *associative_array);
+typedef struct AssociativeArray {
+    void *Values;
+    void *Key;
+    int actual_capacity;
+    int max_capacity;
+} AA;
+
+int init_aa(AA *associative_array, int max_capacity);
+int resize_aa(AA *ssociativeArray, int new_capacity);
+
+// TODO:
+int put_data_aa(AA *associative_array, void *Key, void *Values);
+int get_data_aa(AA *associative_array, void *Key);
+int remove_data_aa(AA *associative_array, void *Key);
+int get_hash(void *Key);
 
 
 #endif

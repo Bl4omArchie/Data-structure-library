@@ -40,7 +40,7 @@ Plus I need to implement more data structure (ie: associative array)
 
 ## 📋 Algorithm listing
 - 1)Linked List:
-    - 1.1) init_linked_list
+    - 1.1) init_dll
     - 1.2) set_data
     - 1.3) insert
         - 1.3.1) insert_element_head
@@ -85,7 +85,8 @@ Plus I need to implement more data structure (ie: associative array)
     - 3.2) sub_binary_optimized
 
 - 4)Associative array:
-  - 4.1) init_associative_array
+  - 4.1) init_aa
+  - 4.2) resize_aa
 
 ## Installation
 

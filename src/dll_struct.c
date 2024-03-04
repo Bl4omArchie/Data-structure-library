@@ -5,7 +5,7 @@
 // ################### Algorithm 1 #####################
 
 // 1.1
-void init_linked_list(DLL *linked_list) {
+void init_dll(DLL *linked_list) {
     linked_list->data = 0;
     linked_list->head = NULL;
     linked_list->tail = NULL;
@@ -54,7 +54,7 @@ int insert_data_head(DLL *linked_list, uint64_t data) {
         return -1;
 
     DLL *newElement = (DLL*)malloc(sizeof(DLL));
-    init_linked_list(newElement);
+    init_dll(newElement);
     set_data(newElement, data);
     
     return insert_element_head(linked_list, newElement);
@@ -66,7 +66,7 @@ int insert_data_tail(DLL *linked_list, uint64_t data) {
         return -1;
     
     DLL *newElement = (DLL*)malloc(sizeof(DLL));
-    init_linked_list(newElement);
+    init_dll(newElement);
     set_data(newElement, data);
 
     return insert_element_tail(linked_list, newElement);

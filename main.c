@@ -26,9 +26,9 @@ int time_test() {
 
 void add_tail_test() {
     DLL myList, start, end;
-    init_linked_list(&myList);
-    init_linked_list(&start);
-    init_linked_list(&end);
+    init_dll(&myList);
+    init_dll(&start);
+    init_dll(&end);
 
     set_data(&myList, 0);
     set_data(&start, 1);
@@ -50,9 +50,9 @@ void add_tail_test() {
 
 void add_dll_test() {
     DLL a, b, res;
-    init_linked_list(&a);
-    init_linked_list(&b);
-    init_linked_list(&res);
+    init_dll(&a);
+    init_dll(&b);
+    init_dll(&res);
 
     set_data(&a, 0xFFFFFFFFFFFa);
     set_data(&b, 0xFFFFFFFFFFFb);
