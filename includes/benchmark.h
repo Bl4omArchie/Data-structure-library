@@ -19,7 +19,7 @@ uint64_t generateRandom64BitNumber();
 
 void benchmark_file_list(uint64_t n);
 void benchmark_insert(uint64_t num_element);
-void benchmark_remove(DoublyLinkedList *to_remove);
-void benchmark_lookup_element(DoublyLinkedList *to_find);
+void benchmark_remove(DLL *to_remove);
+void benchmark_lookup_element(DLL *to_find);
 
 #endif

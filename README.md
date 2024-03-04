@@ -1,112 +1,106 @@
-# Linked List implementation - Definition, techniques and examples
+# Data structure implementation
 
 This project goals are to understand linked list, examine techniques to implement it and finally, find an optimal way to implement this data structure. Later I would like to use it for a bignum structure and also make improvements with parallelization. <br/>
 For the coding language, I'll use C and also C++ for tests with GoogleTest Framework.
 
-## Roadmap
+## 🚚  Roadmap
 
-### Main branch:
+#### Main branch:
 Priority:
-- Implement features for Doubly Linked List
+- Finish add_linked_list
+- Fixing makefile for assembly compilation
+- Make assembly optimization for arithmetic operations
 - Continue benchmark
 
-Futur work:
-- Implement Xor Linked List
+Minor priority:
 - Allow different types: 64 bits, 32 bits, 16 bits
 - Translate my Java associative array in C for this project
 
-### GoogleTest:
+#### GoogleTest:
 Priority:
 - Import and compile GoogleTest
 - Write more tests
 
+#### Xor Linked List
+Minor priority:
+- Understand how to implement xll
+- Test if replacing dll with wll worth it
 
-## Introduction
+## 🚧 TODO
 
-### Context
+Algorithms I'm coding actually:
+- Algorithm 2.2.1, 2.2.2 and 2.2.3
+- Algorithm 3.1 and 3.2
 
-Data structure are a way to store informations. Actually there are differents techniques to do so: array, hash tables, graphs, stacks/queues, trees and linked list. Each of them has their own specificities but here we have a fixed subject: linked list, so we won't talk about differences between data structure. 
-For further reading I suggest you geeksforgeeks's website which resume and lead to various documentation about each type of data structure.
-The post is called: [Data Structures Tutorial](https://www.geeksforgeeks.org/data-structures/).
+Revision todo:
+- Algorithm 2.3: may have some improvements
 
-### Definition 
+Potential revision on every Algorithm 1 depeding on how the struct is evolving.
+Plus I need to implement more data structure (ie: associative array)
 
-So what is a linked list ?
--> Linked list is a data structure where each element contains a data element of some type and a pointer to the next item in the list. It is easy to insert and delete elements in a linked list, which are not natural operations on arrays, since arrays have a fixed size. 
+## 📋 Algorithm listing
+- 1)Linked List:
+    - 1.1) init_linked_list
+    - 1.2) set_data
+    - 1.3) insert
+        - 1.3.1) insert_element_head
+        - 1.3.2) insert_element_tail
+        - 1.3.3) insert_data_head
+        - 1.3.4) insert_data_tail
+        - 1.3.5) insert_data_linked_list_head
+        - 1.3.6) insert_data_linked_list_tail
+        - 1.3.7) insert_element_linked_list_head
+        - 1.3.8) insert_element_linked_list_tail
+    - 1.4) remove
+    - 1.5) clear
+        - 1.5.1) clear_linked_list
+        - 1.5.2) clear_head_linked_list
+        - 1.5.3) clear_tail_linked_list
+    - 1.6) free
+        - 1.6.1) free_linked_list
+        - 1.6.2) free_head_linked_list
+        - 1.6.3) free_tail_linked_list
+    - 1.7) find
+        - 1.7.1) find_head
+        - 1.7.2) find_tail
+    - 1.8) display
 
+<br/>
 
-### Types of Linked List
+- 2)Operation:
+    - 2.1) add
+        - 2.1.1) add_head
+        - 2.1.2) add_tail
+        - 2.1.3) add_head_range
+        - 2.1.4) add_tail_range
+        - 2.1.5) add_linked_list
+    - 2.2) add_fork
+        - 2.2.1) add_head_fork
+        - 2.2.2) add_tail_fork
+        - 2.2.3) add_linked_list_fork
+    - 2.3) predict_carry
 
-There exists several types of Linked List:
-- Linked List: the most basic one where you have only one pointer that lead to the tail element
-- Doubly LL: point both at the tail and head element 
-- Circular LL: the last element of your linked list point to the head
-- XOR LL:  a doubly LL but the head and tail pointers of an element are xored together so you only have one pointer for both. This type if useful for memory optimization and small hardware
-
-Here I'm going to implement Doubly Linked List because it is more efficient for what I'm aiming to do later.
-
-## Techniques and methods
-
-### Structures
-
-First we need to create a structure that represent the Doubly Linked list. We have two ways to do this.
-
-- with two representations:
-The first struct represent the Linked List itself and the second one represent an Element. The advantage of this method is that we keep an eye on the first and last element which can be an advantage depending on how you are implementing yours prototypes. But in the other hand, this method can be unconfortable for prototypes implemetations (ie: more steps for the adding feature).
-```c
-typedef struct Element {
-    uint64_t data;
-    struct Element* next;
-    struct Element* prev;
-} Element;
-
-// Structure DoublyLinkedList
-typedef struct DoublyLinkedList {
-    Element* head;
-    Element* tail;
-} DoublyLinkedList;
-```
-
-- self contained structure:
-With the second method, we are merging the representation of the global struct and an element into one single structure. This representation is lighter and personnaly I prefer this one.  
-```c
-struct DoublyLinkedList {
-    int value;
-    DoublyLinkedList *next;
-    DoublyLinkedList *prev;
-};
-```
-
-### Features and prototypes
-
-To make a linked list work, you need some basic operations. There is a list of the most important ones:
-```
-- Initialization
-- Insertion
-- Deletion
-- Clear and Free memory
-```
-
-In practise, you can add more prototypes for a single feature so you can make more accurate manipulation of your linked list. For the Init and Insertion operation, I thought about what could be useful and I made those prototypes in C:
-```c
-void init_linked_list(struct DoublyLinkedList *linked_list);
-void set_data(struct DoublyLinkedList *linked_list, uint64_t data);
-int insert_element_head(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
-int insert_data_head(struct DoublyLinkedList *linked_list, uint64_t data);
-int insert_element_tail(struct DoublyLinkedList *linked_list, struct DoublyLinkedList *element);
-int insert_data_tail(struct DoublyLinkedList *linked_list, uint64_t data);
-```
-As you can see, the Insert feature can be manipulated in many different ways.
-In the header file of my project, you can find more details about each prototypes.
+- 3)Assembly:
+    - 3.1) add_binary_optimized
+    - 3.2) sub_binary_optimized
 
 
+## 📣 Author
+You can contact me and see my work here:
+
+- Blog: https://bl4omarchie.github.io/archX/
+- Discord server: https://discord.com/invite/D2wGP62
 
 
+## ✊ Acknowledgment
 
-# Sources
+Thank to my friend [Jossl123](https://github.com/Jossl123) who supported and helped me during our many discussions while we where in class.
+
+# 🔗Sources
 - [Les listes doublement chaînées en C - by Nicolas Joseph - 20 july 2005](https://nicolasj.developpez.com/articles/listedouble/#LIII-C)
 - [Programmation algorithmique/Listes doublement chaînées](https://fr.wikibooks.org/wiki/Programmation_algorithmique/Listes_doublement_cha%C3%AEn%C3%A9es)
 - [Linked List Basics - by Nick Parlante](http://cslibrary.stanford.edu/103/LinkedListBasics.pdf)
-- [Lecture Notes on Linked Lists - by Frank Pfenning, Rob Simmons, Andr´e Platzer - 30 september 2014](https://www.cs.cmu.edu/~rjsimmon/15122-f14/lec/11-linkedlist.pdf)
+- [Lecture Notes on Linked Lists - by Frank Pfenning, Rob Simmons, Andre Platzer - 30 september 2014](https://www.cs.cmu.edu/~rjsimmon/15122-f14/lec/11-linkedlist.pdf)
 - [Linked Lists - Computer Science E-22 - Harvard University, David G. Sullivan, Ph.D](https://cscie22.sites.fas.harvard.edu/files/lectures/04_linked_lists.pdf)
 - [Data Structures Tutorial](https://www.geeksforgeeks.org/data-structures/)
+- [Parallel linked lists - Lecture 10 of TDA384/DIT391 Principles of Concurrent Programming, Gerardo Schneider](https://www.cse.chalmers.se/edu/course/TDA384_LP1/files/lectures/Lecture10-parallel_lists.pdf)
