@@ -1,5 +1,5 @@
-#ifndef GOOGLE_TEST_H
-#define GOOGLE_TEST_H
+#ifndef GOOGLE_TEST_HPP
+#define GOOGLE_TEST_HPP
 
 #include <iostream>
 #include <stdbool.h>
@@ -7,11 +7,6 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <random>
-#include <gtest/gtest.h>
-
-#include "file_struct.h"
-
-
-
+#include <googletest/googletest/include/gtest/gtest.h>
 
 #endif

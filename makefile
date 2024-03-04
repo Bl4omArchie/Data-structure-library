@@ -51,6 +51,6 @@ $(TEST_TARGET): $(OBJS)
 	$(CXX) test.cpp -o $(TEST_TARGET) $(OBJS)
 
 clean:
-	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET) .vscode/ googletest/
+	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET) .vscode/
 
 .PHONY: all clean

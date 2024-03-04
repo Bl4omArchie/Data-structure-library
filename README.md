@@ -18,8 +18,7 @@ Minor priority:
 
 #### GoogleTest:
 Priority:
-- Import and compile GoogleTest
-- Write more tests
+- Write tests for Algo 1 and 2
 
 #### Xor Linked List
 Minor priority:
@@ -31,6 +30,7 @@ Minor priority:
 Algorithms I'm coding actually:
 - Algorithm 2.2.1, 2.2.2 and 2.2.3
 - Algorithm 3.1 and 3.2
+- Test T.1.1 to T.1.8
 
 Revision todo:
 - Algorithm 2.3: may have some improvements
@@ -83,6 +83,18 @@ Plus I need to implement more data structure (ie: associative array)
 - 3)Assembly:
     - 3.1) add_binary_optimized
     - 3.2) sub_binary_optimized
+
+## Tests
+
+I make my tests in C++ with GooleTest framework. 
+Test notation, for instance algo 1.3.1 (insert_element_head) -> T.1.3.1
+
+- T.1)Linked List:
+    - T.1.1) init_linked_list
+    - T.1.2) set_data
+    - T.1.3) insert
+        - T.1.3.1) insert_element_head
+  Excetera...
 
 
 ## 📣 Author
