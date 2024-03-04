@@ -10,7 +10,7 @@ BUILDDIR = build
 
 TARGET = file.o
 BENCH_TARGET = bench.o
-TEST_TARGET = test_suite.o
+TEST_TARGET = test.o
 
 SRCS = $(wildcard $(SRCDIR)/*.c)
 OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS))
