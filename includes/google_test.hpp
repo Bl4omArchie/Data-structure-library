@@ -9,4 +9,8 @@
 #include <random>
 #include <googletest/googletest/include/gtest/gtest.h>
 
+extern "C" {
+    #include "includes/file_struct.h"
+}
+
 #endif

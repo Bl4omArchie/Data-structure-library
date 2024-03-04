@@ -94,7 +94,8 @@ Test notation, for instance algo 1.3.1 (insert_element_head) -> T.1.3.1
     - T.1.2) set_data
     - T.1.3) insert
         - T.1.3.1) insert_element_head
-  Excetera...
+
+Excetera...
 
 
 ## 📣 Author
