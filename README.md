@@ -6,25 +6,25 @@ For the coding language, I'll use C and also C++ for tests with GoogleTest Frame
 ## 🚚  Roadmap
 
 #### Main branch:
-Priority:
-- Finish add_linked_list
-- Fixing makefile for assembly compilation
-- Make assembly optimization for arithmetic operations
-- Continue benchmark
+- Priority:
+  - Finish add_linked_list
+  - Fixing makefile for assembly compilation
+  - Make assembly optimization for arithmetic operations
+  - Continue benchmark
 
-Minor priority:
-- Allow different types: 64 bits, 32 bits, 16 bits
-- Translate my Java associative array in C for this project
+- Minor priority:
+  - Allow different types: 64 bits, 32 bits, 16 bits
+  - Translate my Java associative array in C for this project
 
 #### GoogleTest:
-Priority:
-- Import and compile GoogleTest
-- Write more tests
+- Priority:
+  - Import and compile GoogleTest
+  - Write more tests
 
 #### Xor Linked List
-Minor priority:
-- Understand how to implement xll
-- Test if replacing dll with wll worth it
+- Minor priority:
+  - Understand how to implement xll
+  - Test if replacing dll with wll worth it
 
 ## 🚧 TODO
 
@@ -84,6 +84,25 @@ Plus I need to implement more data structure (ie: associative array)
     - 3.1) add_binary_optimized
     - 3.2) sub_binary_optimized
 
+## Installation
+
+1) Pull or download the repository
+2) Install yasm compiler with:
+```
+sudo apt install yasm
+```
+3) Use make command:
+```
+make
+make bench 
+make test
+```
+4) Execute the corresponding binary:
+```
+./file.o
+./bench.o
+./test.o
+```
 
 ## 📣 Author
 You can contact me and see my work here:
