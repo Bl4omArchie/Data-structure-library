@@ -21,10 +21,10 @@ int resize_aa(AA * associative_array, int new_capacity) {
         return -1;
 
     associative_array->max_capacity = new_capacity;
-    associative_array->Key = (uint64_t*)realloc(associative_array->Key, associative_array->max_capacity);
-    associative_array->Values = (uint64_t*)realloc(associative_array->Values, associative_array->max_capacity);
+    associative_array->Key = (void*)realloc(associative_array->Key, associative_array->max_capacity);
+    associative_array->Values = (void*)realloc(associative_array->Values, associative_array->max_capacity);
 
-    return 1;
+    return 1;   
 }
 
 // 4.3

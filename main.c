@@ -74,12 +74,12 @@ void add_dll_test() {
 
 
 int main() {
-    uint64_t a = 0xFFFFFFFFFFFF, b = 0xFFFFFFFFFFFF, c = 0;
+    void *a = 0xFFFFFFFFFFFF;
+    uint64_t b = 0xFFFFFFFFFFFF, c = 0;
 
-    //add_dll_test();
-
-    c = sub_binary_optimized(a, b);
-    printf ("%ld - %ld = %ld\n", a, b, c);
+    AA myArray;
+    init_aa(&myArray, 100);
+    put_data_aa(&myArray, a, "ababab");
 
     return 1;
 }
