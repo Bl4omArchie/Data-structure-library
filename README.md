@@ -28,7 +28,8 @@ For the coding language, I'll use C and also C++ for tests with GoogleTest Frame
 
 ## 🚧 TODO
 
-Algorithms I'm coding actually:
+Algorithms I'm currently coding:
+- Algorithm 4.3
 - Algorithm 2.2.1, 2.2.2 and 2.2.3
 - Algorithm 3.1 and 3.2
 
