@@ -121,7 +121,7 @@ extern uint64_t sub_binary_optimized(uint64_t a, uint64_t b);
 
 typedef struct AssociativeArray {
     void *Values;
-    void *Key;
+    void *Keys;
     int actual_capacity;
     int max_capacity;
 } AA;
@@ -129,11 +129,14 @@ typedef struct AssociativeArray {
 int init_aa(AA *associative_array, int max_capacity);
 int resize_aa(AA *ssociativeArray, int new_capacity);
 
+int clear_aa(AA *associative_array);
+int free_aa(AA *associative_array);
+
 // TODO:
-int put_data_aa(AA *associative_array, void *Key, void *Values);
-int get_data_aa(AA *associative_array, void *Key);
-int remove_data_aa(AA *associative_array, void *Key);
-int get_hash(void *Key);
+int put_data_aa(AA *associative_array, void *value, void *key);
+int get_data_aa(AA *associative_array, void *key);
+int remove_data_aa(AA *associative_array, void *key);
+int get_hash(void *Keys);
 
 
 #endif
