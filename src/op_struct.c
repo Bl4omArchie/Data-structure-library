@@ -125,11 +125,15 @@ int add_linked_list_fork(DLL *res, DLL start_elem) {
 int predict_carry(uint64_t a, uint64_t b, int bit_size) {
     // v2
     int i = bit_size-1;
+    int a_i, b_i;
     int c = 0;
 
-    while ( ((a>>i)&1 || (b>>i)&1) && i > 0 && c == 0) {
-        c = ((a>>i)&1) && ((b>>i)&1);
+    do {
+        a_i = (a>>i)&1;
+        b_i = (b>>i)&1;
+        c = a_i & b_i;
         i--;
-    }
+    } while ((a_i || b_i) && (i > 0) && (c == 0));
+    
     return c;
 }

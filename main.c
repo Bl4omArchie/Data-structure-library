@@ -74,10 +74,11 @@ void add_dll_test() {
 
 
 int main() {
-    uint64_t a = 0xfffff;
-    uint64_t b = 0xfffff;
+    uint64_t a = 0b11;
+    uint64_t b = 0b11;
     int c = 1;
 
+    printf ("%d\n", predict_carry(a, b, 4));
     printf ("%ld\n", add_binary_optimized(a, b, c));
 
 
