@@ -36,13 +36,14 @@ int put_data_aa(AA *associative_array, void *value, void *key) {
         resize_aa(associative_array, associative_array->max_capacity*2);
         
     int i = get_hash(key);
+    /*
     while (associative_array->Keys[i] != NULL) 
         i = (i + 1) % associative_array->max_capacity;
     
     associative_array->Keys[i] = key;
     associative_array->Values[i] = value;
     associative_array->actual_capacity++;
-    
+    */
     return 1;
 }
 

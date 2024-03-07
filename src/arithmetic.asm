@@ -3,45 +3,36 @@ section .text
     global sub_binary_optimized
 
 
-; Algorithm 3.1:
-; var: a, b
-; while (b):
-;   a = a ^ b
-;   b = ((a^b)& b) << 1
-; ret a
-
+; Algorithm 3.1
 add_binary_optimized:
     push rbp
     mov rbp, rsp
-    mov eax, edi
-    mov edx, esi
+
+    mov rax, rdi    ; a
+    mov rbx, rsi    ; b
+    mov rcx, rdx    ; carry
 
     add_loop:
-        mov ecx, eax        ; a into ecx
-        xor eax, edx        ; a ^ b into a
-        and edx, ecx        ; ecx & b into b
-        shl edx, 1          ; b << 1 into b
+        mov rdx, rax        ; a into rdx
+        xor rax, rbx        ; xor b into a
+        and rbx, rdx        ; & rdx into b
+        shl rbx, 1          ; b << 1 into b
         
         test edx, edx
         jnz add_loop
 
+    add rax, rcx
     pop rbp
     ret
 
 
-
-; Algorithm 3.2:
-; var: a, b
-; while (b):
-;   a = a ^ b
-;   b = (a & b) << 1
-; ret a
-
+; Algorithm 3.2
 sub_binary_optimized:
     push rbp
     mov rbp, rsp
-    mov eax, edi
-    mov edx, esi
+
+    mov eax, edi    ; a
+    mov edx, esi    ; b
 
     sub_loop:
         xor eax, edx        ; a ^ b into a

@@ -72,7 +72,7 @@ int add_linked_list(DLL *res, DLL first_list, DLL second_list) {
         if (res->tail == NULL)
             insert_element_tail(res, (DLL*)malloc(sizeof(DLL)));
 
-        set_data(res, add_binary_optimized(a_next->data, b_next->data) + carry);
+        set_data(res, add_binary_optimized(a_next->data, b_next->data, carry));
         carry = (a_next->data > UINT64_MAX - b_next->data) ? 1 : 0;
         
         res = res->tail;

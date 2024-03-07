@@ -112,8 +112,8 @@ int predict_carry(uint64_t a, uint64_t b, int bit_size);
 
 // ################### 3 - Assembly  #####################
 
-extern uint64_t add_binary_optimized(uint64_t a, uint64_t b);
-extern uint64_t sub_binary_optimized(uint64_t a, uint64_t b);
+extern uint64_t add_binary_optimized(uint64_t a, uint64_t b, int c);
+extern uint64_t sub_binary_optimized(uint64_t a, uint64_t b, int c);
 
 
 
