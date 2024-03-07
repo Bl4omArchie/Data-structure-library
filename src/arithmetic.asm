@@ -8,20 +8,16 @@ add_binary_optimized:
     push rbp
     mov rbp, rsp
 
-    mov rax, rdi    ; a
-    mov rbx, rsi    ; b
-    mov rcx, rdx    ; carry
-
     add_loop:
-        mov rdx, rax        ; a into rdx
-        xor rax, rbx        ; xor b into a
-        and rbx, rdx        ; & rdx into b
-        shl rbx, 1          ; b << 1 into b
+        mov rax, rdi        ; a into rdx
+        xor rdi, rsi        ; xor b into a
+        and rsi, rax        ; & rdx into b
+        shl rsi, 1          ; b << 1 into b
         
-        test edx, edx
+        test rsi, rsi
         jnz add_loop
 
-    add rax, rcx
+    add rdi, rdx
     pop rbp
     ret
 
