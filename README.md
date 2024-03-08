@@ -8,12 +8,10 @@ For the coding language, I'll use C and also C++ for tests with GoogleTest Frame
 #### Main branch:
 - Priority:
   - Finish add_linked_list
-  - Fixing makefile for assembly compilation
-  - Make assembly optimization for arithmetic operations
   - Continue benchmark
 
 - Minor priority:
-  - Allow different types: 64 bits, 32 bits, 16 bits
+  - Make data a generic pointer
   - Translate my Java associative array in C for this project
 
 #### GoogleTest:
@@ -34,10 +32,7 @@ Algorithms I'm currently coding:
 - Algorithm 3.1 and 3.2
 
 Revision todo:
-- Algorithm 2.3: may have some improvements
-
-Potential revision on every Algorithm 1 depeding on how the struct is evolving.
-Plus I need to implement more data structure (ie: associative array)
+- Algorithm 2.3: I made some improvements but maybe I still can make improvement. 
 
 ## 📋 Algorithm listing
 - 1)Linked List:
