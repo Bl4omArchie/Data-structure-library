@@ -1,6 +1,5 @@
 # Compilateurs
 CC = gcc
-ASM = yasm
 
 # Dossiers
 SRCDIR = src
@@ -8,36 +7,36 @@ INCDIR = includes
 BUILDDIR = build
 
 TARGET = file.o
-BENCH_TARGET = bench.o
+TEST_TARGET = test.o
 
-SRCS = $(wildcard $(SRCDIR)/*.c)
-ASMS := $(wildcard $(SRCDIR)/*.asm)
+# Sources
+SRCS = $(wildcard $(SRCDIR)/linked_list/*.c $(SRCDIR)/tests/*.c)
 
-OBJS = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRCS)) $(patsubst $(SRCDIR)/%.asm, $(BUILDDIR)/%.o, $(ASMS))
+# Objets
+OBJS = $(patsubst %.c, $(BUILDDIR)/%.o, $(SRCS:$(SRCDIR)/%=%))
 
 # Options de compilation
 CFLAGS = -I$(INCDIR)
 
-# Règles de construction
+
 all: $(BUILDDIR) $(TARGET)
-bench: $(BUILDDIR) $(BENCH_TARGET)
+test: $(BUILDDIR) $(TEST_TARGET)
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.asm
-	$(ASM) -f elf64 -o $@ $<
 
 $(TARGET): $(OBJS)
 	$(CC) main.c -o $(TARGET) $(OBJS)
 
-$(BENCH_TARGET): $(OBJS)
-	$(CC) bench.c -o $(BENCH_TARGET) $(OBJS)
+$(TEST_TARGET): $(OBJS)
+	$(CC) main.c -o $(TEST_TARGET) $(OBJS)
 
 clean:
-	rm -rf $(BUILDDIR) $(TARGET) $(BENCH_TARGET) $(TEST_TARGET) .vscode/ *.o
+	rm -rf $(BUILDDIR) $(TARGET) $(TEST_TARGET) .vscode/ *.o
 
 .PHONY: all clean
