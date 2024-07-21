@@ -22,7 +22,7 @@ int main() {
     replace_node_head_dll(&third_linked_list, &fourth_linked_list);
 
     display_dll(fourth_linked_list);
-    free_head_dll(&third_linked_list);
+    clear_dll(&third_linked_list);
     display_dll(fourth_linked_list);
     
     return -1;
