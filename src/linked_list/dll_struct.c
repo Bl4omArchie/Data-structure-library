@@ -52,18 +52,19 @@ int insert_tail_dll(Node_DLL *node, uint64_t value) {
 }
 
 int replace_node_head_dll(Node_DLL *node, Node_DLL *to_replace) {
-    if (node->head == NULL || to_replace == NULL) 
+    if (node == NULL || to_replace == NULL) 
         return -1;
 
     if (node->head != NULL) {
         node->head->tail = to_replace;
         to_replace->head = node->head;
     }
+
     node->head = to_replace;
     to_replace->tail = node;
-
     return 1;
 }
+
 
 int replace_node_tail_dll(Node_DLL *node, Node_DLL *to_replace) {
     if (node->head == NULL || to_replace == NULL) 
@@ -73,6 +74,7 @@ int replace_node_tail_dll(Node_DLL *node, Node_DLL *to_replace) {
         node->tail->head = to_replace;
         to_replace->tail = node->tail;
     }
+    
     node->tail = to_replace;
     to_replace->head = node;
     return 1;
@@ -123,8 +125,8 @@ int clear_dll(Node_DLL *node) {
         return -1;
 
     Node_DLL *tail;
-    
     tail = node->tail;
+
     clear_head_dll(node);
     clear_tail_dll(tail);
     return 1;
@@ -166,7 +168,8 @@ int free_dll(Node_DLL *node) {
     
     if (node->head != NULL)
         free_head_dll(node->head);
-    if (node->tail != NULL) 
+        
+    if (node->tail != NULL)
         free_tail_dll(node->tail);
 
     free(node);
