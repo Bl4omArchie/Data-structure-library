@@ -45,40 +45,51 @@ int insert_tail_dll(Node_DLL *node, uint64_t value) {
         node->tail->head = newNode;
         newNode->tail = node->tail;
     }
+
     node->tail = newNode;
     newNode->head = node;
-
     return 1;
 }
 
-int replace_node_head_dll(Node_DLL *node, Node_DLL *to_replace) {
-    if (node == NULL || to_replace == NULL) 
+int insert_node_head_dll(Node_DLL *node, Node_DLL *to_replace) {
+    if (node == NULL || to_replace == NULL)
         return -1;
 
-    if (node->head != NULL) {
-        node->head->tail = to_replace;
-        to_replace->head = node->head;
-    }
+    if (to_replace->head != NULL)
+        to_replace->head->tail = to_replace->tail;
+    if (to_replace->tail != NULL)
+        to_replace->tail->head = to_replace->head;
 
+    if (node->head != NULL)
+        node->head->tail = to_replace;
+       
+    to_replace->head = node->head;
     node->head = to_replace;
     to_replace->tail = node;
+
     return 1;
 }
 
 
-int replace_node_tail_dll(Node_DLL *node, Node_DLL *to_replace) {
-    if (node->head == NULL || to_replace == NULL) 
+int insert_node_tail_dll(Node_DLL *node, Node_DLL *to_replace) {
+    if (node == NULL || to_replace == NULL)
         return -1;
 
-    if (node->tail != NULL) {
+    if (to_replace->head != NULL)
+        to_replace->head->tail = to_replace->tail;
+    if (to_replace->tail != NULL)
+        to_replace->tail->head = to_replace->head;
+
+    if (node->tail != NULL)
         node->tail->head = to_replace;
-        to_replace->tail = node->tail;
-    }
-    
+       
+    to_replace->tail = node->tail;
     node->tail = to_replace;
     to_replace->head = node;
+
     return 1;
 }
+
 
 int remove_node_dll(Node_DLL *node) {
     if (node == NULL)
@@ -95,26 +106,18 @@ int remove_node_dll(Node_DLL *node) {
 }
 
 int clear_head_dll(Node_DLL *node) {
-    if (node == NULL) 
-        return -1;
-
-    Node_DLL *current = node;
-    while (current != NULL) {
-        current->value = 0;
-        current = current->head;
+    while (node != NULL) {
+        node->value = 0;
+        node = node->head;
     }
 
     return 1;
 }
 
 int clear_tail_dll(Node_DLL *node) {
-    if (node == NULL) 
-        return -1;
-
-    Node_DLL *current = node;
-    while (current != NULL) {
-        current->value = 0;
-        current = current->tail;
+    while (node != NULL) {
+        node->value = 0;
+        node = node->tail;
     }
 
     return 1;
@@ -124,17 +127,15 @@ int clear_dll(Node_DLL *node) {
     if (node == NULL)
         return -1;
     
-    if (node->tail != NULL) {
-        Node_DLL *next = node->tail;
-        clear_tail_dll(next);
-    }
+    if (node->tail != NULL)
+        clear_tail_dll(node->tail);
 
     clear_head_dll(node);
     return 1;
 }
 
 int free_head_dll(Node_DLL *node) {
-    if (node == NULL || node->head == NULL)
+    if (node == NULL)
         return -1;
 
     Node_DLL *current = node;
@@ -151,7 +152,7 @@ int free_head_dll(Node_DLL *node) {
 }
 
 int free_tail_dll(Node_DLL *node) {
-    if (node == NULL || node->tail == NULL)
+    if (node == NULL)
         return -1;
 
     Node_DLL *current = node;
@@ -172,26 +173,22 @@ int free_dll(Node_DLL *node) {
     if (node == NULL)
         return -1;
     
-    if (node->tail != NULL) {
-        Node_DLL *next = node->tail;
-        free_tail_dll(next);
-    }
+    if (node->tail != NULL)
+        free_tail_dll(node->tail);
 
     free_head_dll(node);
     return 1;
 }
 
 
-void display_dll(Node_DLL node) {
-    Node_DLL *current = &node;
+void display_tail_dll(Node_DLL *node) {
     Node_DLL *next;
 
-    while (current != NULL) {
-        next = current->tail;
-        printf ("%ld", current->value);
-        current = next;
+    while (node != NULL) {
+        printf ("%ld", node->value);
+        node = node->tail;
         
-        if (current != NULL)
+        if (node != NULL)
             printf (" -> ");
     }
     printf (" \n");

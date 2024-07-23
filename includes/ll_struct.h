@@ -8,7 +8,7 @@
 #include <unistd.h>
 
 
-// *** Doubly Linked List ***
+// ********* Doubly Linked List ************
 
 typedef struct DoublyLinkedList {
     uint64_t value;
@@ -17,15 +17,14 @@ typedef struct DoublyLinkedList {
 } Node_DLL;
 
 
-
 void init_dll(Node_DLL *node);
 void set_value_dll(Node_DLL *node, uint64_t value);
 
 int insert_head_dll(Node_DLL *node, uint64_t value);
 int insert_tail_dll(Node_DLL *node, uint64_t value);
 
-int replace_node_head_dll(Node_DLL *node, Node_DLL *to_replace);
-int replace_node_tail_dll(Node_DLL *node, Node_DLL *to_replace);
+int insert_node_head_dll(Node_DLL *node, Node_DLL *to_replace);
+int insert_node_tail_dll(Node_DLL *node, Node_DLL *to_replace);
 
 int remove_node_dll(Node_DLL *node);
 
@@ -37,11 +36,52 @@ int free_dll(Node_DLL *node);
 int free_head_dll(Node_DLL *node);
 int free_tail_dll(Node_DLL *node);
 
-void display_dll(Node_DLL node);
+void display_tail_dll(Node_DLL *node);
 
 
 
-// *** Xored Linked List ***
+// ********* Branched Doubly Linked List *********
+
+typedef struct BranchedDoublyLinkedList {
+    uint64_t value;
+    struct BranchedDoublyLinkedList *head;
+    struct BranchedDoublyLinkedList *tail;
+    struct BranchedDoublyLinkedList *branch;
+} Node_BDLL;
+
+
+
+void init_bdll(Node_BDLL *node);
+void set_value_bdll(Node_BDLL *node, uint64_t value);
+
+
+int insert_branch_bdll(Node_BDLL *node, uint64_t value);
+int insert_head_bdll(Node_BDLL *node, uint64_t value);
+int insert_tail_bdll(Node_BDLL *node, uint64_t value);
+
+int insert_node_branch_bdll(Node_BDLL *node, Node_BDLL *to_replace);
+int insert_node_head_bdll(Node_BDLL *node, Node_BDLL *to_replace);
+int insert_node_tail_bdll(Node_BDLL *node, Node_BDLL *to_replace);
+
+int remove_node_BDLL(Node_BDLL *node);
+int remove_branch_BDLL(Node_BDLL *node);
+
+int clear_bdll(Node_BDLL *node);
+int clear_branch_bdll(Node_BDLL *node);
+int clear_head_bdll(Node_BDLL *node);
+int clear_tail_bdll(Node_BDLL *node);
+
+int free_bdll(Node_BDLL *node);
+int free_branch_bdll(Node_BDLL *node);
+int free_head_bdll(Node_BDLL *node);
+int free_tail_bdll(Node_BDLL *node);
+
+void display_bdll(Node_BDLL *node);
+
+
+
+
+// ********* Xored Linked List *********
 
 typedef struct XoredLinkedList {
     uint64_t value;
@@ -49,28 +89,21 @@ typedef struct XoredLinkedList {
 } Node_XLL;
 
 
-
 void init_xll(Node_XLL *node);
 void set_value_xll(Node_XLL *node, uint64_t value);
 Node_XLL *xor_nodes(Node_XLL* node_a, Node_XLL* node_b);
 
+int insert_head_xll(Node_XLL *node, uint64_t value);
+int insert_tail_xll(Node_XLL *node, uint64_t value);
+
 int insert_node_head_xll(Node_XLL *node, Node_XLL *to_insert);
 int insert_node_tail_xll(Node_XLL *node, Node_XLL *to_insert);
 
-int insert_value_head_xll(Node_XLL *node, uint64_t value);
-int insert_value_tail_xll(Node_XLL *node, uint64_t value);
-
-int remove_Node_XLL(Node_XLL *node);
-
-int clear_xll(Node_XLL *node);
-int clear_head_xll(Node_XLL *node);
+int remove_node_XLL(Node_XLL *node);
 int clear_tail_xll(Node_XLL *node);
-
-int free_xll(Node_XLL *node);
-int free_head_xll(Node_XLL *node);
 int free_tail_xll(Node_XLL *node);
 
-void display_xll(Node_XLL node);
+void display_xll(Node_XLL *node);
 
 
 #endif
