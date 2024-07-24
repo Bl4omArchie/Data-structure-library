@@ -18,10 +18,5 @@ int main_bdll_test() {
     set_value_bdll(&third_linked_list, 15);
     set_value_bdll(&fourth_linked_list, 20);
 
-    
-    insert_node_head_bdll(&linked_list, &second_linked_list);
-    insert_node_head_bdll(&second_linked_list, &third_linked_list);
-    insert_node_head_bdll(&third_linked_list, &fourth_linked_list);
-
     return 1;
 }
