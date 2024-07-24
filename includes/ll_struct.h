@@ -32,7 +32,6 @@ int clear_dll(Node_DLL *node);
 int clear_head_dll(Node_DLL *node);
 int clear_tail_dll(Node_DLL *node);
 
-int free_dll(Node_DLL *node);
 int free_head_dll(Node_DLL *node);
 int free_tail_dll(Node_DLL *node);
 
@@ -71,7 +70,6 @@ int clear_branch_bdll(Node_BDLL *node);
 int clear_head_bdll(Node_BDLL *node);
 int clear_tail_bdll(Node_BDLL *node);
 
-int free_bdll(Node_BDLL *node);
 int free_branch_bdll(Node_BDLL *node);
 int free_head_bdll(Node_BDLL *node);
 int free_tail_bdll(Node_BDLL *node);

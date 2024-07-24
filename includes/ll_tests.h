@@ -16,7 +16,8 @@ int main_bdll_test();
 
 
 // ********* Util *********
-uint64_t generateRandom64BitNumber();
+uint64_t generate_random_number();
+uint64_t get_maximal_element();
 
 
 #endif

@@ -7,37 +7,25 @@ int dll_routine() {
 
     // Insertion routine
     for (int i=0; i<100; i++) {
-        insert_head_dll(&linked_list_test, generateRandom64BitNumber());
+        insert_head_dll(&linked_list_test, generate_random_number());
     }
 
     for (int i=0; i<100; i++) {
-        insert_tail_dll(&linked_list_test, generateRandom64BitNumber());
+        insert_tail_dll(&linked_list_test, generate_random_number());
     }
 
     return 1;
 }
 
 int main_dll_test() {
-    Node_DLL linked_list, second_linked_list, third_linked_list, fourth_linked_list;
+    Node_DLL linked_list;
     init_dll(&linked_list);
-    init_dll(&second_linked_list);
-    init_dll(&third_linked_list);
-    init_dll(&fourth_linked_list);
+    set_value_dll(&linked_list, 0);
 
+    for (uint64_t i=get_maximal_element(); i>0; i--)
+        insert_tail_dll(&linked_list, i);
 
-    set_value_dll(&linked_list, 5);
-    set_value_dll(&second_linked_list, 10);
-    set_value_dll(&third_linked_list, 15);
-    set_value_dll(&fourth_linked_list, 20);
-
-    
-    insert_node_head_dll(&linked_list, &second_linked_list);
-    insert_node_head_dll(&second_linked_list, &third_linked_list);
-    insert_node_head_dll(&third_linked_list, &fourth_linked_list);
-
-    display_tail_dll(&fourth_linked_list);
-    free_dll(&third_linked_list);
-    display_tail_dll(&fourth_linked_list);
+    free_tail_dll(&linked_list);
 
     return 1;
 }
