@@ -32,6 +32,7 @@ int clear_dll(Node_DLL *node);
 int clear_head_dll(Node_DLL *node);
 int clear_tail_dll(Node_DLL *node);
 
+int free_dll(Node_DLL *node);
 int free_head_dll(Node_DLL *node);
 int free_tail_dll(Node_DLL *node);
 

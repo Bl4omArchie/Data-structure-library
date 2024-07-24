@@ -135,15 +135,21 @@ int clear_dll(Node_DLL *node) {
     return 1;
 }
 
-int free_head_dll(Node_DLL *node) {
-    Node_DLL *prev;
 
-    while (node != NULL) {
-        prev = node->head;
-        free(node);
-        node = prev;
+int free_head_dll(Node_DLL *node) {
+    if (node == NULL)
+        return -1;
+    
+    Node_DLL *current = node->head;
+    Node_DLL *next;
+    
+    while (current != NULL) {
+        next = current->head;
+        free(current);
+        current = next;
     }
 
+    node->head = NULL;
     return 1;
 }
 
@@ -161,6 +167,13 @@ int free_tail_dll(Node_DLL *node) {
     }
 
     node->tail = NULL;
+    return 1;
+}
+
+int free_dll(Node_DLL *node) {
+    free_head_dll(node);
+    free_tail_dll(node);
+
     return 1;
 }
 

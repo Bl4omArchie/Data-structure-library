@@ -22,10 +22,10 @@ int main_dll_test() {
     init_dll(&linked_list);
     set_value_dll(&linked_list, 0);
 
-    for (uint64_t i=get_maximal_element(); i>0; i--)
+    for (uint64_t i=100000; i>1; i--)
         insert_tail_dll(&linked_list, i);
 
-    free_tail_dll(&linked_list);
+    free_dll(&linked_list);
 
     return 1;
 }

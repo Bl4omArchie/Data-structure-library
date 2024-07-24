@@ -19,5 +19,5 @@ uint64_t get_maximal_element() {
     if (sysinfo(&sys_info) != 0)
         perror("sysinfo");
     
-    return (sys_info.totalram / sizeof(Node_DLL) / 2);
+    return (sys_info.totalram / sizeof(Node_DLL)) / 2;
 }
