@@ -9,7 +9,7 @@ TARGET = file.o
 
 SRCS = $(wildcard $(SRCDIR)/linked_list/*.c $(SRCDIR)/tests/*.c)
 OBJS = $(patsubst %.c, $(BUILDDIR)/%.o, $(SRCS:$(SRCDIR)/%=%))
-CFLAGS = -I$(INCDIR)
+CFLAGS = -I$(INCDIR) -pg
 
 
 all: $(BUILDDIR) $(TARGET)
@@ -22,10 +22,10 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(TARGET): $(OBJS)
-	$(CC) main.c -o $(TARGET) $(OBJS)
+	$(CC) main.c $(CFLAGS) -o $(TARGET) $(OBJS)
 
 
 clean:
-	rm -rf $(BUILDDIR) $(TARGET) .vscode/ *.o
+	rm -rf $(BUILDDIR) $(TARGET) .vscode/ *.o *.out
 
 .PHONY: all clean
