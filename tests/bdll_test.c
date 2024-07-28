@@ -6,17 +6,18 @@ int bdll_routine() {
 }
 
 int main_bdll_test() {
-    Node_BDLL linked_list, second_linked_list, third_linked_list, fourth_linked_list;
-    init_bdll(&linked_list);
-    init_bdll(&second_linked_list);
-    init_bdll(&third_linked_list);
-    init_bdll(&fourth_linked_list);
+    Node_BDLL branched_linked_list;
+    init_bdll(&branched_linked_list);
+    set_value_bdll(&branched_linked_list, 5);
 
 
-    set_value_bdll(&linked_list, 5);
-    set_value_bdll(&second_linked_list, 10);
-    set_value_bdll(&third_linked_list, 15);
-    set_value_bdll(&fourth_linked_list, 20);
+    insert_tail_bdll(&branched_linked_list, 10);
+    insert_tail_bdll(branched_linked_list.tail, 10);
+    insert_tail_bdll(branched_linked_list.tail->tail, 20);
+
+    printf ("%ld\n", branched_linked_list.value);
+
+    display_tail_bdll(&branched_linked_list);
 
     return 1;
 }

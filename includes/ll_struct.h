@@ -75,7 +75,7 @@ int free_branch_bdll(Node_BDLL *node);
 int free_head_bdll(Node_BDLL *node);
 int free_tail_bdll(Node_BDLL *node);
 
-void display_bdll(Node_BDLL *node);
+void display_tail_bdll(Node_BDLL *node);
 
 
 

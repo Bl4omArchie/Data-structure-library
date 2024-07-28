@@ -5,7 +5,6 @@
 #include "ll_struct.h"
 
 #include <stdio.h>
-#include "util.h"
 
 
 // ********* DLL tests ********* 

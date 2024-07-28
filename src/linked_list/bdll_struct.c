@@ -24,13 +24,24 @@ int insert_branch_bdll(Node_BDLL *node, uint64_t value) {
     set_value_bdll(newNode, value);
     
     if (node->branch != NULL) {
-        int i = 0;
+        node->branch->head = newNode;
+        newNode->tail = node->branch;
     }
+    else
+        newNode->tail = node->tail;
+    
+    node->branch = newNode;
+
     return 1;
 }
 
-int insert_head_bdll(Node_BDLL *node, uint64_t value);
-int insert_tail_bdll(Node_BDLL *node, uint64_t value);
+int insert_head_bdll(Node_BDLL *node, uint64_t value) {
+    return 1;
+}
+
+int insert_tail_bdll(Node_BDLL *node, uint64_t value) {
+    return 1;
+}
 
 
 int insert_node_branch_bdll(Node_BDLL *node, Node_BDLL *to_replace);
@@ -50,4 +61,6 @@ int free_branch_bdll(Node_BDLL *node);
 int free_head_bdll(Node_BDLL *node);
 int free_tail_bdll(Node_BDLL *node);
 
-void display_bdll(Node_BDLL *node);
+void display_tail_bdll(Node_BDLL *node) {
+    printf ("%ld", node->value);
+}
