@@ -9,7 +9,7 @@ int main() {
     display_specifications();
     
     if (main_dll_test())
-        printf ("End of the test");
+        printf ("End of DLL the test");
 
     return 1;
 }

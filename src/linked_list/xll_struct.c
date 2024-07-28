@@ -91,14 +91,13 @@ int free_tail_xll(Node_XLL *node) {
 
 void display_xll(Node_XLL *node) {
     Node_XLL *prev = NULL;
-    Node_XLL *curr = node;
     Node_XLL *next;
 
-    while (curr != NULL) {
-        printf("%ld", curr->value);
-        next = xor_nodes(prev, curr->ht_node);
-        prev = curr;
-        curr = next;
+    while (node != NULL) {
+        printf("%ld", node->value);
+        next = xor_nodes(prev, node->ht_node);
+        prev = node;
+        node = next;
     }
     printf("\n");
 }
