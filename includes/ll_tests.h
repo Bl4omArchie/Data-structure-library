@@ -4,6 +4,9 @@
 
 #include "ll_struct.h"
 
+#include <stdio.h>
+#include "util.h"
+
 
 // ********* DLL tests ********* 
 int dll_routine();
@@ -15,9 +18,9 @@ int bdll_routine();
 int main_bdll_test();
 
 
-// ********* Util *********
-uint64_t generate_random_number();
-uint64_t get_maximal_element();
+// ********* XLL tests *********
+int main_xll_test();
+
 
 
 #endif

@@ -5,8 +5,11 @@
 
 
 int main() {
-
-    main_dll_test();
+    
+    display_specifications();
+    
+    if (main_dll_test())
+        printf ("End of the test");
 
     return 1;
 }

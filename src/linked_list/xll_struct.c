@@ -76,7 +76,7 @@ int remove_node_XLL(Node_XLL *node) {
     return 1;
 }
 
-int clear_xll_tail(Node_XLL *node) {
+int clear_tail_xll(Node_XLL *node) {
     while (node != NULL) {
         Node_XLL *next = xor_nodes(NULL, node->ht_node);
         node->value = 0;
