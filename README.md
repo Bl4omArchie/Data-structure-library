@@ -1,6 +1,6 @@
 # Data structure implementation
 
-The point of this project is to create data structure for hight performance computing. I'm seeking for improvements technic for computation. 
+The point of this project is to create data structure for hight performance computing. I'm seeking for improvements technic for computation.
 
 
 ## 📋 Algorithm listing
@@ -8,6 +8,13 @@ The point of this project is to create data structure for hight performance comp
 - Xored Linked List
 - Branched Linked List
 - Associative Array
+
+## Todo list
+- fix makefile for yasm code
+- finish XXL, BDLL and AA struct
+- finish test for DLL, BDLL, XXL and AA
+- start op struct (ie: adding two DLL)
+- code revision for DLL's clear and free function (idk if I need to include the given node in the process)
 
 ## Installation
 
