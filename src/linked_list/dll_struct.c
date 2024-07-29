@@ -2,25 +2,25 @@
 
 
 
-void init_dll(Node_DLL *node) {
+void dll_init(dll_node *node) {
     node->head = NULL;
     node->tail = NULL;
     node->value = 0;
 }
 
-void set_value_dll(Node_DLL *node, uint64_t value) {
+void dll_set_value(dll_node *node, uint64_t value) {
     // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
     node->value = value & 0x7FFFFFFFFFFFFFFF;
 }
     
 
-int insert_head_dll(Node_DLL *node, uint64_t value) {
+int dll_insert_value_head(dll_node *node, uint64_t value) {
     if (node == NULL) 
         return -1;
 
-    Node_DLL *newNode = (Node_DLL*)malloc(sizeof(Node_DLL));
-    init_dll(newNode);
-    set_value_dll(newNode, value);
+    dll_node *newNode = (dll_node*)malloc(sizeof(dll_node));
+    dll_init(newNode);
+    dll_set_value(newNode, value);
     
     if (node->head != NULL) {
         node->head->tail = newNode;
@@ -33,13 +33,13 @@ int insert_head_dll(Node_DLL *node, uint64_t value) {
 }
 
 
-int insert_tail_dll(Node_DLL *node, uint64_t value) {
+int dll_insert_value_tail(dll_node *node, uint64_t value) {
     if (node == NULL) 
         return -1;
 
-    Node_DLL *newNode = (Node_DLL*)malloc(sizeof(Node_DLL));
-    init_dll(newNode);
-    set_value_dll(newNode, value);
+    dll_node *newNode = (dll_node*)malloc(sizeof(dll_node));
+    dll_init(newNode);
+    dll_set_value(newNode, value);
 
     if (node->tail != NULL) {
         node->tail->head = newNode;
@@ -51,7 +51,7 @@ int insert_tail_dll(Node_DLL *node, uint64_t value) {
     return 1;
 }
 
-int insert_node_head_dll(Node_DLL *node, Node_DLL *to_replace) {
+int dll_insert_node_head(dll_node *node, dll_node *to_replace) {
     if (node == NULL || to_replace == NULL)
         return -1;
 
@@ -72,7 +72,7 @@ int insert_node_head_dll(Node_DLL *node, Node_DLL *to_replace) {
 }
 
 
-int insert_node_tail_dll(Node_DLL *node, Node_DLL *to_replace) {
+int dll_insert_node_tail(dll_node *node, dll_node *to_replace) {
     if (node == NULL || to_replace == NULL)
         return -1;
 
@@ -92,7 +92,7 @@ int insert_node_tail_dll(Node_DLL *node, Node_DLL *to_replace) {
 }
 
 
-int remove_node_dll(Node_DLL *node) {
+int dll_remove_node(dll_node *node) {
     if (node == NULL)
         return -1;
     
@@ -106,7 +106,7 @@ int remove_node_dll(Node_DLL *node) {
     return 1;
 }
 
-int clear_head_dll(Node_DLL *node) {
+int dll_clear_head(dll_node *node) {
     while (node != NULL) {
         node->value = 0;
         node = node->head;
@@ -115,7 +115,7 @@ int clear_head_dll(Node_DLL *node) {
     return 1;
 }
 
-int clear_tail_dll(Node_DLL *node) {
+int dll_clear_tail(dll_node *node) {
     while (node != NULL) {
         node->value = 0;
         node = node->tail;
@@ -124,24 +124,24 @@ int clear_tail_dll(Node_DLL *node) {
     return 1;
 }
 
-int clear_dll(Node_DLL *node) {
+int dll_clear(dll_node *node) {
     if (node == NULL)
         return -1;
     
     if (node->tail != NULL)
-        clear_tail_dll(node->tail);
+        dll_clear_tail(node->tail);
 
-    clear_head_dll(node);
+    dll_clear_head(node);
     return 1;
 }
 
 
-int free_head_dll(Node_DLL *node) {
+int dll_free_head(dll_node *node) {
     if (node == NULL)
         return -1;
     
-    Node_DLL *current = node->head;
-    Node_DLL *next;
+    dll_node *current = node->head;
+    dll_node *next;
     
     while (current != NULL) {
         next = current->head;
@@ -153,12 +153,12 @@ int free_head_dll(Node_DLL *node) {
     return 1;
 }
 
-int free_tail_dll(Node_DLL *node) {
+int dll_free_tail(dll_node *node) {
     if (node == NULL)
         return -1;
     
-    Node_DLL *current = node->tail;
-    Node_DLL *next;
+    dll_node *current = node->tail;
+    dll_node *next;
     
     while (current != NULL) {
         next = current->tail;
@@ -170,15 +170,15 @@ int free_tail_dll(Node_DLL *node) {
     return 1;
 }
 
-int free_dll(Node_DLL *node) {
-    free_head_dll(node);
-    free_tail_dll(node);
+int dll_free(dll_node *node) {
+    dll_free_head(node);
+    dll_free_tail(node);
 
     return 1;
 }
 
-void display_tail_dll(Node_DLL *node) {
-    Node_DLL *next;
+void dll_display_tail(dll_node *node) {
+    dll_node *next;
 
     while (node != NULL) {
         printf ("%ld", node->value);

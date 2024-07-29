@@ -1,8 +1,7 @@
 #include "aa_struct.h"
 
 
-// 4.1
-int init_aa(AA *associative_array, int max_capacity) {
+int aa_init(aa *associative_array, int max_capacity) {
     if (associative_array == NULL || max_capacity <= 0)
         return -1;
 
@@ -15,8 +14,7 @@ int init_aa(AA *associative_array, int max_capacity) {
     return 1;
 }
 
-// 4.2
-int resize_aa(AA * associative_array, int new_capacity) {
+int aa_resize(aa * associative_array, int new_capacity) {
     if (associative_array == NULL || new_capacity <= 0)
         return -1;
 
@@ -27,15 +25,14 @@ int resize_aa(AA * associative_array, int new_capacity) {
     return 1;
 }
 
-// 4.3
-int put_data_aa(AA *associative_array, void *value, void *key) {
+int aa_put_data(aa *associative_array, void *value, void *key) {
     if (associative_array == NULL)
         return -1;
 
     if (associative_array->actual_capacity >= associative_array->max_capacity/2)
-        resize_aa(associative_array, associative_array->max_capacity*2);
+        aa_resize(associative_array, associative_array->max_capacity*2);
         
-    int i = get_hash(key);
+    int i = aa_get_hash(key);
     /*
     while (associative_array->Keys[i] != NULL) 
         i = (i + 1) % associative_array->max_capacity;
@@ -47,30 +44,25 @@ int put_data_aa(AA *associative_array, void *value, void *key) {
     return 1;
 }
 
-// 4.4
-int get_data_aa(AA *associative_array, void *key) {
+int aa_get_data(aa *associative_array, void *key) {
 
 }
 
-//4.5
-int remove_data_aa(AA *associative_array, void *key) {
+int aa_remove_data(aa *associative_array, void *key) {
 
 }
 
-//4.6
-int get_hash(void *key) {
+int aa_get_hash(void *key) {
 
 }
 
-// 4.7
-int clear_aa(AA *associative_array) {
+int aa_clear(aa *associative_array) {
     free(associative_array->Keys);
     free(associative_array->Values);
-    init_aa(associative_array, associative_array->max_capacity);
+    aa_init(associative_array, associative_array->max_capacity);
 }
 
-// 4.8
-int free_aa(AA *associative_array) {
+int aa_free(aa *associative_array) {
     free(associative_array->Keys);
     free(associative_array->Values);
     free(associative_array);

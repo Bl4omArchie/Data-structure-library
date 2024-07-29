@@ -14,29 +14,29 @@ typedef struct DoublyLinkedList {
     uint64_t value;
     struct DoublyLinkedList *head;
     struct DoublyLinkedList *tail;
-} Node_DLL;
+} dll_node;
 
 
-void init_dll(Node_DLL *node);
-void set_value_dll(Node_DLL *node, uint64_t value);
+void dll_init(dll_node *node);
+void dll_set_value(dll_node *node, uint64_t value);
 
-int insert_head_dll(Node_DLL *node, uint64_t value);
-int insert_tail_dll(Node_DLL *node, uint64_t value);
+int dll_insert_value_head(dll_node *node, uint64_t value);
+int dll_insert_value_tail(dll_node *node, uint64_t value);
 
-int insert_node_head_dll(Node_DLL *node, Node_DLL *to_replace);
-int insert_node_tail_dll(Node_DLL *node, Node_DLL *to_replace);
+int dll_insert_node_head(dll_node *node, dll_node *to_replace);
+int dll_insert_node_tail(dll_node *node, dll_node *to_replace);
 
-int remove_node_dll(Node_DLL *node);
+int dll_remove_node(dll_node *node);
 
-int clear_dll(Node_DLL *node);
-int clear_head_dll(Node_DLL *node);
-int clear_tail_dll(Node_DLL *node);
+int dll_clear(dll_node *node);
+int dll_clear_head(dll_node *node);
+int dll_clear_tail(dll_node *node);
 
-int free_dll(Node_DLL *node);
-int free_head_dll(Node_DLL *node);
-int free_tail_dll(Node_DLL *node);
+int dll_free(dll_node *node);
+int dll_free_head(dll_node *node);
+int dll_free_tail(dll_node *node);
 
-void display_tail_dll(Node_DLL *node);
+void dll_display_tail(dll_node *node);
 
 
 
@@ -47,35 +47,35 @@ typedef struct BranchedDoublyLinkedList {
     struct BranchedDoublyLinkedList *head;
     struct BranchedDoublyLinkedList *tail;
     struct BranchedDoublyLinkedList *branch;
-} Node_BDLL;
+} bdll_node;
 
 
 
-void init_bdll(Node_BDLL *node);
-void set_value_bdll(Node_BDLL *node, uint64_t value);
+void bdll_init(bdll_node *node);
+void bdll_set_value(bdll_node *node, uint64_t value);
 
 
-int insert_branch_bdll(Node_BDLL *node, uint64_t value);
-int insert_head_bdll(Node_BDLL *node, uint64_t value);
-int insert_tail_bdll(Node_BDLL *node, uint64_t value);
+int bdll_insert_value_branch(bdll_node *node, uint64_t value);
+int bdll_insert_value_head(bdll_node *node, uint64_t value);
+int bdll_insert_value_tail(bdll_node *node, uint64_t value);
 
-int insert_node_branch_bdll(Node_BDLL *node, Node_BDLL *to_replace);
-int insert_node_head_bdll(Node_BDLL *node, Node_BDLL *to_replace);
-int insert_node_tail_bdll(Node_BDLL *node, Node_BDLL *to_replace);
+int bdll_insert_node_branch(bdll_node *node, bdll_node *to_replace);
+int bdll_insert_node_head(bdll_node *node, bdll_node *to_replace);
+int bdll_insert_node_tail(bdll_node *node, bdll_node *to_replace);
 
-int remove_node_BDLL(Node_BDLL *node);
-int remove_branch_BDLL(Node_BDLL *node);
+int bdll_remove_node(bdll_node *node);
+int bdll_remove_branch(bdll_node *node);
 
-int clear_bdll(Node_BDLL *node);
-int clear_branch_bdll(Node_BDLL *node);
-int clear_head_bdll(Node_BDLL *node);
-int clear_tail_bdll(Node_BDLL *node);
+int bdll_clear(bdll_node *node);
+int bdll_clear_branch(bdll_node *node);
+int bdll_clear_head(bdll_node *node);
+int bdll_clear_tail(bdll_node *node);
 
-int free_branch_bdll(Node_BDLL *node);
-int free_head_bdll(Node_BDLL *node);
-int free_tail_bdll(Node_BDLL *node);
+int bdll_free_branch(bdll_node *node);
+int bdll_free_head(bdll_node *node);
+int bdll_free_tail(bdll_node *node);
 
-void display_tail_bdll(Node_BDLL *node);
+void bdll_display_tail(bdll_node *node);
 
 
 
@@ -85,24 +85,23 @@ void display_tail_bdll(Node_BDLL *node);
 typedef struct XoredLinkedList {
     uint64_t value;
     struct XoredLinkedList *ht_node;
-} Node_XLL;
+} xll_node;
 
 
-void init_xll(Node_XLL *node);
-void set_value_xll(Node_XLL *node, uint64_t value);
-Node_XLL *xor_nodes(Node_XLL* node_a, Node_XLL* node_b);
+void xll_init(xll_node *node);
+void xll_set_value(xll_node *node, uint64_t value);
+xll_node *xll_xor_nodes(xll_node* node_a, xll_node* node_b);
 
-int insert_head_xll(Node_XLL *node, uint64_t value);
-int insert_tail_xll(Node_XLL *node, uint64_t value);
+int xll_insert_value_head(xll_node *node, uint64_t value);
+int xll_insert_value_tail(xll_node *node, uint64_t value);
 
-int insert_node_head_xll(Node_XLL *node, Node_XLL *to_insert);
-int insert_node_tail_xll(Node_XLL *node, Node_XLL *to_insert);
+int xll_insert_node_head(xll_node *node, xll_node *to_insert);
+int xll_insert_node_tail(xll_node *node, xll_node *to_insert);
 
-int remove_node_XLL(Node_XLL *node);
-int clear_tail_xll(Node_XLL *node);
-int free_tail_xll(Node_XLL *node);
+int xll_remove_node(xll_node *node);
+int xll_clear_tail(xll_node *node);
+int xll_free_tail(xll_node *node);
 
-void display_xll(Node_XLL *node);
-
+void xll_display(xll_node *node);
 
 #endif

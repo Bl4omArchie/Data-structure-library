@@ -4,29 +4,29 @@
 
 
 int main_xll_test() {
-    Node_XLL *head = (Node_XLL*)malloc(sizeof(Node_XLL));
-    init_xll(head);
-    set_value_xll(head, 10);
+    xll_node *head = (xll_node*)malloc(sizeof(xll_node));
+    xll_init(head);
+    xll_set_value(head, 10);
     
-    insert_head_xll(head, 20);
-    insert_tail_xll(head, 30);
-    insert_head_xll(head, 40);
-    insert_tail_xll(head, 50);
+    xll_insert_value_head(head, 20);
+    xll_insert_value_tail(head, 30);
+    xll_insert_value_head(head, 40);
+    xll_insert_value_tail(head, 50);
     
     printf("List after insertions: ");
-    display_xll(head);
+    xll_display(head);
     
-    Node_XLL *node_to_remove = xor_nodes(NULL, head->ht_node); // remove the first node after head
-    remove_node_XLL(node_to_remove);
+    xll_node *node_to_remove = xll_xor_nodes(NULL, head->ht_node); // remove the first node after head
+    xll_remove_node(node_to_remove);
 
     printf("List after removal: ");
-    display_xll(head);
+    xll_display(head);
 
-    clear_tail_xll(head);
+    xll_clear_tail(head);
     printf("List after clearing values: ");
-    display_xll(head);
+    xll_display(head);
 
-    free_tail_xll(head);
+    xll_free_tail(head);
 
     return 1;
 }

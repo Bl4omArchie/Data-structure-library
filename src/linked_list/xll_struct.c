@@ -1,101 +1,101 @@
 #include "ll_struct.h"
 
 
-void init_xll(Node_XLL *node) {
+void xll_init(xll_node *node) {
     node->value = 0;
     node->ht_node = NULL;
 }
 
-void set_value_xll(Node_XLL *node, uint64_t value) {
+void xll_set_value(xll_node *node, uint64_t value) {
     // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
     node->value = value & 0x7FFFFFFFFFFFFFFF;
 }
 
-Node_XLL *xor_nodes(Node_XLL* node_a, Node_XLL* node_b) {
-    return (Node_XLL*)((uintptr_t)node_a ^ (uintptr_t)node_b);
+xll_node *xll_xor_nodes(xll_node* node_a, xll_node* node_b) {
+    return (xll_node*)((uintptr_t)node_a ^ (uintptr_t)node_b);
 }
 
-int insert_head_xll(Node_XLL *node, uint64_t value) {
+int xll_insert_value_head(xll_node *node, uint64_t value) {
     if (node == NULL)
         return -1;
 
-    Node_XLL *new_node = (Node_XLL*)malloc(sizeof(Node_XLL));
-    set_value_xll(new_node, value);
-    return insert_node_head_xll(node, new_node);
+    xll_node *new_node = (xll_node*)malloc(sizeof(xll_node));
+    xll_set_value(new_node, value);
+    return xll_insert_node_head(node, new_node);
 }
 
-int insert_tail_xll(Node_XLL *node, uint64_t value) {
+int xll_insert_value_tail(xll_node *node, uint64_t value) {
     if (node == NULL)
         return -1;
 
-    Node_XLL *new_node = (Node_XLL*)malloc(sizeof(Node_XLL));
-    set_value_xll(new_node, value);
-    return insert_node_tail_xll(node, new_node);
+    xll_node *new_node = (xll_node*)malloc(sizeof(xll_node));
+    xll_set_value(new_node, value);
+    return xll_insert_node_tail(node, new_node);
 }
 
-int insert_node_head_xll(Node_XLL *node, Node_XLL *to_insert) {
+int xll_insert_node_head(xll_node *node, xll_node *to_insert) {
     if (node == NULL || to_insert == NULL)
         return -1;
 
-    to_insert->ht_node = xor_nodes(NULL, node);
+    to_insert->ht_node = xll_xor_nodes(NULL, node);
     if (node != NULL) {
-        Node_XLL *next = xor_nodes(NULL, node->ht_node);
-        node->ht_node = xor_nodes(to_insert, next);
+        xll_node *next = xll_xor_nodes(NULL, node->ht_node);
+        node->ht_node = xll_xor_nodes(to_insert, next);
     }
 
     return 1;
 }
 
-int insert_node_tail_xll(Node_XLL *node, Node_XLL *to_insert) {
+int xll_insert_node_tail(xll_node *node, xll_node *to_insert) {
     if (node == NULL || to_insert == NULL)
         return -1;
 
-    to_insert->ht_node = xor_nodes(node, NULL);
+    to_insert->ht_node = xll_xor_nodes(node, NULL);
     if (node != NULL) {
-        Node_XLL *prev = xor_nodes(node->ht_node, NULL);
-        node->ht_node = xor_nodes(prev, to_insert);
+        xll_node *prev = xll_xor_nodes(node->ht_node, NULL);
+        node->ht_node = xll_xor_nodes(prev, to_insert);
     }
 
     return 1;
 }
 
-int remove_node_XLL(Node_XLL *node) {
+int xll_remove_node(xll_node *node) {
     if (node == NULL)
         return -1;
 
-    Node_XLL *prev = xor_nodes(node->ht_node, NULL);
-    Node_XLL *next = xor_nodes(NULL, node->ht_node);
+    xll_node *prev = xll_xor_nodes(node->ht_node, NULL);
+    xll_node *next = xll_xor_nodes(NULL, node->ht_node);
 
     if (prev != NULL)
-        prev->ht_node = xor_nodes(xor_nodes(prev->ht_node, node), next);
+        prev->ht_node = xll_xor_nodes(xll_xor_nodes(prev->ht_node, node), next);
     
     if (next != NULL)
-        next->ht_node = xor_nodes(prev, xor_nodes(next->ht_node, node));
+        next->ht_node = xll_xor_nodes(prev, xll_xor_nodes(next->ht_node, node));
 
     free(node);
     return 1;
 }
 
-int clear_tail_xll(Node_XLL *node) {
+int xll_clear_tail(xll_node *node) {
     while (node != NULL) {
-        Node_XLL *next = xor_nodes(NULL, node->ht_node);
+        xll_node *next = xll_xor_nodes(NULL, node->ht_node);
         node->value = 0;
         node = next;
     }
     return 1;
 }
 
-int free_tail_xll(Node_XLL *node) {
-
+int xll_free_tail(xll_node *node) {
+    return 1;
 }
 
-void display_xll(Node_XLL *node) {
-    Node_XLL *prev = NULL;
-    Node_XLL *next;
+void xll_display(xll_node *node) {
+    xll_node *prev = NULL;
+    xll_node *next;
 
     while (node != NULL) {
         printf("%ld", node->value);
-        next = xor_nodes(prev, node->ht_node);
+        next = xll_xor_nodes(prev, node->ht_node);
         prev = node;
         node = next;
     }
