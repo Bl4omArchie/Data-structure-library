@@ -3,7 +3,6 @@ section .text
     global sub_binary_optimized
 
 
-; Algorithm 3.1
 add_binary_optimized:
     push rbp
     mov rbp, rsp
@@ -22,7 +21,6 @@ add_binary_optimized:
     ret
 
 
-; Algorithm 3.2
 sub_binary_optimized:
     push rbp
     mov rbp, rsp

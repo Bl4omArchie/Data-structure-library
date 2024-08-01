@@ -8,6 +8,12 @@
 #include <unistd.h>
 
 
+
+// For each data structure (DLL, BDLL or XLL), you have to initialize the first node. it nullify the head and tail and set the value equal to 0.
+// Than you can set a value and add more nodes at the head or tail.
+
+
+
 // ********* Doubly Linked List ************
 
 typedef struct DoublyLinkedList {
