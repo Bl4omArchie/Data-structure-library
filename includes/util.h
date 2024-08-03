@@ -10,14 +10,25 @@
 
 
 
+typedef void (*func_bench)(void*);
+
+
 // ********** random.c **********
 uint64_t generate_random_number();
 
 
 
 // ********** hardware_info.c **********
-long get_available_ram();
+
+int get_procs_nb();
+double get_max_ram();
+double get_available_ram();
 void display_specifications();
+
+
+
+// ********** benchmark.c **********
+void benchmark(func_bench to_bench, void *args);
 
 
 

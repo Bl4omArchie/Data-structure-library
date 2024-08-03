@@ -8,9 +8,9 @@
 
 
 // ********* DLL tests ********* 
-int dll_routine();
-int main_dll_test();
-
+void scenario_one(void *args);
+void scenario_two(void *args);
+void test_memory(void *args);
 
 // ********* BDLL tests *********
 int bdll_routine();

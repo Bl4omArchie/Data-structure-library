@@ -9,24 +9,23 @@ BUILDDIR = build
 TARGET = file.o
 
 SRCS = $(wildcard $(SRCDIR)/associative_array/*.c $(SRCDIR)/linked_list/*.c $(SRCDIR)/util/*.c $(TESTDIR)/*.c)
-ASMS := $(wildcard $(SRCDIR)/*.asm)
+ASMS = $(wildcard $(SRCDIR)/util/*.asm)
 
-OBJS = $(patsubst %.c,$(BUILDDIR)/%.o,$(subst $(SRCDIR)/,src/,$(subst $(TESTDIR)/,tests/,$(SRCS)))) $(patsubst $(SRCDIR)/%.asm, $(BUILDDIR)/%.o, $(ASMS))
-
+OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS)) $(patsubst $(SRCDIR)/util/%.asm,$(BUILDDIR)/util/%.o,$(ASMS))
 CFLAGS = -I$(INCDIR) -pg
 
 all: $(TARGET)
 
-
-$(BUILDDIR)/%.o: %.c
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.asm
+$(BUILDDIR)/util/%.o: $(SRCDIR)/util/%.asm
+	mkdir -p $(dir $@)
 	$(ASM) -f elf64 -o $@ $<
 
 $(TARGET): $(OBJS)
-	$(CC) main.c $(CFLAGS) -o $(TARGET) $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) main.c
 
 clean:
 	rm -rf $(BUILDDIR) $(TARGET) .vscode/ *.o *.out
