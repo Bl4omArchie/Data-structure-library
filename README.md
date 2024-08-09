@@ -10,7 +10,6 @@ The point of this project is to create data structure for hight performance comp
 - Associative Array
 
 ## Todo list
-- fix makefile for yasm code
 - finish XXL, BDLL and AA struct
 - finish test for DLL, BDLL, XXL and AA
 - start op struct (ie: adding two DLL)

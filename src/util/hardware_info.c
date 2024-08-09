@@ -6,6 +6,7 @@
 #include <sys/time.h>
 
 #include <sched.h>
+#include <string.h>
 #include <time.h>
 
 
@@ -42,46 +43,41 @@ int get_procs_nb() {
     return nprocs;
 }
 
-double get_max_ram() {
-    FILE *file = fopen("/proc/meminfo", "r");
-    if (!file) return -1;
+double get_ram() {
+    struct sysinfo info;
 
-    char line[256];
-    long max_ram = -1;
+    if (sysinfo(&info) == 0)
+        return info.totalram / (1024.0 * 1024 * 1024); // Convertir en GB
 
-    while (fgets(line, sizeof(line), file)) {
-        if (sscanf(line, "MemTotal: %ld kB", &max_ram) == 1) {
-            max_ram *= 1024; // Convert from kB to bytes
-            break;
-        }
+    else {
+        perror("Erreur lors de l'obtention des informations système");
+        return -1;
     }
-
-    fclose(file);
-    return max_ram / 1000000000.0;
 }
 
 double get_available_ram() {
+    double available_ram;
+
     FILE *file = fopen("/proc/meminfo", "r");
-    if (!file) return -1;
+    if (file == NULL) {
+        perror("Erreur lors de l'ouverture de /proc/meminfo");
+        return -1;
+    }
 
     char line[256];
-    long available_ram = -1;
-
     while (fgets(line, sizeof(line), file)) {
-        if (sscanf(line, "MemAvailable: %ld kB", &available_ram) == 1) {
-            available_ram *= 1024; // Convert from kB to bytes
-            break;
-        }
+        if (strncmp(line, "MemAvailable:", 13) == 0) 
+            available_ram = atof(line + 13) / (1024.0 * 1024); // Convertir en GB
     }
 
     fclose(file);
-    return available_ram / 1000000000.0;
+    return available_ram;
 }
 
 void display_specifications() {
     printf ("*****************************\n");
     printf (" CPU cores: %d\n", get_procs_nb());
-    printf (" RAM: %.4f GB\n", get_max_ram() );
-    printf (" Available RAM: %.4f GB\n", get_available_ram() );
+    printf (" RAM: %.3f GB\n", get_ram());
+    printf (" Available RAM: %.3f GB\n", get_available_ram());
     printf ("*****************************\n\n");
 }

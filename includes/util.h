@@ -21,7 +21,7 @@ uint64_t generate_random_number();
 // ********** hardware_info.c **********
 
 int get_procs_nb();
-double get_max_ram();
+double get_ram();
 double get_available_ram();
 void display_specifications();
 
