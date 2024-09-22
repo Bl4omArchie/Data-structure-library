@@ -9,7 +9,7 @@
 
 
 
-// For each data structure (DLL, BDLL or XLL), you have to initialize the first node. it nullify the head and tail and set the value equal to 0.
+// For each data structure (DLL or BDLL), you have to initialize the first node. it nullify the head and tail and set the value equal to 0.
 // Than you can set a value and add more nodes at the head or tail.
 
 
@@ -83,31 +83,5 @@ int bdll_free_tail(bdll_node *node);
 
 void bdll_display_tail(bdll_node *node);
 
-
-
-
-// ********* Xored Linked List *********
-
-typedef struct XoredLinkedList {
-    uint64_t value;
-    struct XoredLinkedList *ht_node;
-} xll_node;
-
-
-void xll_init(xll_node *node);
-void xll_set_value(xll_node *node, uint64_t value);
-xll_node *xll_xor_nodes(xll_node* node_a, xll_node* node_b);
-
-int xll_insert_value_head(xll_node *node, uint64_t value);
-int xll_insert_value_tail(xll_node *node, uint64_t value);
-
-int xll_insert_node_head(xll_node *node, xll_node *to_insert);
-int xll_insert_node_tail(xll_node *node, xll_node *to_insert);
-
-int xll_remove_node(xll_node *node);
-int xll_clear_tail(xll_node *node);
-int xll_free_tail(xll_node *node);
-
-void xll_display(xll_node *node);
 
 #endif

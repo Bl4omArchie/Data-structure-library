@@ -23,6 +23,7 @@ uint64_t generate_random_number();
 int get_procs_nb();
 double get_ram();
 double get_available_ram();
+void print_cpu_details();
 void display_specifications();
 
 

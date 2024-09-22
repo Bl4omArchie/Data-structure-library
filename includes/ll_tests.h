@@ -17,8 +17,6 @@ int bdll_routine();
 int main_bdll_test();
 
 
-// ********* XLL tests *********
-int main_xll_test();
 
 
 
