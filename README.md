@@ -5,15 +5,15 @@ The point of this project is to create data structure for hight performance comp
 
 ## 📋 Algorithm listing
 - Linked List
-- Xored Linked List
 - Branched Linked List
-- Associative Array
+- Benchmark
+
 
 ## Todo list
-- finish XXL, BDLL and AA struct
-- finish test for DLL, BDLL, XXL and AA
-- start op struct (ie: adding two DLL)
-- code revision for DLL's clear and free function (idk if I need to include the given node in the process)
+- BDDL implementation
+- DLL and bdll tests
+- application of DLL with Bignum
+- code revision for effiency
 
 ## Installation
 
