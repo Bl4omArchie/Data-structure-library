@@ -9,6 +9,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <cpuinfo.h>
 
 
 /*
@@ -72,6 +73,21 @@ double get_available_ram() {
 
     fclose(file);
     return available_ram;
+}
+
+void print_cpu_details() {
+    if (!cpuinfo_initialize())
+        fprintf(stderr, "Erreur lors de l'initialisation de cpuinfo.\n");
+    
+    printf ("*****************************\n");
+    printf ("CPU %s\n", cpuinfo_get_package(0)->name);
+    uint32_t logical_processors = cpuinfo_get_processors_count();
+    printf("Nombre de processeurs logiques : %u\n", logical_processors);
+
+    uint32_t physical_cores = cpuinfo_get_cores_count();
+    printf("Nombre de coeurs physiques : %u\n", physical_cores);
+
+    cpuinfo_deinitialize();
 }
 
 void display_specifications() {

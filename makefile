@@ -12,7 +12,12 @@ SRCS = $(wildcard $(SRCDIR)/associative_array/*.c $(SRCDIR)/linked_list/*.c $(SR
 ASMS = $(wildcard $(SRCDIR)/util/*.asm)
 
 OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS)) $(patsubst $(SRCDIR)/util/%.asm,$(BUILDDIR)/util/%.o,$(ASMS))
+
+# Compilation flags
 CFLAGS = -I$(INCDIR) -pg
+
+# Linking flags
+LDFLAGS = -lcpuinfo
 
 all: $(TARGET)
 
@@ -25,7 +30,7 @@ $(BUILDDIR)/util/%.o: $(SRCDIR)/util/%.asm
 	$(ASM) -f elf64 -o $@ $<
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) main.c
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) main.c $(LDFLAGS)
 
 clean:
 	rm -rf $(BUILDDIR) $(TARGET) .vscode/ *.o *.out
