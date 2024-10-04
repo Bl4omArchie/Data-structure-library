@@ -9,8 +9,6 @@
 #include <string.h>
 #include <time.h>
 
-#include <cpuinfo.h>
-
 
 /*
 

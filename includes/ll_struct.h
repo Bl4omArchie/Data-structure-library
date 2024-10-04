@@ -32,15 +32,11 @@ int dll_insert_value_tail(dll_node *node, uint64_t value);
 int dll_insert_node_head(dll_node *node, dll_node *to_replace);
 int dll_insert_node_tail(dll_node *node, dll_node *to_replace);
 
+//Remove the given node and link the head of it to its tail
 int dll_remove_node(dll_node *node);
 
 int dll_clear(dll_node *node);
-int dll_clear_head(dll_node *node);
-int dll_clear_tail(dll_node *node);
-
 int dll_free(dll_node *node);
-int dll_free_head(dll_node *node);
-int dll_free_tail(dll_node *node);
 
 void dll_display_tail(dll_node *node);
 

@@ -18,7 +18,7 @@ void reset_bn(Bignum *bn);
 void set_bn_i(Bignum *bn, int number);
 void set_bn(Bignum *bn, Bignum *bn_to_set);
 
-void add_bn_i(Bignum *bn, int number):
+void add_bn_i(Bignum *bn, int number);
 void add_bn(Bignum *bn, Bignum *bn_to_add);
 
 void free_bn(Bignum *bn);

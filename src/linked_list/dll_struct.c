@@ -106,76 +106,28 @@ int dll_remove_node(dll_node *node) {
     return 1;
 }
 
-int dll_clear_head(dll_node *node) {
+
+int dll_clear(dll_node *node) {
     while (node != NULL) {
         node->value = 0;
         node = node->head;
     }
-
     return 1;
 }
 
-int dll_clear_tail(dll_node *node) {
-    while (node != NULL) {
-        node->value = 0;
-        node = node->tail;
-    }
-
-    return 1;
-}
-
-int dll_clear(dll_node *node) {
-    if (node == NULL)
-        return -1;
-    
-    if (node->tail != NULL)
-        dll_clear_tail(node->tail);
-
-    dll_clear_head(node);
-    return 1;
-}
-
-
-int dll_free_head(dll_node *node) {
-    if (node == NULL)
-        return -1;
-    
-    dll_node *current = node->head;
-    dll_node *next;
-    
-    while (current != NULL) {
-        next = current->head;
-        free(current);
-        current = next;
-    }
-
-    node->head = NULL;
-    return 1;
-}
-
-int dll_free_tail(dll_node *node) {
-    if (node == NULL)
-        return -1;
-    
-    dll_node *current = node->tail;
-    dll_node *next;
-    
-    while (current != NULL) {
-        next = current->tail;
-        free(current);
-        current = next;
-    }
-
-    node->tail = NULL;
-    return 1;
-}
 
 int dll_free(dll_node *node) {
-    dll_free_head(node);
-    dll_free_tail(node);
+    node->head->tail = NULL;
+    dll_node *next;
 
+    while (node != NULL) {
+        next = node->tail;
+        free(node);
+        node = next;
+    }
     return 1;
 }
+
 
 void dll_display_tail(dll_node *node) {
     dll_node *next;

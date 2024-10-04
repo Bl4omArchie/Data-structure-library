@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include <cpuinfo.h>
+
 
 
 typedef void (*func_bench)(void*);

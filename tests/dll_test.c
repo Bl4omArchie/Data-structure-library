@@ -8,6 +8,20 @@
 #define M_100 100000000 // 100_000_000 millions
 
 
+/*
+insert: postif x10, négatif x10
+delete: x5
+insert: x10
+
+
+
+*/
+char *samples[] = {
+    "10 -> 42 -> 13 -> 517 -> 409",
+    
+}
+
+
 // In scenario one, a dll is initialized and a bunch of data in inserted in head then cleared. Then the same for tail and finally we refill head and tail and free the whole linked list 
 void scenario_one(void *args) {
     dll_node linked_list_test;
