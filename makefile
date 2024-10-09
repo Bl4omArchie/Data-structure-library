@@ -16,9 +16,6 @@ OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS)) $(patsubst $(SRCDIR)/ut
 # Compilation flags
 CFLAGS = -I$(INCDIR) -pg
 
-# Linking flags
-LDFLAGS = -lcpuinfo
-
 all: $(TARGET)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
@@ -30,7 +27,7 @@ $(BUILDDIR)/util/%.o: $(SRCDIR)/util/%.asm
 	$(ASM) -f elf64 -o $@ $<
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) main.c $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) main.c
 
 clean:
 	rm -rf $(BUILDDIR) $(TARGET) .vscode/ *.o *.out
