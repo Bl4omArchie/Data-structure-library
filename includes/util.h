@@ -8,11 +8,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <cpuinfo.h>
-
-
-
-typedef void (*func_bench)(void*);
 
 
 // ********** random.c **********
@@ -27,11 +22,6 @@ double get_ram();
 double get_available_ram();
 void print_cpu_details();
 void display_specifications();
-
-
-
-// ********** benchmark.c **********
-void benchmark(func_bench to_bench, void *args);
 
 
 

@@ -11,14 +11,11 @@
 #include <unistd.h>
 
 
-#include <cpuinfo.h>
-
 
 int main() {
 
-    print_cpu_details();
+    //print_cpu_details();
     display_specifications();
-    benchmark(test_memory, NULL);
 
     return 1;
 }

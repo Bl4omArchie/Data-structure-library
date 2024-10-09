@@ -73,6 +73,7 @@ double get_available_ram() {
     return available_ram;
 }
 
+/*
 void print_cpu_details() {
     if (!cpuinfo_initialize())
         fprintf(stderr, "Erreur lors de l'initialisation de cpuinfo.\n");
@@ -87,6 +88,7 @@ void print_cpu_details() {
 
     cpuinfo_deinitialize();
 }
+*/
 
 void display_specifications() {
     printf ("*****************************\n");
