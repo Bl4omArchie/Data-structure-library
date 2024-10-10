@@ -22,7 +22,6 @@ int main() {
     //read_csv(filename);
 
     dll_bench my_bench;
-    init_bench(&my_bench);
-    load_function(&my_bench, dll_insert_value_head, 10)
+    init_bench(&my_bench, "tests/csv/test_linked_list.csv");
     return 1;
 }

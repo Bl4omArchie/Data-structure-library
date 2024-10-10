@@ -37,9 +37,7 @@ void free_bench(dll_bench *bench) {
         return;
 
     dll_free(bench->root);
-    for (int i=0; i<bench->size_functions-1; i++)
-        free(bench->function[i]);
-
+    free(bench->functions);
     free(bench);
 }
 

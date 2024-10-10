@@ -27,7 +27,7 @@ void display_specifications();
 
 // ********** read_csv.c **********
 
-void read_csv(const char *filename);
+void read_csv(const char *path_file);
 
 
 // ********** arithmetic.asm **********
