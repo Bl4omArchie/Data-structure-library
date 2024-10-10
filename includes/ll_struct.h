@@ -35,6 +35,7 @@ int dll_insert_node_tail(dll_node *node, dll_node *to_replace);
 //Remove the given node and link the head of it to its tail
 int dll_remove_node(dll_node *node);
 
+// Clear and free from the given node until it reached the tail
 int dll_clear(dll_node *node);
 int dll_free(dll_node *node);
 

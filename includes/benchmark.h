@@ -24,12 +24,13 @@ typedef struct _doubly_linked_list_evaluation {
     double total_time;
     double total_ram;
     double total_cpu_time;
+    const char *filename_dataset;
     op_bench *functions;
     int size_functions;
 } dll_bench;
 
 
-void init_bench(dll_bench *bench);
+void init_bench(dll_bench *bench, const char *filename_dataset);
 void benchmark(dll_bench *bench);
 void benchmark_function(op_bench *func);
 void load_function(dll_bench *bench, func_bench to_bench, void *args);

@@ -8,12 +8,13 @@
 // This benchmark is evaluating the time, ram and cpu consumption of the given function.
 
 
-void init_bench(dll_bench *bench) {
+void init_bench(dll_bench *bench, const char *filename_dataset) {
     dll_init(bench->root);
     bench->size_dll = 0;
     bench->total_time = 0.0;
     bench->total_ram = 0.0;
     bench->total_cpu_time = 0.0;
+    bench->filename_dataset = filename_dataset;
     bench->functions = NULL;
     bench->size_functions = 0;
 }
@@ -32,8 +33,14 @@ void load_function(dll_bench *bench, func_bench to_bench, void *args) {
 }
 
 void free_bench(dll_bench *bench) {
-    
+    if (bench == NULL)
+        return;
 
+    dll_free(bench->root);
+    for (int i=0; i<bench->size_functions-1; i++)
+        free(bench->function[i]);
+
+    free(bench);
 }
 
 void benchmark(dll_bench *bench) {
