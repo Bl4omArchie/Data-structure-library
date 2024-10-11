@@ -8,7 +8,7 @@
 
 void read_csv(const char *path_file) {
     char abs_path[PATH_MAX];
-    if (realpath(csv_path, abs_path) == NULL) {
+    if (realpath(path_file, abs_path) == NULL) {
         perror("Error resolving path");
         return;
     }

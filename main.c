@@ -21,7 +21,11 @@ int main() {
     //const char *filename = "csv/test_linked_list.csv";
     //read_csv(filename);
 
-    dll_bench my_bench;
-    init_bench(&my_bench, "tests/csv/test_linked_list.csv");
+    
+    //dll_bench my_bench;
+    //init_bench(&my_bench, "tests/csv/test_linked_list.csv");
+    
+    run_all();
+    
     return 1;
 }

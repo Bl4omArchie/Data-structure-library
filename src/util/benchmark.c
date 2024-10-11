@@ -26,11 +26,12 @@ void load_function(dll_bench *bench, func_bench to_bench, void *args) {
     bench->size_functions++;
     bench->functions = (op_bench*)realloc(bench->functions, bench->size_functions * sizeof(op_bench));
     bench->functions[bench->size_functions-1].to_bench = to_bench;
-    bench->functions[bench->size_functions-1].args = args;
+    bench->functions[bench->size_functions-1].args = NULL;
     bench->functions[bench->size_functions-1].time = 0.0;
     bench->functions[bench->size_functions-1].ram = 0.0;
     bench->functions[bench->size_functions-1].cpu_time = 0.0;
 }
+
 
 void free_bench(dll_bench *bench) {
     if (bench == NULL)
