@@ -2,15 +2,15 @@
 
 
 
-void dll_init(dll_node *node) {
+void dll_init(dll_node *node, uint64_t value) {
     node->head = NULL;
     node->tail = NULL;
-    node->value = 0;
+    dll_set_value(node, value);
 }
 
 void dll_set_value(dll_node *node, uint64_t value) {
     // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
-    node->value = value & 0x7FFFFFFFFFFFFFFF;
+    node->value = value;
 }
     
 
@@ -19,8 +19,7 @@ int dll_insert_value_head(dll_node *node, uint64_t value) {
         return -1;
 
     dll_node *newNode = (dll_node*)malloc(sizeof(dll_node));
-    dll_init(newNode);
-    dll_set_value(newNode, value);
+    dll_init(newNode, value);
     
     if (node->head != NULL) {
         node->head->tail = newNode;
@@ -38,8 +37,7 @@ int dll_insert_value_tail(dll_node *node, uint64_t value) {
         return -1;
 
     dll_node *newNode = (dll_node*)malloc(sizeof(dll_node));
-    dll_init(newNode);
-    dll_set_value(newNode, value);
+    dll_init(newNode, value);
 
     if (node->tail != NULL) {
         node->tail->head = newNode;

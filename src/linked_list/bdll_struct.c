@@ -2,16 +2,16 @@
 
 
 
-void bdll_init(bdll_node *node) {
+void bdll_init(bdll_node *node, uint64_t value) {
     node->head = NULL;
     node->tail = NULL;
     node->branch = NULL;
-    node->value = 0;
+    bdll_set_value(node, value);
 }
 
 void bdll_set_value(bdll_node *node, uint64_t value) {
     // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
-    node->value = value & 0x7FFFFFFFFFFFFFFF;
+    node->value = value;
 }
 
 
@@ -20,8 +20,7 @@ int bdll_insert_value_branch(bdll_node *node, uint64_t value) {
         return -1;
 
     bdll_node *newNode = (bdll_node*)malloc(sizeof(bdll_node));
-    bdll_init(newNode);
-    bdll_set_value(newNode, value);
+    bdll_init(newNode, value);
     
     if (node->branch != NULL) {
         node->branch->head = newNode;
@@ -39,8 +38,7 @@ int bdll_insert_value_head(bdll_node *node, uint64_t value) {
         return -1;
 
     bdll_node *newNode = (bdll_node*)malloc(sizeof(bdll_node));
-    bdll_init(newNode);
-    bdll_set_value(newNode, value);
+    bdll_init(newNode, value);
     
     if (node->head != NULL) {
         node->head->tail = newNode;
@@ -57,8 +55,7 @@ int bdll_insert_value_tail(bdll_node *node, uint64_t value) {
         return -1;
 
     bdll_node *newNode = (bdll_node*)malloc(sizeof(bdll_node));
-    bdll_init(newNode);
-    bdll_set_value(newNode, value);
+    bdll_init(newNode, value);
 
     if (node->tail != NULL) {
         node->tail->head = newNode;

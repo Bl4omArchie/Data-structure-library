@@ -23,7 +23,7 @@ typedef struct DoublyLinkedList {
 } dll_node;
 
 
-void dll_init(dll_node *node);
+void dll_init(dll_node *node, uint64_t value);
 void dll_set_value(dll_node *node, uint64_t value);
 
 int dll_insert_value_head(dll_node *node, uint64_t value);
@@ -54,7 +54,7 @@ typedef struct BranchedDoublyLinkedList {
 
 
 
-void bdll_init(bdll_node *node);
+void bdll_init(bdll_node *node, uint64_t value);
 void bdll_set_value(bdll_node *node, uint64_t value);
 
 
