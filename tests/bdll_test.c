@@ -76,10 +76,6 @@ void test_bdll_remove_node() {
     assert(node1->tail->value == 256);
 }
 
-void test_bdll_remove_branch() {
-
-}
-
 void test_bdll_clear() {
     bdll_node *node = bdll_init(65537);
 

@@ -2,7 +2,7 @@
 
 
 
-dll_node* dll_init(uint64_t value) {
+dll_node *dll_init(uint64_t value) {
     dll_node *newNode = (dll_node*)malloc(sizeof(dll_node));
     if (newNode == NULL)
         return NULL;
@@ -131,7 +131,7 @@ int dll_free(dll_node *node) {
         free(node);
         node = next;
     }
-    node = NULL;
+
     return 1;
 }
 

@@ -36,7 +36,6 @@ void test_bdll_insert_node_tail();
 void test_bdll_insert_node_branch();
 
 void test_bdll_remove_node();
-void test_bdll_remove_branch();
 
 void test_bdll_clear();
 void test_bdll_clear_branch();

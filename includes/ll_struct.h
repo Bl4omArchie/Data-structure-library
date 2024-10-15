@@ -23,7 +23,7 @@ typedef struct DoublyLinkedList {
 } dll_node;
 
 
-dll_node* dll_init(uint64_t value);
+dll_node *dll_init(uint64_t value);
 void dll_set_value(dll_node *node, uint64_t value);
 
 int dll_insert_value_head(dll_node *node, uint64_t value);
@@ -54,7 +54,7 @@ typedef struct BranchedDoublyLinkedList {
 
 
 
-bdll_node* bdll_init(uint64_t value);
+bdll_node *bdll_init(uint64_t value);
 void bdll_set_value(bdll_node *node, uint64_t value);
 
 
@@ -66,13 +66,16 @@ int bdll_insert_node_branch(bdll_node *node, bdll_node *to_replace);
 int bdll_insert_node_head(bdll_node *node, bdll_node *to_replace);
 int bdll_insert_node_tail(bdll_node *node, bdll_node *to_replace);
 
+// Remove the given node and every branch depending on it and collasped the head and tail
 int bdll_remove_node(bdll_node *node);
-int bdll_remove_branch(bdll_node *node);
 
 int bdll_clear(bdll_node *node);
 int bdll_clear_branch(bdll_node *node);
 
+// Free the whole tail, branch included
 int bdll_free(bdll_node *node);
+
+// Free the branch of the given node and every other branch depending on it.
 int bdll_free_branch(bdll_node *node);
 
 void bdll_display_tail(bdll_node *node);

@@ -2,7 +2,7 @@
 
 
 
-bdll_node* bdll_init(uint64_t value) {
+bdll_node *bdll_init(uint64_t value) {
     bdll_node *newNode = (bdll_node*)malloc(sizeof(bdll_node));
     if (newNode == NULL)
         return NULL;
@@ -17,24 +17,6 @@ bdll_node* bdll_init(uint64_t value) {
 void bdll_set_value(bdll_node *node, uint64_t value) {
     // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
     node->value = value;
-}
-
-
-int bdll_insert_value_branch(bdll_node *node, uint64_t value) {
-    if (node == NULL)
-        return -1;
-
-    bdll_node *newNode = bdll_init(value);
-    
-    if (node->branch != NULL) {
-        node->branch->head = newNode;
-        newNode->tail = node->branch;
-    }
-    else
-        newNode->tail = node->tail;
-    
-    node->branch = newNode;
-    return 1;
 }
 
 int bdll_insert_value_head(bdll_node *node, uint64_t value) {
@@ -69,9 +51,19 @@ int bdll_insert_value_tail(bdll_node *node, uint64_t value) {
     return 1;
 }
 
+int bdll_insert_value_branch(bdll_node *node, uint64_t value) {
+    if (node == NULL)
+        return -1;
 
-int bdll_insert_node_branch(bdll_node *node, bdll_node *to_replace) {
-
+    bdll_node *newNode = bdll_init(value);
+    
+    if (node->branch != NULL) {
+        node->branch->head = newNode;
+        newNode->tail = node->branch;
+    }
+    
+    newNode->head = node;
+    node->branch = newNode;
     return 1;
 }
 
@@ -113,24 +105,84 @@ int bdll_insert_node_tail(bdll_node *node, bdll_node *to_replace) {
     return 1; 
 }
 
-int bdll_remove_branch(bdll_node *node) {
+int bdll_insert_node_branch(bdll_node *node, bdll_node *to_replace) {
+    if (node == NULL || to_replace == NULL)
+        return -1;
+
+    if (node->branch != NULL) {
+        node->branch->head = to_replace;
+        to_replace->tail = node->branch;
+    }
+    
+    to_replace->head = node;
+    node->branch = node;
+    return 1;
+}
+
+int bdll_remove_node(bdll_node *node) {
+    if (node == NULL)
+        return -1;
+
+    if (node->branch != NULL)
+        bdll_free(node->branch);
+    
+    if (node->head != NULL)
+        node->head->tail = node->tail;
+    
+    if (node->tail != NULL)
+        node->tail->head = node->head;
+
+    free(node);
     return 1;
 }
 
 
 int bdll_clear(bdll_node *node) {
+    if (node == NULL)
+        return -1;
+
+
     return 1;
 }
 
 int bdll_clear_branch(bdll_node *node) {
+    if (node == NULL)
+        return -1;
+
+    if (node->branch == NULL)
+        return -1;
     return 1;
 }
 
 int bdll_free(bdll_node *node) {
+    if (node == NULL)
+        return -1;
+
+    if (node->head != NULL)
+        node->head->tail = NULL;
+
+    dll_node *next;    
+    while (node != NULL) {
+        next = node->tail;
+        if (node->branch != NULL)
+            bdll_free(node->branch);
+        
+        free(node);
+        node = next;
+    }
     return 1;
 }
 
 int bdll_free_branch(bdll_node *node) {
+    if (node == NULL)
+        return -1;
+
+    if (node->branch == NULL)
+        return -1;
+
+    bdll_free(node->branch);
+    node->branch = NULL;
+
     return 1;
 }
 
