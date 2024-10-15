@@ -14,9 +14,12 @@ bdll_node *bdll_init(uint64_t value) {
     return newNode;
 }
 
-void bdll_set_value(bdll_node *node, uint64_t value) {
+int bdll_set_value(bdll_node *node, uint64_t value) {
+    if (node == NULL)
+        return -1;
     // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
     node->value = value;
+    return 1;
 }
 
 int bdll_insert_value_head(bdll_node *node, uint64_t value) {
@@ -115,7 +118,7 @@ int bdll_insert_node_branch(bdll_node *node, bdll_node *to_replace) {
     }
     
     to_replace->head = node;
-    node->branch = node;
+    node->branch = to_replace;
     return 1;
 }
 
@@ -138,9 +141,12 @@ int bdll_remove_node(bdll_node *node) {
 
 
 int bdll_clear(bdll_node *node) {
-    if (node == NULL)
-        return -1;
-
+    while (node != NULL) {
+        if (node->branch != NULL)
+            bdll_clear(node->branch);
+        node->value = 0;
+        node = node->head;
+    }
 
     return 1;
 }
@@ -151,6 +157,9 @@ int bdll_clear_branch(bdll_node *node) {
 
     if (node->branch == NULL)
         return -1;
+
+    bdll_clear(node->branch);
+    node->branch == NULL;
     return 1;
 }
 
@@ -161,7 +170,7 @@ int bdll_free(bdll_node *node) {
     if (node->head != NULL)
         node->head->tail = NULL;
 
-    dll_node *next;    
+    bdll_node *next;    
     while (node != NULL) {
         next = node->tail;
         if (node->branch != NULL)
@@ -183,23 +192,6 @@ int bdll_free_branch(bdll_node *node) {
     bdll_free(node->branch);
     node->branch = NULL;
 
-    return 1;
-}
-
-int bdll_remove_node(bdll_node *node) {
-    if (node == NULL)
-        return -1;
-
-    if (node->head != NULL)
-        node->head->tail = NULL;
-
-    if (node->tail != NULL)
-        node->tail->head = NULL;
-
-    if (node->branch != NULL) 
-        bdll_free(node->branch);
-
-    free(node);
     return 1;
 }
 

@@ -4,46 +4,73 @@
 
 
 void test_bdll_init() {
-    bdll_node *node = bdll_init(65537);
-    assert(node->head == NULL);
-    assert(node->tail == NULL);
-    assert(node->branch == NULL);
-    assert(node->value == 65537);
+    bdll_node *node1 = bdll_init(65537);
+    assert(node1->head == NULL);
+    assert(node1->tail == NULL);
+    assert(node1->branch == NULL);
+    assert(node1->value == 65537);
+
+    // Free before exiting
+    bdll_free(node1);  
 }
 
 void test_bdll_set_value() {
-    bdll_node *node = bdll_init(65537);
-    assert(node->value == 65537);
+    bdll_node *node1 = bdll_init(65537);
+    assert(node1->value == 65537);
     
-    bdll_set_value(node, 0);
-    assert(node->value == 0);
+    bdll_set_value(node1, 0);
+    assert(node1->value == 0);
     
-    bdll_set_value(node, UINT64_MAX+1);
-    assert(node->value == 0);
+    bdll_set_value(node1, UINT64_MAX+1);
+    assert(node1->value == 0);
+
+    // Free before exiting
+    bdll_free(node1);  
 }
 
 void test_bdll_insert_value_head() {
-    bdll_node *node = bdll_init(5);
+    bdll_node *node1 = bdll_init(5);
     
-    assert(bdll_insert_value_head(node, 65537) == 1);
-    assert(node->head->value == 65537);
+    assert(bdll_insert_value_head(node1, 65537) == 1);
+    assert(node1->head->value == 65537);
     
-    assert(bdll_insert_value_head(node, 20) == 1);
-    assert(node->head->value == 20);
+    assert(bdll_insert_value_head(node1, 20) == 1);
+    assert(node1->head->value == 20);
+
+    // NULL test
+    assert(bdll_insert_value_head(NULL, 0) == -1);
+    // Free before exiting
+    bdll_free(node1);  
 }
 
 void test_bdll_insert_value_tail() {
-    bdll_node *node = bdll_init(5);
+    bdll_node *node1 = bdll_init(5);
     
-    assert(bdll_insert_value_tail(node, 65537) == 1);
-    assert(node->tail->value == 65537);
+    assert(bdll_insert_value_tail(node1, 65537) == 1);
+    assert(node1->tail->value == 65537);
     
-    assert(bdll_insert_value_tail(node, 20) == 1);
-    assert(node->tail->value == 20);
+    assert(bdll_insert_value_tail(node1, 20) == 1);
+    assert(node1->tail->value == 20);
+
+    // NULL test
+    assert(bdll_insert_value_tail(NULL, 0) == -1);
+    // Free before exiting
+    bdll_free(node1);  
 }
 
 void test_bdll_insert_value_branch() {
+    bdll_node *node1 = bdll_init(10);
+    
+    assert(bdll_insert_value_branch(node1, 65537) == 1);
+    assert(node1->branch->value == 65537);
+    
+    assert(bdll_insert_value_tail(node1, 20) == 1);
+    assert(node1->tail->value == 20);
 
+    // NULL test
+    assert(bdll_insert_value_branch(NULL, 0) == -1);
+    // Free before exiting
+    bdll_free(node1);
 }
 
 void test_bdll_insert_node_head() {
@@ -52,6 +79,13 @@ void test_bdll_insert_node_head() {
     
     assert(bdll_insert_node_head(node1, node2) == 1);
     assert(node1->head->value == 65537);
+
+    // NULL test
+    assert(bdll_insert_node_head(NULL, NULL) == -1);
+    assert(bdll_insert_node_head(NULL, node1) == -1);
+    assert(bdll_insert_node_head(node1, NULL) == -1);
+    // Free before exiting
+    bdll_free(node1);
 }
 
 void test_bdll_insert_node_tail() {
@@ -60,10 +94,28 @@ void test_bdll_insert_node_tail() {
 
     assert(bdll_insert_node_tail(node1, node2) == 1);
     assert(node1->tail->value == 65537);
+
+    // NULL test
+    assert(bdll_insert_node_tail(NULL, NULL) == -1);
+    assert(bdll_insert_node_tail(NULL, node1) == -1);
+    assert(bdll_insert_node_tail(node1, NULL) == -1);
+    // Free before exiting
+    bdll_free(node1);
 }
 
 void test_bdll_insert_node_branch() {
+    bdll_node *node1 = bdll_init(10);
+    bdll_node *node2 = bdll_init(65537);
 
+    assert(bdll_insert_node_branch(node1, node2) == 1);
+    assert(node1->branch->value == 65537);
+
+    // NULL test
+    assert(bdll_insert_node_branch(NULL, NULL) == -1);
+    assert(bdll_insert_node_branch(NULL, node1) == -1);
+    assert(bdll_insert_node_branch(node1, NULL) == -1);
+    // Free before exiting
+    bdll_free(node1);
 }
 
 void test_bdll_remove_node() {
@@ -74,39 +126,60 @@ void test_bdll_remove_node() {
     
     assert(bdll_remove_node(node1->tail) == 1);
     assert(node1->tail->value == 256);
+
+    // Free before exiting
+    bdll_free(node1);
 }
 
 void test_bdll_clear() {
-    bdll_node *node = bdll_init(65537);
+    bdll_node *node1 = bdll_init(65537);
 
-    bdll_insert_value_head(node, 65537);
-    bdll_insert_value_head(node, 20);
+    bdll_insert_value_head(node1, 65537);
+    bdll_insert_value_head(node1, 20);
 
-    assert(bdll_clear(node) == 1);
-    assert(node->value == 0);
-    assert(node->head->value == 0);
-    assert(node->head->head->value == 0);
+    assert(bdll_clear(node1) == 1);
+    assert(node1->value == 0);
+    assert(node1->head->value == 0);
+    assert(node1->head->head->value == 0);
+
+    // Free before exiting
+    bdll_free(node1);
 }
 
 void test_bdll_clear_branch() {
+    bdll_node *node1 = bdll_init(1);
 
+    bdll_insert_value_tail(node1, 65537);
+    bdll_insert_value_branch(node1, 20);
+    bdll_insert_value_tail(node1->branch, 10);
+
+    //assert(bdll_clear_branch(node1) == 1);
+    //assert(node1->branch->value == 0);
+
+    // Free before exiting
+    bdll_free(node1);
 }
 
 void test_bdll_free() {
-    bdll_node *node = bdll_init(65537);
+    bdll_node *node1 = bdll_init(65537);
     
-    bdll_insert_value_tail(node, 20);
-    bdll_insert_value_tail(node, 10);
+    bdll_insert_value_tail(node1, 20);
+    bdll_insert_value_tail(node1, 10);
     
-    assert(bdll_free(node) == 1);
+    assert(bdll_free(node1) == 1);
 }
 
 void test_bdll_free_branch() {
+    bdll_node *node1 = bdll_init(65537);
 
+    // Free before exiting
+    bdll_free(node1);
 } 
 
 int run_all_bdll() {
     test_bdll_init();
+    test_bdll_free();
+    test_bdll_free_branch();
     test_bdll_set_value();
     test_bdll_insert_value_head();
     test_bdll_insert_value_tail();
@@ -114,11 +187,9 @@ int run_all_bdll() {
     test_bdll_insert_node_head();
     test_bdll_insert_node_tail();
     test_bdll_insert_node_branch();
-    //test_bdll_remove_node();
-    //test_bdll_clear();
-    //test_bdll_clear_branch();
-    //test_bdll_free();
-    //test_bdll_free_branch();
+    test_bdll_remove_node();
+    test_bdll_clear();
+    test_bdll_clear_branch();
 
     return 1;
 }

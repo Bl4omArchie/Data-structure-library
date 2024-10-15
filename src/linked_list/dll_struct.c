@@ -13,9 +13,12 @@ dll_node *dll_init(uint64_t value) {
     return newNode;
 }
 
-void dll_set_value(dll_node *node, uint64_t value) {
+int dll_set_value(dll_node *node, uint64_t value) {
+    if (node == NULL)
+        return -1;
     // If negative number you add, messed up your linked list will be. Are allowed positive numbers only !!!
     node->value = value;
+    return 1;
 }
     
 
