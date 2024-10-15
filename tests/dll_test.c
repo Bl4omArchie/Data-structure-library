@@ -88,7 +88,7 @@ void test_dll_free() {
     assert(dll_free(node) == 1);
 }
 
-int run_all() {
+int run_all_dll() {
     test_dll_init();
     test_dll_set_value();
     test_dll_insert_value_head();

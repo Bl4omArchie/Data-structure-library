@@ -14,7 +14,7 @@ ASMS = $(wildcard $(SRCDIR)/util/*.asm)
 OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS)) $(patsubst $(SRCDIR)/util/%.asm,$(BUILDDIR)/util/%.o,$(ASMS))
 
 # Compilation flags
-CFLAGS = -I$(INCDIR) -pg
+CFLAGS = -I$(INCDIR) -pg -O3
 
 all: $(TARGET)
 

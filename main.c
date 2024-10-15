@@ -25,10 +25,15 @@ int main() {
     //dll_bench my_bench;
     //init_bench(&my_bench, "tests/csv/test_linked_list.csv");
     
-    if (run_all())
-        printf ("Test completed!\n");
+    if (run_all_dll())
+        printf ("Test DLL completed!\n");
     else
-        printf ("Test failed!\n");
+        printf ("Test DLL failed!\n");
+
+    if (run_all_bdll())
+        printf ("Test BDLL completed!\n");
+    else
+        printf ("Test BDLL failed!\n");
     
     return 1;
 }
