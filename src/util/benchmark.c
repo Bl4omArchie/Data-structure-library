@@ -9,7 +9,7 @@
 
 
 void init_bench(dll_bench *bench, const char *filename_dataset) {
-    dll_init(bench->root, 0);
+    bench->root = dll_init(0);
     bench->size_dll = 0;
     bench->total_time = 0.0;
     bench->total_ram = 0.0;

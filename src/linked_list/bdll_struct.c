@@ -2,11 +2,16 @@
 
 
 
-void bdll_init(bdll_node *node, uint64_t value) {
-    node->head = NULL;
-    node->tail = NULL;
-    node->branch = NULL;
-    bdll_set_value(node, value);
+bdll_node* bdll_init(uint64_t value) {
+    bdll_node *newNode = (bdll_node*)malloc(sizeof(bdll_node));
+    if (newNode == NULL)
+        return NULL;
+    
+    newNode->head = NULL;
+    newNode->tail = NULL;
+    newNode->branch = NULL;
+    newNode->value = value;
+    return newNode;
 }
 
 void bdll_set_value(bdll_node *node, uint64_t value) {
@@ -19,8 +24,7 @@ int bdll_insert_value_branch(bdll_node *node, uint64_t value) {
     if (node == NULL)
         return -1;
 
-    bdll_node *newNode = (bdll_node*)malloc(sizeof(bdll_node));
-    bdll_init(newNode, value);
+    bdll_node *newNode = bdll_init(value);
     
     if (node->branch != NULL) {
         node->branch->head = newNode;
@@ -37,8 +41,7 @@ int bdll_insert_value_head(bdll_node *node, uint64_t value) {
     if (node == NULL) 
         return -1;
 
-    bdll_node *newNode = (bdll_node*)malloc(sizeof(bdll_node));
-    bdll_init(newNode, value);
+    bdll_node *newNode = bdll_init(value);
     
     if (node->head != NULL) {
         node->head->tail = newNode;
@@ -54,8 +57,7 @@ int bdll_insert_value_tail(bdll_node *node, uint64_t value) {
     if (node == NULL) 
         return -1;
 
-    bdll_node *newNode = (bdll_node*)malloc(sizeof(bdll_node));
-    bdll_init(newNode, value);
+    bdll_node *newNode = bdll_init(value);
 
     if (node->tail != NULL) {
         node->tail->head = newNode;
@@ -124,28 +126,11 @@ int bdll_clear_branch(bdll_node *node) {
     return 1;
 }
 
-int bdll_clear_head(bdll_node *node) {
-    return 1;
-}
-
-int bdll_clear_tail(bdll_node *node) {
-
-    return 1;
-}
-
 int bdll_free(bdll_node *node) {
     return 1;
 }
 
 int bdll_free_branch(bdll_node *node) {
-    return 1;
-}
-
-int bdll_free_head(bdll_node *node) {
-    return 1;
-}
-
-int bdll_free_tail(bdll_node *node) {
     return 1;
 }
 

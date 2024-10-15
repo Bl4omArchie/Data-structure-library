@@ -2,10 +2,15 @@
 
 
 
-void dll_init(dll_node *node, uint64_t value) {
-    node->head = NULL;
-    node->tail = NULL;
-    dll_set_value(node, value);
+dll_node* dll_init(uint64_t value) {
+    dll_node *newNode = (dll_node*)malloc(sizeof(dll_node));
+    if (newNode == NULL)
+        return NULL;
+
+    newNode->head = NULL;
+    newNode->tail = NULL;
+    newNode->value = value;
+    return newNode;
 }
 
 void dll_set_value(dll_node *node, uint64_t value) {
@@ -18,8 +23,7 @@ int dll_insert_value_head(dll_node *node, uint64_t value) {
     if (node == NULL) 
         return -1;
 
-    dll_node *newNode = (dll_node*)malloc(sizeof(dll_node));
-    dll_init(newNode, value);
+    dll_node *newNode = dll_init(value);
     
     if (node->head != NULL) {
         node->head->tail = newNode;
@@ -36,8 +40,7 @@ int dll_insert_value_tail(dll_node *node, uint64_t value) {
     if (node == NULL) 
         return -1;
 
-    dll_node *newNode = (dll_node*)malloc(sizeof(dll_node));
-    dll_init(newNode, value);
+    dll_node *newNode = dll_init(value);
 
     if (node->tail != NULL) {
         node->tail->head = newNode;
@@ -49,6 +52,7 @@ int dll_insert_value_tail(dll_node *node, uint64_t value) {
     return 1;
 }
 
+// Can be an issue if the given node hasn't been allocated dynamically
 int dll_insert_node_head(dll_node *node, dll_node *to_replace) {
     if (node == NULL || to_replace == NULL)
         return -1;
@@ -115,14 +119,19 @@ int dll_clear(dll_node *node) {
 
 
 int dll_free(dll_node *node) {
-    node->head->tail = NULL;
-    dll_node *next;
+    if (node == NULL)
+        return -1;
 
+    if (node->head != NULL)
+        node->head->tail = NULL;
+
+    dll_node *next;    
     while (node != NULL) {
         next = node->tail;
         free(node);
         node = next;
     }
+    node = NULL;
     return 1;
 }
 
