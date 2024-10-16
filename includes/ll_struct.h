@@ -69,8 +69,8 @@ int bdll_insert_node_tail(bdll_node *node, bdll_node *to_replace);
 // Remove the given node and every branch depending on it and collasped the head and tail
 int bdll_remove_node(bdll_node *node);
 
+// Set values of the tail to 0
 int bdll_clear(bdll_node *node);
-int bdll_clear_branch(bdll_node *node);
 
 // Free the whole tail, branch included
 int bdll_free(bdll_node *node);

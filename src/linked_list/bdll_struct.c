@@ -145,21 +145,9 @@ int bdll_clear(bdll_node *node) {
         if (node->branch != NULL)
             bdll_clear(node->branch);
         node->value = 0;
-        node = node->head;
+        node = node->tail;
     }
 
-    return 1;
-}
-
-int bdll_clear_branch(bdll_node *node) {
-    if (node == NULL)
-        return -1;
-
-    if (node->branch == NULL)
-        return -1;
-
-    bdll_clear(node->branch);
-    node->branch == NULL;
     return 1;
 }
 
@@ -191,7 +179,7 @@ int bdll_free_branch(bdll_node *node) {
 
     bdll_free(node->branch);
     node->branch = NULL;
-
+    
     return 1;
 }
 
