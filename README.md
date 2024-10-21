@@ -11,8 +11,6 @@ The point of this project is to create data structure for hight performance comp
 
 
 ## Todo list
-- BDDL implementation
-- BDLL tests
 - application of DLL with Bignum
 - code revision for effiency
 

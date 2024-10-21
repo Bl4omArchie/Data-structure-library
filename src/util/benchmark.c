@@ -32,7 +32,6 @@ void load_function(dll_bench *bench, func_bench to_bench, void *args) {
     bench->functions[bench->size_functions-1].cpu_time = 0.0;
 }
 
-
 void free_bench(dll_bench *bench) {
     if (bench == NULL)
         return;
@@ -40,16 +39,6 @@ void free_bench(dll_bench *bench) {
     dll_free(bench->root);
     free(bench->functions);
     free(bench);
-}
-
-void benchmark(dll_bench *bench) {
-    for (int i=0; i < bench->size_functions-1; i++) {
-        benchmark_function(&bench->functions[i]);
-
-        printf ("%.2f", bench->functions[i].time);
-        printf ("%.2f", bench->functions[i].ram);
-        printf ("%.2f", bench->functions[i].cpu_time);
-    }
 }
 
 void benchmark_function(op_bench *func) {
@@ -70,4 +59,15 @@ void benchmark_function(op_bench *func) {
     func->time = ((end.tv_sec - start.tv_sec) * 1000.0) + ((end.tv_usec - start.tv_usec) / 1000.0);
     func->cpu_time = ((double) (c_end - c_start)) / CLOCKS_PER_SEC * 1000;
     func->ram = ram_before - ram_after;
+}
+
+
+void benchmark(dll_bench *bench) {
+    for (int i=0; i < bench->size_functions-1; i++) {
+        benchmark_function(&bench->functions[i]);
+
+        printf ("%.2f", bench->functions[i].time);
+        printf ("%.2f", bench->functions[i].ram);
+        printf ("%.2f", bench->functions[i].cpu_time);
+    }
 }
