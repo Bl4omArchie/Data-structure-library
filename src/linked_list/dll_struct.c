@@ -2,7 +2,7 @@
 
 
 
-dll_node *dll_init(uint64_t value) {
+dll_node *new_dll(uint64_t value) {
     dll_node *newNode = (dll_node*)malloc(sizeof(dll_node));
     if (newNode == NULL)
         return NULL;
@@ -11,6 +11,16 @@ dll_node *dll_init(uint64_t value) {
     newNode->tail = NULL;
     newNode->value = value;
     return newNode;
+}
+
+int init_dll(dll_node *node, uint64_t value) {
+    if (node != NULL)
+        return -1;
+
+    node->head = NULL;
+    node->tail = NULL;
+    node->value = value;
+    return 1;
 }
 
 int dll_set_value(dll_node *node, uint64_t value) {
@@ -26,7 +36,7 @@ int dll_insert_value_head(dll_node *node, uint64_t value) {
     if (node == NULL) 
         return -1;
 
-    dll_node *newNode = dll_init(value);
+    dll_node *newNode = new_dll(value);
     
     if (node->head != NULL) {
         node->head->tail = newNode;
@@ -43,7 +53,7 @@ int dll_insert_value_tail(dll_node *node, uint64_t value) {
     if (node == NULL) 
         return -1;
 
-    dll_node *newNode = dll_init(value);
+    dll_node *newNode = new_dll(value);
 
     if (node->tail != NULL) {
         node->tail->head = newNode;

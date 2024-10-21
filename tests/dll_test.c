@@ -3,8 +3,8 @@
 
 
 
-void test_dll_init() {
-    dll_node *node1 = dll_init(65537);
+void test_new_dll() {
+    dll_node *node1 = new_dll(65537);
     assert(node1->head == NULL);
     assert(node1->tail == NULL);
     assert(node1->value == 65537);
@@ -14,7 +14,7 @@ void test_dll_init() {
 }
 
 void test_dll_set_value() {
-    dll_node *node1 = dll_init(65537);
+    dll_node *node1 = new_dll(65537);
     assert(node1->value == 65537);
     
     dll_set_value(node1, 0);
@@ -31,7 +31,7 @@ void test_dll_set_value() {
 }
 
 void test_dll_insert_value_head() {
-    dll_node *node1 = dll_init(5);
+    dll_node *node1 = new_dll(5);
     
     assert(dll_insert_value_head(node1, 65537) == 1);
     assert(node1->head->value == 65537);
@@ -47,7 +47,7 @@ void test_dll_insert_value_head() {
 }
 
 void test_dll_insert_value_tail() {
-    dll_node *node1 = dll_init(5);
+    dll_node *node1 = new_dll(5);
     
     assert(dll_insert_value_tail(node1, 65537) == 1);
     assert(node1->tail->value == 65537);
@@ -63,8 +63,8 @@ void test_dll_insert_value_tail() {
 }
 
 void test_dll_insert_node_head() {
-    dll_node *node1 = dll_init(10);
-    dll_node *node2 = dll_init(65537);
+    dll_node *node1 = new_dll(10);
+    dll_node *node2 = new_dll(65537);
     
     assert(dll_insert_node_head(node1, node2) == 1);
     assert(node1->head->value == 65537);
@@ -79,8 +79,8 @@ void test_dll_insert_node_head() {
 }
 
 void test_dll_insert_node_tail() {
-    dll_node *node1 = dll_init(10);
-    dll_node *node2 = dll_init(65537);
+    dll_node *node1 = new_dll(10);
+    dll_node *node2 = new_dll(65537);
 
     assert(dll_insert_node_tail(node1, node2) == 1);
     assert(node1->tail->value == 65537);
@@ -95,7 +95,7 @@ void test_dll_insert_node_tail() {
 }
 
 void test_dll_remove_node() {
-    dll_node *node1 = dll_init(128);
+    dll_node *node1 = new_dll(128);
 
     dll_insert_value_tail(node1, 256);
     dll_insert_value_tail(node1, 512);
@@ -109,7 +109,7 @@ void test_dll_remove_node() {
 }
 
 void test_dll_clear() {
-    dll_node *node1 = dll_init(65537);
+    dll_node *node1 = new_dll(65537);
 
     dll_insert_value_head(node1, 65537);
     dll_insert_value_head(node1, 20);
@@ -127,7 +127,7 @@ void test_dll_clear() {
 }
 
 void test_dll_free() {
-    dll_node *node1 = dll_init(65537);
+    dll_node *node1 = new_dll(65537);
     
     dll_insert_value_tail(node1, 20);
     dll_insert_value_tail(node1, 10);
@@ -139,7 +139,7 @@ void test_dll_free() {
 
 int run_all_dll() {
     test_dll_free();
-    test_dll_init();
+    test_new_dll();
     test_dll_set_value();
     test_dll_insert_value_head();
     test_dll_insert_value_tail();

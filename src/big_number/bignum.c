@@ -1,6 +1,19 @@
 #include "bignum.h"
 
+
+Bignum *new_bn() {
+    Bignum *bn = (Bignum*)malloc(sizeof(Bignum*));
+    bn->number_element = 0;
+    dll_init(bn->root_bn);
+    bn->size_bn = 0;
+
+    return bn;
+}
+
 void init_bn(Bignum *bn) {
+    if (bn != NULL)
+        return -1;
+
     bn->number_element = 0;
     dll_init(bn->root_bn);
     bn->size_bn = 0;

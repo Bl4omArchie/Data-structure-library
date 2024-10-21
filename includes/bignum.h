@@ -12,6 +12,7 @@ typedef struct _bignum_struture {
 } Bignum;
 
 
+Bignum *new_bn();
 void init_bn(Bignum *bn);
 void reset_bn(Bignum *bn);
 

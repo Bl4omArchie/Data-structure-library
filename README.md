@@ -12,7 +12,9 @@ The point of this project is to create data structure for hight performance comp
 
 ## Todo list
 - application of DLL with Bignum
-- code revision for effiency
+- benchmark
+- load csv data into DLL and BDLL
+- associative array ?
 
 ## Installation
 
