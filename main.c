@@ -21,12 +21,10 @@ int main() {
     //const char *filename = "csv/test_linked_list.csv";
     //read_csv(filename);
 
-    dll_node *new_node = new_dll(0);
     
-    dll_bench my_bench;
-    init_bench(&my_bench, "tests/csv/test_linked_list.csv");
-    load_function_i(&my_bench, dll_insert_value_head, new_node, 50);
-    benchmark(&my_bench);
+    bench *my_bench = bench_dll_insertion();
+    printf ("%.4f seconds\n", my_bench->time);
+    free(my_bench);
     
     /*
     if (run_all_dll())

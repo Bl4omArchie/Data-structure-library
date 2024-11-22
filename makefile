@@ -8,7 +8,7 @@ BUILDDIR = build
 
 TARGET = file.o
 
-SRCS = $(wildcard $(SRCDIR)/associative_array/*.c $(SRCDIR)/linked_list/*.c $(SRCDIR)/util/*.c $(TESTDIR)/*.c)
+SRCS = $(wildcard $(SRCDIR)/associative_array/*.c $(SRCDIR)/linked_list/*.c  $(SRCDIR)/benchmark/*.c $(SRCDIR)/util/*.c $(TESTDIR)/*.c)
 ASMS = $(wildcard $(SRCDIR)/util/*.asm)
 
 OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS)) $(patsubst $(SRCDIR)/util/%.asm,$(BUILDDIR)/util/%.o,$(ASMS))
