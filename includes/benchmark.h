@@ -5,7 +5,8 @@
 #include "util.h"
 #include "ll_struct.h"
 
-
+#include <sys/time.h>
+#include <time.h>
 
 typedef struct _bench {
     double time;
@@ -23,18 +24,20 @@ typedef struct _bench_context {
 } bench_ctx;
 
 
+#define LOG_FILE "logs/log.txt"
+
+
 bench *create_bench();
 bench_ctx *create_bench_ctx();
 
 void start_bench(bench_ctx *b_ctx);
 void end_bench(bench *b, bench_ctx *b_ctx);
 
-bench *bench_dll_insertion();
+bench *bench_dll_insertion_tail(int round, int iter);
+bench *bench_dll_insertion_head(int round, int iter);
 
-int bench_dll_minimal();
-int bench_dll_medium();
-int bench_dll_maximal();
 
+int create_log(bench *b, const char *message);
 
 
 #endif

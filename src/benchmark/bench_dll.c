@@ -3,35 +3,44 @@
 
 
 
-bench *bench_dll_insertion() {
+bench *bench_dll_insertion_tail(int round, int iter) {
     bench *b = create_bench();
     bench_ctx *b_ctx = create_bench_ctx();
 
-    dll_node *node = new_dll(50);
+    
 
     start_bench(b_ctx);
 
-    for (int i=0; i<50000000; i++) {
-        dll_insert_value_tail(node, generate_random_number());
+    for (int r=0; r<round; r++) {
+        dll_node *node = new_dll(50);
+        for (int i=0; i<iter; i++)
+            dll_insert_value_head(node, generate_random_number());
+        dll_free(node);
     }
-
-    dll_free(node);
-
     end_bench(b, b_ctx);
+
+    create_log(b, "benchmark insertion");
+
     free(b_ctx);
     return b;
 }
 
+bench *bench_dll_insertion_head(int round, int iter) {
+    bench *b = create_bench();
+    bench_ctx *b_ctx = create_bench_ctx();
 
+    start_bench(b_ctx);
 
-int bench_dll_minimal() {
+    for (int r=0; r<round; r++) {
+        dll_node *node = new_dll(50);
+        for (int i=0; i<iter; i++)
+            dll_insert_value_head(node, generate_random_number());
+        dll_free(node);
+    }
+    end_bench(b, b_ctx);
 
-}
+    create_log(b, "benchmark insertion");
 
-int bench_dll_medium() {
-
-}
-
-int bench_dll_maximal() {
-
+    free(b_ctx);
+    return b;
 }

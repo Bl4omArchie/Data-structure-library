@@ -1,6 +1,5 @@
 #include "benchmark.h"
-#include <sys/time.h>
-#include <time.h>
+
 
 
 bench *create_bench() {

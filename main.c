@@ -35,7 +35,7 @@ int main() {
     //read_csv(filename);
 
     
-    bench *my_bench = bench_dll_insertion();
+    bench *my_bench = bench_dll_insertion_tail(50, 5000000);
     printf ("%.4f seconds\n", my_bench->time);
     free(my_bench);
     

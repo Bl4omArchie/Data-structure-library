@@ -1,0 +1,25 @@
+[2024-11-23 13:10:53] : benchmark insertion
+CPU time :0.000000
+RAM used :0.000000
+Total time :0.000000
+
+[2024-11-23 13:11:56] : benchmark insertion
+CPU time : 3.425433
+RAM used : 2.000000
+Total time : 3.428021
+
+[2024-11-23 14:05:20] : benchmark insertion
+CPU time : 3.334897
+RAM used : 2.000000
+Total time : 3.334427
+
+[2024-11-23 14:05:54] : benchmark insertion
+CPU time : 3.301145
+RAM used : 2.000000
+Total time : 3.307829
+
+[2024-11-23 14:15:44] : benchmark insertion
+CPU time : 16.864504
+RAM used : 7.000000
+Total time : 16.841864
+
