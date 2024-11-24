@@ -32,6 +32,11 @@ make
 ./file.o
 ```
 
+## Diagram
+
+This diagram resume every features of this project : 
+![diagram](docs/diagram_dsa_project.excalidraw.png)
+
 ## 📣 Author
 You can contact me and see my work here:
 

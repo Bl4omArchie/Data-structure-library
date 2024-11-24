@@ -23,3 +23,8 @@ CPU time : 16.864504
 RAM used : 7.000000
 Total time : 16.841864
 
+[2024-11-24 13:32:11] : benchmark insertion
+CPU time : 17.005235
+RAM used : 7.000000
+Total time : 17.015423
+

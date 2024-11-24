@@ -2,6 +2,7 @@
 
 
 
+
 bench *create_bench() {
     bench *b = (bench *)malloc(sizeof(bench));
     b->cpu_time = 0.0;
