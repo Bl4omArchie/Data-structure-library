@@ -5,6 +5,7 @@
 
 bench *create_bench() {
     bench *b = (bench *)malloc(sizeof(bench));
+    b->bctx = create_bench_ctx();
     b->cpu_time = 0.0;
     b->ram = 0.0;
     b->time = 0.0;
@@ -24,13 +25,22 @@ bench_ctx *create_bench_ctx() {
     return b_ctx;
 }
 
-void start_bench(bench_ctx *b_ctx) {
+int end_benchmark(bench *b) {
+    if (b == NULL)
+        return -1;
+
+    free(b->bctx);
+    free(b);
+    return 1;
+}
+
+void start_record(bench_ctx *b_ctx) {
     gettimeofday(&b_ctx->start, NULL);
     b_ctx->c_start = clock();
     b_ctx->ram_before = get_available_ram();
 }
 
-void end_bench(bench *b, bench_ctx *b_ctx) {
+void end_record(bench *b, bench_ctx *b_ctx) {
     b_ctx->ram_after = get_available_ram();
     b_ctx->c_end = clock();
     gettimeofday(&b_ctx->end, NULL);

@@ -10,13 +10,6 @@
 #include <time.h>
 
 
-// When you benchmark a function, the performance will be stored here
-typedef struct _bench {
-    double time;
-    double ram;
-    double cpu_time;
-} bench;
-
 // The context benchmark is the data related to the calculation of the performance of a function
 typedef struct _bench_context {
     struct timeval start;
@@ -27,14 +20,23 @@ typedef struct _bench_context {
     long ram_after;
 } bench_ctx;
 
+// When you benchmark a function, the performance will be stored here
+typedef struct _bench {
+    double time;
+    double ram;
+    double cpu_time;
+    bench_ctx *bctx;
+} bench;
+
 // See session.h for best practise
 
 
 bench *create_bench();
 bench_ctx *create_bench_ctx();
+int end_benchmark(bench *b);
 
-void start_bench(bench_ctx *b_ctx);
-void end_bench(bench *b, bench_ctx *b_ctx);
+void start_record(bench_ctx *b_ctx);
+void end_record(bench *b, bench_ctx *b_ctx);
 
 bench *bench_dll_insertion_tail(int round, int iter);
 bench *bench_dll_insertion_head(int round, int iter);

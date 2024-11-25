@@ -1,26 +1,19 @@
 #include "hardware.h"
 
 /*
-
 1 GiB = 1024 MiB
 1 MiB = 1024 kB
 
 So, 1 GiB = 1024 * 1024 kB = 1,048,576 kB.
-
 7860156 kB ÷ 1,048,576 kB/GiB ≈ 7.5 GiB
-
 
 -----------------------------------------------
 
-
 1 Go = 1×1091×109 octets
-
 La taille d'un nœud est de 24 octets.
 
 How much nodes can be generated for 3GB:
-
 3 * 10^9 / 24 = 125,000,000 nodes
-
 */
 
 
@@ -63,8 +56,33 @@ double get_available_ram() {
     return available_ram;
 }
 
+const char *get_cpu() {
+    if (__builtin_cpu_is("amd"))
+        return "amd";
+    else if (__builtin_cpu_is("intel"))
+        return "intel";
+    else if (__builtin_cpu_is("atom"))
+        return "atom";
+    else if (__builtin_cpu_is("slm"))
+        return "slm";
+    else if (__builtin_cpu_is("core2"))
+        return "core2";
+    else if (__builtin_cpu_is("corei7"))
+        return "intel core i7";
+    else if (__builtin_cpu_is("nehalem"))
+        return "intel Core i7 Nehalem";
+    else if (__builtin_cpu_is("westmere"))
+        return "intel Core i7 Westmere";
+    else if (__builtin_cpu_is("sandybridge"))
+        return "intel Core i7 Sandy Bridge";
+    else if (__builtin_cpu_is("ivybridge"))
+        return "intel Core i7 Ivy Bridge";
+    else
+        return "UNKNOW";
+}
+
 // Source : https://stackoverflow.com/a/66249936
-const char *get_build() { //Get current architecture, detectx nearly every architecture. Coded by Freak
+const char *get_architecture() { //Get current architecture, detectx nearly every architecture. Coded by Freak
     #if defined(__x86_64__) || defined(_M_X64)
     return "x86_64";
     #elif defined(i386) || defined(__i386__) || defined(__i386) || defined(_M_IX86)
@@ -112,7 +130,8 @@ const char *get_build() { //Get current architecture, detectx nearly every archi
 
 void display_specifications() {
     printf ("*****************************\n");
-    printf (" Architecture : %s\n", get_build());
+    printf (" Architecture : %s\n", get_architecture());
+    printf (" CPU name: %s\n", get_cpu());
     printf (" CPU cores: %d\n", get_procs_nb());
     printf (" RAM: %.3f GB\n", get_ram());
     printf (" Available RAM: %.3f GB\n", get_available_ram());
