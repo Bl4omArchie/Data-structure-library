@@ -26,10 +26,10 @@ int test_ll() {
 
 
 int main() {
-    display_specifications();
+    b_session *instance = start_benchmark_session();
+    display_specifications(instance->hardware_profile);
 
     
-    b_session *instance = start_benchmark_session();
     end_benchmark_session(instance);
     
     return 1;

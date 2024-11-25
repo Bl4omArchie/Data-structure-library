@@ -3,14 +3,16 @@
 
 
 hprof *create_hardware_profile() {
-    hprof *h = (hprof*)malloc(sizeof(hprof*));
+    hprof *hp = (hprof*)malloc(sizeof(hprof*));
 
-    h->total_ram = get_ram();
-    h->available_ram = get_available_ram();
-    h->nb_procs = get_procs_nb();
-    h->architecture = get_architecture();
+    hp->total_ram = get_ram();
+    hp->available_ram = get_available_ram();
+    hp->nb_procs = get_procs_nb();
+    hp->os = get_os();
+    hp->cpu_name = get_cpu();
+    hp->architecture = get_architecture();
 
-    return h;
+    return hp;
 }
 
 int verify_cpu_extension_compatibility(hprof *hp) {
@@ -29,4 +31,19 @@ int verify_cpu_extension_compatibility(hprof *hp) {
 int verify_activated_extension(hprof *hp) {
     if (hp == NULL)
         return -1;
+}
+
+int display_specifications(hprof *hp) {
+    if (hp == NULL)
+        return -1;
+
+    printf ("*****************************\n");
+    printf (" OS : %s\n", hp->os);
+    printf (" Architecture : %s\n", hp->architecture);
+    printf (" CPU name: %s\n", hp->cpu_name);
+    printf (" CPU cores: %d\n", hp->nb_procs);
+    printf (" RAM: %.3f GB\n", hp->total_ram);
+    printf (" Available RAM: %.3f GB\n", hp->available_ram);
+    printf ("*****************************\n\n");
+    return 1;
 }

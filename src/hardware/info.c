@@ -57,6 +57,8 @@ double get_available_ram() {
 }
 
 const char *get_cpu() {
+    __builtin_cpu_init();
+
     if (__builtin_cpu_is("amd"))
         return "amd";
     else if (__builtin_cpu_is("intel"))
@@ -69,16 +71,34 @@ const char *get_cpu() {
         return "core2";
     else if (__builtin_cpu_is("corei7"))
         return "intel core i7";
+    
     else if (__builtin_cpu_is("nehalem"))
         return "intel Core i7 Nehalem";
+    
     else if (__builtin_cpu_is("westmere"))
         return "intel Core i7 Westmere";
+    
     else if (__builtin_cpu_is("sandybridge"))
         return "intel Core i7 Sandy Bridge";
+    
     else if (__builtin_cpu_is("ivybridge"))
         return "intel Core i7 Ivy Bridge";
     else
-        return "UNKNOW";
+        return "unsupported";
+}
+
+const char *get_os() {
+    #if defined(_WIN32)
+        return "windows";
+    #elif defined(_WIN654)
+        return "windows";
+    #elif defined(linux)
+        return "linux";
+    #elif defined(__APPLE__)
+        return "macOS";
+    #else
+        return "unsupported";
+    #endif
 }
 
 // Source : https://stackoverflow.com/a/66249936
@@ -126,14 +146,4 @@ const char *get_architecture() { //Get current architecture, detectx nearly ever
     #else
     return "UNKNOWN";
     #endif
-}
-
-void display_specifications() {
-    printf ("*****************************\n");
-    printf (" Architecture : %s\n", get_architecture());
-    printf (" CPU name: %s\n", get_cpu());
-    printf (" CPU cores: %d\n", get_procs_nb());
-    printf (" RAM: %.3f GB\n", get_ram());
-    printf (" Available RAM: %.3f GB\n", get_available_ram());
-    printf ("*****************************\n\n");
 }

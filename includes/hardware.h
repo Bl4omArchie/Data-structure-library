@@ -15,7 +15,9 @@ typedef struct _hardware_profile {
     double total_ram;           // Total RAM of the current computer
     double available_ram;       // Total RAM available
     int nb_procs;               // Number of processor of the cpu
+    const char *cpu_name;       // CPU name
     const char *architecture;   // Computer architecture
+    const char *os;             // exploitation system
     int ext_sse;                // cpu extension sse
     int ext_sse2;               // cpu extension sse2
     int ext_avx;                // cpu extension avx
@@ -27,12 +29,13 @@ int get_procs_nb();
 double get_ram();
 double get_available_ram();
 const char *get_cpu();
+const char *get_os();
 const char *get_architecture();
-void display_specifications();
 
 
 hprof *create_hardware_profile();
 int verify_cpu_extension_compatibility(hprof *hp);
 int verify_activated_extension(hprof *hp);
+int display_specifications(hprof *hp);
 
 #endif
