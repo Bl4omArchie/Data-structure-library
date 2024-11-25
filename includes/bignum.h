@@ -16,7 +16,7 @@ typedef struct _bignum_struture {
 
 
 Bignum *new_bn();
-void init_bn(Bignum *bn);
+int init_bn(Bignum *bn);
 void reset_bn(Bignum *bn);
 
 void set_bn_i(Bignum *a, int n);

@@ -2,14 +2,16 @@
 #define HARDWARE_H
 
 
+#include <sys/resource.h>
 #include <sys/sysinfo.h>
 #include <sys/time.h>
-#include <sys/resource.h>
-#include <sched.h>
 #include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sched.h>
+#include <stdio.h>
 #include <time.h>
 
-#include "report.h"
 
 
 typedef struct _hardware_profile {

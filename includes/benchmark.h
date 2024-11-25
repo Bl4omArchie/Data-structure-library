@@ -2,7 +2,6 @@
 #define BENCHMARK_H
 
 
-
 #include "ll_struct.h"
 #include "hardware.h"
 #include "util.h"

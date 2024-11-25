@@ -19,8 +19,6 @@ bench *bench_dll_insertion_tail(int round, int iter) {
     }
     end_bench(b, b_ctx);
 
-    create_log(b, "benchmark insertion");
-
     free(b_ctx);
     return b;
 }
@@ -38,8 +36,6 @@ bench *bench_dll_insertion_head(int round, int iter) {
         dll_free(node);
     }
     end_bench(b, b_ctx);
-
-    create_log(b, "benchmark insertion");
 
     free(b_ctx);
     return b;

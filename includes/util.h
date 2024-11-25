@@ -2,12 +2,13 @@
 #define UTIL_H
 
 
+#include <stdio.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/stat.h>
 
 
 
@@ -15,6 +16,8 @@
 uint64_t generate_random_number();
 
 
+// ********** file.c **********
+int check_file_exists(const char* filename);
 
 // ********** arithmetic.asm **********
 extern uint64_t add_binary_optimized(uint64_t a, uint64_t b, int c);

@@ -1,4 +1,4 @@
-#include "register.h"
+#include "report.h"
 
 
 int create_log(bench *b, const char *filepath, const char *message) {

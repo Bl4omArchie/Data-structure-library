@@ -3,6 +3,8 @@
 
 
 #include "hardware.h"
+#include "benchmark.h"
+#include "util.h"
 
 
 #define LOG_FILE "logs/log.txt"
@@ -10,19 +12,23 @@
 
 // A session allows you yo properly make your benchmark. This manage the benchmark and the hardware profile properly 
 typedef struct _bench_session {
-    bench *bench_log;
-    hprof *profile;
-    const char *log_file;
-    const char *report_file;
+    bench *log_bench;
+    hprof *log_profile;
+    int count_bench;
+    int count_profile;
+    const char *file_log;
+    const char *file_report;
 } b_session;
 
 
 // High level function : use it for best practise
 b_session *start_benchmark_session();
-void end_benchmark_session(b_session *bs);
+int end_benchmark_session(b_session *bs);
+
+int add_bench(b_session *bs);
 
 int modify_log_file(b_session *bs, const char *filepath);
-int modify_report_file(b_session *bs, const char *filepath)
+int modify_report_file(b_session *bs, const char *filepath);
 
 
 #endif

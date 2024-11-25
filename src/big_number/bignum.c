@@ -4,18 +4,18 @@
 Bignum *new_bn() {
     Bignum *bn = (Bignum*)malloc(sizeof(Bignum*));
     bn->number_element = 0;
-    dll_init(bn->root_bn);
+    bn->root_bn = new_dll(0);
     bn->size_bn = 0;
 
     return bn;
 }
 
-void init_bn(Bignum *bn) {
+int init_bn(Bignum *bn) {
     if (bn != NULL)
         return -1;
 
     bn->number_element = 0;
-    dll_init(bn->root_bn);
+    bn->root_bn = new_dll(0);
     bn->size_bn = 0;
 }
 
@@ -34,12 +34,12 @@ void set_bn(Bignum *bn, Bignum *bn_to_set) {
     bn->number_element = bn_to_set->number_element;
 }
 
-void add_bn_i(Bignum *bn, int number) {
+void add_bn_i(Bignum *r, Bignum *a, int n) {
 
 }
 
-void add_bn(Bignum *bn, Bignum *bn_to_add) {
-
+void add_bn(Bignum *r, Bignum *a, Bignum *b) {
+    
 }
 
 void free_bn(Bignum *bn) {
