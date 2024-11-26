@@ -90,12 +90,16 @@ const char *get_cpu() {
 const char *get_os() {
     #if defined(_WIN32)
         return "windows";
-    #elif defined(_WIN654)
+    #elif defined(_WIN64)
         return "windows";
-    #elif defined(linux)
+    #elif defined(__linux__)
         return "linux";
     #elif defined(__APPLE__)
         return "macOS";
+    #elif defined(__FreeBSD__)
+        return "freeBSD";
+    #elif defined(__sun)
+        return "solaris";  
     #else
         return "unsupported";
     #endif
