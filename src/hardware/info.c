@@ -103,7 +103,7 @@ const char *get_os() {
     #else
         return "unsupported";
     #endif
-}
+}   
 
 // Source : https://stackoverflow.com/a/66249936
 const char *get_architecture() { //Get current architecture, detectx nearly every architecture. Coded by Freak

@@ -37,13 +37,11 @@ int display_specifications(hprof *hp) {
     if (hp == NULL)
         return -1;
 
-    printf ("*****************************\n");
-    printf (" OS : %s\n", hp->os);
-    printf (" Architecture : %s\n", hp->architecture);
-    printf (" CPU name: %s\n", hp->cpu_name);
-    printf (" CPU cores: %d\n", hp->nb_procs);
-    printf (" RAM: %.3f GB\n", hp->total_ram);
-    printf (" Available RAM: %.3f GB\n", hp->available_ram);
-    printf ("*****************************\n\n");
+    printf ("| OS : %s\n", hp->os);
+    printf ("| Architecture : %s\n", hp->architecture);
+    printf ("| CPU name: %s\n", hp->cpu_name);
+    printf ("| CPU cores: %d\n", hp->nb_procs);
+    printf ("| RAM: %.3f GB\n", hp->total_ram);
+    printf ("| Available RAM: %.3f GB\n\n", hp->available_ram);
     return 1;
 }
