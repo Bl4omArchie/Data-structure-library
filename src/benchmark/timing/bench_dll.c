@@ -4,7 +4,7 @@
 bench *bench_dll_insertion_tail(int round, int iter) {
     bench *b = create_bench();
 
-    start_record(b->bctx);
+    start_record(b);
 
     for (int r=0; r<round; r++) {
         dll_node *node = new_dll(50);
@@ -19,7 +19,7 @@ bench *bench_dll_insertion_tail(int round, int iter) {
 bench *bench_dll_insertion_head(int round, int iter) {
     bench *b = create_bench();
 
-    start_record(b->bctx);
+    start_record(b);
 
     for (int r=0; r<round; r++) {
         dll_node *node = new_dll(50);

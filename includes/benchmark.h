@@ -32,11 +32,12 @@ typedef struct _bench {
 
 
 bench *create_bench();
-bench_ctx *init_bench_ctx();
 int end_benchmark(bench *b);
 
-void start_record(bench_ctx *b_ctx);
-void end_record(bench *b, bench_ctx *b_ctx);
+bench_ctx *create_bench_ctx();
+
+void start_record(bench *b);
+void end_record(bench *b);
 
 bench *bench_dll_insertion_tail(int round, int iter);
 bench *bench_dll_insertion_head(int round, int iter);
