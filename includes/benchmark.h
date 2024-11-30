@@ -28,11 +28,11 @@ typedef struct _bench {
     bench_ctx *bctx;
 } bench;
 
-// See session.h for best practise
+// See session.h to properly use those struct
 
 
 bench *create_bench();
-bench_ctx *create_bench_ctx();
+bench_ctx *init_bench_ctx();
 int end_benchmark(bench *b);
 
 void start_record(bench_ctx *b_ctx);

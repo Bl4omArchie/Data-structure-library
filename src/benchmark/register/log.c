@@ -40,5 +40,7 @@ int fill_report(bench *b, const char *filepath) {
         return -1;
     }
 
+    
+
     //TODO
 }
