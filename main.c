@@ -11,6 +11,12 @@
 #include <stdio.h>
 
 
+struct {
+    int a;
+    size_t size;
+}
+
+
 
 int test_ll() {
     if (run_all_dll())

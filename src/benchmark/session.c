@@ -7,9 +7,8 @@
 b_session *start_benchmark_session() {
     b_session *bs = (b_session*)malloc(sizeof(b_session));
     bs->array_bench = create_bench();
+    bs->size_bench = 1;
     bs->hardware_profile = create_hardware_profile();
-    bs->count_bench = 0;
-    bs->count_profile = 0;
     bs->file_log = LOG_FILE;
     bs->file_report = REPORT_FILE;
     return bs;

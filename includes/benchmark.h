@@ -6,29 +6,43 @@
 #include "hardware.h"
 #include "util.h"
 
+
+#include <sys/stat.h>
 #include <sys/time.h>
 #include <time.h>
 
 
-// The context benchmark is the data related to the calculation of the performance of a function
-typedef struct _bench_context {
+// recorded info during the benchmark of a function for a single iteration
+typedef struct _benchmark_context {
     struct timeval start;
     struct timeval end;
     clock_t c_start;
     clock_t c_end;
     long ram_before;
     long ram_after;
-} bench_ctx;
+} bctx;
 
-// When you benchmark a function, the performance will be stored here
-typedef struct _bench {
-    double time;
-    double ram;
-    double cpu_time;
-    bench_ctx *bctx;
-} bench;
+// a session is is the evaluation of one function.
+// it consist of N rounds where we're iterates the function X times
+// then for each rounds we take the average time it tooks to make each iteration
+// in the end we have N averages time for X iteration each
+typedef struct _session {
+    bctx *bench_ctx;
+    int size_bench_ctx;
+    const char *operation;
+    int N;
+    int X;
+} session;
 
-// See session.h to properly use those struct
+// a benchmark is a set of session
+// the benchmark purpose is to evaluate one function 
+typedef struct _benchmark {
+    session *arr_sessions;
+    int size_sessions;
+    const char *file_log;
+    const char *file_report;
+} benchmark;
+
 
 
 bench *create_bench();
@@ -41,6 +55,15 @@ void end_record(bench *b);
 
 bench *bench_dll_insertion_tail(int round, int iter);
 bench *bench_dll_insertion_head(int round, int iter);
+
+
+
+// Write the result of a benchmark into a text file
+int create_log(bench *b, const char *filepath, const char *message);
+
+// Same thing that create_log() but in csv file
+int fill_report(bench *b, const char *filepath);
+
 
 
 #endif

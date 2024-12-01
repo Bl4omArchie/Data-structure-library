@@ -16,6 +16,10 @@
 uint64_t generate_random_number();
 
 
+// ********** read_csv.c **********
+void read_csv(const char *path_file);
+
+
 // ********** file.c **********
 int check_file_exists(const char* filename);
 
