@@ -4,7 +4,7 @@
 
 #include "ll_struct.h"
 #include "hardware.h"
-#include "util.h"
+#include "utils.h"
 
 
 #include <sys/stat.h>
@@ -39,30 +39,48 @@ typedef struct _session {
 typedef struct _benchmark {
     session *arr_sessions;
     int size_sessions;
+    hprof *hardware_profile;
     const char *file_log;
     const char *file_report;
 } benchmark;
 
 
-
-bench *create_bench();
-int end_benchmark(bench *b);
-
-bench_ctx *create_bench_ctx();
-
-void start_record(bench *b);
-void end_record(bench *b);
-
-bench *bench_dll_insertion_tail(int round, int iter);
-bench *bench_dll_insertion_head(int round, int iter);
+#define LOG_FILE "logs/log.txt"
+#define REPORT_FILE "logs/report.csv"
 
 
+// BENCHMARK 
 
+benchmark *bench_dll_insertion_tail(int round, int iter);
+benchmark *bench_dll_insertion_head(int round, int iter);
+
+
+// ********* bench.c *********
+benchmark *start_benchmark();
+int end_benchmark(benchmark *b);
+
+int add_session(benchmark *b, session *s);
+
+int modify_log_file(benchmark *b, const char *filepath);
+int modify_report_file(benchmark *b, const char *filepath);
+
+
+// ********* session.c *********
+session *init_session(int round, int iteration, const char *op);
+int free_session(session *s);
+int add_bench(session *s, benchmark *b);
+
+bctx *init_record();
+void start_record(bctx *b);
+void end_record(bctx *b);
+
+
+// ********* log.c *********
 // Write the result of a benchmark into a text file
-int create_log(bench *b, const char *filepath, const char *message);
+int create_log(benchmark *b, const char *filepath, const char *message);
 
 // Same thing that create_log() but in csv file
-int fill_report(bench *b, const char *filepath);
+int fill_report(benchmark *b, const char *filepath);
 
 
 

@@ -1,20 +1,13 @@
 #include "benchmark.h"
-#include "session.h"
 #include "ll_struct.h" 
 #include "ll_tests.h"
 #include "bignum.h"
-#include "util.h"
+#include "utils.h"
 
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-
-struct {
-    int a;
-    size_t size;
-}
 
 
 
@@ -28,15 +21,15 @@ int test_ll() {
         printf ("Test BDLL completed!\n");
     else
         printf ("Test BDLL failed!\n");
+    return 1;
 }
 
 
 int main() {
-    b_session *instance = start_benchmark_session();
-    display_specifications(instance->hardware_profile);
-
+    benchmark *instance = start_benchmark();
+    display_specifications(&instance->hardware_profile);
     
-    end_benchmark_session(instance);
+    end_benchmark(instance);
     
     return 1;
 }

@@ -2,50 +2,53 @@
 
 
 
-
-bench *create_bench() {
-    bench *b = (bench *)malloc(sizeof(bench));
-    b->bctx = create_bench_ctx();
-    b->cpu_time = 0.0;
-    b->ram = 0.0;
-    b->time = 0.0;
+benchmark *start_benchmark() {
+    benchmark *b = (benchmark*)malloc(sizeof(benchmark));
+    b->arr_sessions = init_session();
+    b->size_sessions = 1;
+    b->hardware_profile = create_hardware_profile();
+    b->file_log = LOG_FILE;
+    b->file_report = REPORT_FILE;
     return b;
 }
 
-bench_ctx *create_bench_ctx() {
-    bench_ctx *b_ctx = (bench_ctx *)malloc(sizeof(bench_ctx));
-
-    b_ctx->start = (struct timeval){0};
-    b_ctx->end = (struct timeval){0};
-    b_ctx->c_start = 0;
-    b_ctx->c_end = 0;
-    b_ctx->ram_before = 0;
-    b_ctx->ram_after = 0;
-
-    return b_ctx;
-}
-
-int end_benchmark(bench *b) {
+int end_benchmark(benchmark *b) {
     if (b == NULL)
         return -1;
 
-    free(b->bctx);
+    free(b->arr_sessions);
     free(b);
     return 1;
 }
 
-void start_record(bench *b) {
-    gettimeofday(&b->bctx->start, NULL);
-    b->bctx->c_start = clock();
-    b->bctx->ram_before = get_available_ram();
+
+
+int add_session(benchmark *b, session *s) {
+    if (b == NULL || s == NULL)
+        return -1; 
+    return 1;
 }
 
-void end_record(bench *b) {
-    b->bctx->ram_after = get_available_ram();
-    b->bctx->c_end = clock();
-    gettimeofday(&b->bctx->end, NULL);
 
-    b->time = (b->bctx->end.tv_sec - b->bctx->start.tv_sec) + (b->bctx->end.tv_usec - b->bctx->start.tv_usec) / 1000000.0;
-    b->cpu_time = ((double)(b->bctx->c_end - b->bctx->c_start)) / CLOCKS_PER_SEC;
-    b->ram = b->bctx->ram_before - b->bctx->ram_after;
+
+int modify_log_file(benchmark *b, const char *filepath) {
+    if (b == NULL)
+        return -1;
+
+    if (check_file_exists(filepath)) {
+        b->file_log = filepath;
+        return 1;
+    }
+    return -1;
+}
+
+int modify_report_file(benchmark *b, const char *filepath) {
+    if (b == NULL)
+        return -1;
+        
+    if (check_file_exists(filepath)) {
+        b->file_report = filepath;
+        return 1;
+    }
+    return -1;
 }

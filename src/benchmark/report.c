@@ -1,7 +1,7 @@
-#include "report.h"
+#include "benchmark.h"
 
 
-int create_log(bench *b, const char *filepath, const char *message) {
+int create_log(benchmark *b, const char *filepath, const char *message) {
     FILE *file = fopen(filepath, "a");
     if (!file) {
         perror("Error while opening the log file");
@@ -27,7 +27,7 @@ int create_log(bench *b, const char *filepath, const char *message) {
     return 1;
 }
 
-int fill_report(bench *b, const char *filepath) {
+int fill_report(benchmark *b, const char *filepath) {
     FILE *file = fopen(filepath, "a");
     if (!file) {
         perror("Error while opening the report file");
