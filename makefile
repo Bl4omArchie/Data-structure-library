@@ -9,10 +9,10 @@ BUILDDIR = build
 
 TARGET = file.o
 
-SRCS = $(wildcard $(SRCDIR)/linked_list/*.c $(SRCDIR)/hardware/*.c $(SRCDIR)/benchmark/*.c $(SRCDIR)/util/*.c $(BENCHDIR)/*.c $(TESTDIR)/*.c)
-ASMS = $(wildcard $(SRCDIR)/util/*.asm)
+SRCS = $(wildcard $(SRCDIR)/linked_list/*.c $(SRCDIR)/hardware/*.c $(SRCDIR)/benchmark/*.c $(SRCDIR)/utils/*.c $(BENCHDIR)/*.c $(TESTDIR)/*.c)
+ASMS = $(wildcard $(SRCDIR)/utils/*.asm)
 
-OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS)) $(patsubst $(SRCDIR)/util/%.asm,$(BUILDDIR)/util/%.o,$(ASMS))
+OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS)) $(patsubst $(SRCDIR)/utils/%.asm,$(BUILDDIR)/utils/%.o,$(ASMS))
 
 # Compilation flags
 CFLAGS = -I$(INCDIR) -pg -O3 -z noexecstack
@@ -23,7 +23,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(BUILDDIR)/util/%.o: $(SRCDIR)/util/%.asm
+$(BUILDDIR)/utils/%.o: $(SRCDIR)/utils/%.asm
 	mkdir -p $(dir $@)
 	$(ASM) -f elf64 -o $@ $<
 
