@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/stat.h>
 
 
 
@@ -20,12 +19,9 @@ uint64_t generate_random_number();
 void read_csv(const char *path_file);
 
 
-// ********** file.c **********
-int check_file_exists(const char* filename);
-
 // ********** arithmetic.asm **********
-extern uint64_t add_binary_optimized(uint64_t a, uint64_t b, int c);
-extern uint64_t sub_binary_optimized(uint64_t a, uint64_t b, int c);
+extern uint64_t add_binary_optimized(uint64_t a, uint64_t b);
+extern uint64_t sub_binary_optimized(uint64_t a, uint64_t b);
 
 
 

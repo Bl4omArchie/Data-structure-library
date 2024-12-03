@@ -4,8 +4,6 @@
 
 #include "ll_struct.h"
 #include "hardware.h"
-#include "utils.h"
-
 
 #include <sys/stat.h>
 #include <sys/time.h>
@@ -14,12 +12,12 @@
 
 // recorded info during the benchmark of a function for a single iteration
 typedef struct _benchmark_context {
-    struct timeval start;
-    struct timeval end;
-    clock_t c_start;
-    clock_t c_end;
-    long ram_before;
-    long ram_after;
+    struct timeval start;           // time when the chrono start
+    struct timeval end;             // time when the chrono end
+    clock_t c_start;                // same with clock time
+    clock_t c_end;                  // ~
+    long ram_before;                // ram consumption
+    long ram_after;                 // ~
 } bctx;
 
 // a session is is the evaluation of one function.
@@ -27,11 +25,11 @@ typedef struct _benchmark_context {
 // then for each rounds we take the average time it tooks to make each iteration
 // in the end we have N averages time for X iteration each
 typedef struct _session {
-    bctx *bench_ctx;
-    int size_bench_ctx;
-    const char *operation;
+    bctx *bench_ctx;                // array of bctx
+    int size_bench_ctx;             // current size of the array
+    const char *operation;          // name of the evaluated operation (ie: insert, )
     int N;
-    int X;
+    int X;                          // iteration 
 } session;
 
 // a benchmark is a set of session
@@ -61,6 +59,7 @@ int end_benchmark(benchmark *b);
 
 int add_session(benchmark *b, session *s);
 
+int check_file_exists(const char* filename);
 int modify_log_file(benchmark *b, const char *filepath);
 int modify_report_file(benchmark *b, const char *filepath);
 
@@ -71,8 +70,8 @@ int free_session(session *s);
 int add_bench(session *s, benchmark *b);
 
 bctx *init_record();
-void start_record(bctx *b);
-void end_record(bctx *b);
+void start_record(bctx *bench_ctx);
+void end_record(bctx *bench_ctx);
 
 
 // ********* log.c *********

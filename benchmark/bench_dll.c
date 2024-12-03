@@ -1,7 +1,7 @@
 #include "benchmark.h"
 
-
-bench *bench_dll_insertion_tail(int round, int iter) {
+/*
+benchmark *bench_dll_insertion_tail(int round, int iter) {
     bench *b = create_bench();
 
     start_record(b);
@@ -16,7 +16,7 @@ bench *bench_dll_insertion_tail(int round, int iter) {
     return b;
 }
 
-bench *bench_dll_insertion_head(int round, int iter) {
+benchmark *bench_dll_insertion_head(int round, int iter) {
     bench *b = create_bench();
 
     start_record(b);
@@ -30,3 +30,5 @@ bench *bench_dll_insertion_head(int round, int iter) {
     end_record(b);
     return b;
 }
+
+*/

@@ -11,6 +11,7 @@
 
 
 
+
 int test_ll() {
     if (run_all_dll())
         printf ("Test DLL completed!\n");
@@ -26,10 +27,18 @@ int test_ll() {
 
 
 int main() {
+    uint64_t a, b, c;
+    a = 0;
+    b = 10;
+    c = 5;
+
+    printf ("%ld\n", add_binary_optimized(10, 5));
+    printf ("%ld\n", sub_binary_optimized(10, 5));
+    /*
     benchmark *instance = start_benchmark();
     display_specifications(&instance->hardware_profile);
     
     end_benchmark(instance);
-    
+    */
     return 1;
 }

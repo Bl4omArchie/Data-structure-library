@@ -4,7 +4,7 @@
 
 benchmark *start_benchmark() {
     benchmark *b = (benchmark*)malloc(sizeof(benchmark));
-    b->arr_sessions = init_session();
+    b->arr_sessions = init_session(1, 2, "truc");
     b->size_sessions = 1;
     b->hardware_profile = create_hardware_profile();
     b->file_log = LOG_FILE;
@@ -29,7 +29,10 @@ int add_session(benchmark *b, session *s) {
     return 1;
 }
 
-
+int check_file_exists(const char* filename) {
+    struct stat buffer;
+    return !stat(filename, &buffer);
+}
 
 int modify_log_file(benchmark *b, const char *filepath) {
     if (b == NULL)

@@ -33,13 +33,13 @@ int add_bench(session *s, benchmark *b) {
 }
 
 void start_record(bctx *bench_ctx) {
-    gettimeofday(bench_ctx->start, NULL);
+    gettimeofday(&bench_ctx->start, NULL);
     bench_ctx->c_start = clock();
     bench_ctx->ram_before = get_available_ram();
 }
 
 void end_record(bctx *bench_ctx) {
-    gettimeofday(&b->bctx->end, NULL);
+    gettimeofday(&bench_ctx->end, NULL);
     bench_ctx->ram_after = get_available_ram();
     bench_ctx->c_end = clock();
 
@@ -54,7 +54,7 @@ int free_session(session *s) {
     if (s == NULL)
         return -1;
 
-    free(bs->bench_ctx);
+    free(s->bench_ctx);
     free(s);
     return 1;
 }
