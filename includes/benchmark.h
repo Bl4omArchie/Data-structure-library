@@ -28,8 +28,8 @@ typedef struct _session {
     bctx *bench_ctx;                // array of bctx
     int size_bench_ctx;             // current size of the array
     const char *operation;          // name of the evaluated operation (ie: insert, )
-    int N;
-    int X;                          // iteration 
+    int N;                          // rounds
+    int X;                          // iterations 
 } session;
 
 // a benchmark is a set of session
@@ -65,11 +65,13 @@ int modify_report_file(benchmark *b, const char *filepath);
 
 
 // ********* session.c *********
-session *init_session(int round, int iteration, const char *op);
+session *create_session();
+int get_session(benchmark *b)
+int init_session(session *s, int round, int iteration, const char *op);
 int free_session(session *s);
 int add_bench(session *s, benchmark *b);
 
-bctx *init_record();
+bctx *create_bench_ctx();
 void start_record(bctx *bench_ctx);
 void end_record(bctx *bench_ctx);
 

@@ -2,18 +2,28 @@
 
 
 
-session *init_session(int round, int iteration, const char *op) {
+session *create_session() {
     session *s = (session*)malloc(sizeof(session*));
-    s->size_bench_ctx = 0;
-    s->operation = op;
-    s->N = round;
-    s->X = iteration;
+    s->bench_ctx = create_bench_ctx();
+    s->size_bench_ctx = 1;
+    s->operation = "";
+    s->N = 0;
+    s->X = 0;
 
     return s;
 }
 
+int init_session(session *s, int round, int iteration, const char *op) {
+    if (s == NULL)
+        return -1;
+    s->N = round;
+    s->X = iteration;
+    s->operation = op;
+    return 1;
+}
 
-bctx *init_record() {
+
+bctx *create_bench_ctx() {
     bctx *bench_ctx = (bctx*)malloc(sizeof(bctx));
 
     bench_ctx->start = (struct timeval){0};

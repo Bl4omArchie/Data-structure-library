@@ -4,7 +4,7 @@
 
 benchmark *start_benchmark() {
     benchmark *b = (benchmark*)malloc(sizeof(benchmark));
-    b->arr_sessions = init_session(1, 2, "truc");
+    b->arr_sessions = create_session();
     b->size_sessions = 1;
     b->hardware_profile = create_hardware_profile();
     b->file_log = LOG_FILE;

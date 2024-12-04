@@ -3,15 +3,19 @@
 
 
 hprof *create_hardware_profile() {
-    hprof *hp = (hprof*)malloc(sizeof(hprof*));
-
+    hprof *hp = (hprof*)malloc(sizeof(hprof));
+    
     hp->total_ram = get_ram();
     hp->available_ram = get_available_ram();
     hp->nb_procs = get_procs_nb();
     hp->os = get_os();
     hp->cpu_name = get_cpu();
     hp->architecture = get_architecture();
-
+    hp->ext_sse = 0;
+    hp->ext_sse2 = 0;
+    hp->ext_avx = 0;
+    hp->ext_avx2 = 0;
+    
     return hp;
 }
 
