@@ -66,7 +66,7 @@ int modify_report_file(benchmark *b, const char *filepath);
 
 // ********* session.c *********
 session *create_session();
-int get_session(benchmark *b)
+int get_session(benchmark *b);
 int init_session(session *s, int round, int iteration, const char *op);
 int free_session(session *s);
 int add_bench(session *s, benchmark *b);

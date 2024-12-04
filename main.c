@@ -29,21 +29,17 @@ void simple_benchmark() {
     benchmark *instance = start_benchmark();
     
     display_specifications(instance->hardware_profile);
-    init_session(instance->arr_sessions[0], )
 
-    for (int r=0; r<round; r++) {
-        dll_node *node = new_dll(50);
-        for (int i=0; i<iter; i++)
-            dll_insert_value_head(node, generate_random_number());
-        dll_free(node);
-    }
     
     end_benchmark(instance);
 }
 
 
 int main() {
-    uint64_t a, b, c = 0, 15, 10;
+    uint64_t a, b, c;
+    a = 0;
+    b = 15;
+    c = 10;
 
     //printf ("%ld\n", add_binary_optimized(10, 5));
     //printf ("%ld\n", sub_binary_optimized(10, 5));
