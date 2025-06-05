@@ -9,78 +9,33 @@
 
 
 
-// For each data structure (DLL or BDLL), you have to initialize the first node. it nullify the head and tail and set the value equal to 0.
-// Than you can set a value and add more nodes at the head or tail.
+typedef struct _circular_doubly_linked_list {
+    struct _circular_doubly_linked_list *next;
+    struct _circular_doubly_linked_list *prev;
+    void *object_data;
+} cdll_t;
 
 
-
-// ********* Doubly Linked List ************
-
-typedef struct DoublyLinkedList {
-    uint64_t value;
-    struct DoublyLinkedList *head;
-    struct DoublyLinkedList *tail;
-} dll_node;
+typedef struct _cdll_l {
+    cdll_t *head_guard;
+    size_t total_size;
+    cursor_t cdll_cursor;
+} cdll_list;
 
 
-dll_node *new_dll(uint64_t value);
-int init_dll(dll_node *node, uint64_t value);
-int dll_set_value(dll_node *node, uint64_t value);
-
-int dll_insert_value_head(dll_node *node, uint64_t value);
-int dll_insert_value_tail(dll_node *node, uint64_t value);
-
-int dll_insert_node_head(dll_node *node, dll_node *to_replace);
-int dll_insert_node_tail(dll_node *node, dll_node *to_replace);
-
-//Remove the given node and link the head of it to its tail
-int dll_remove_node(dll_node *node);
-
-// Clear and free from the given node until it reached the tail
-int dll_clear(dll_node *node);
-int dll_free(dll_node *node);
-
-void dll_display_tail(dll_node *node);
+typedef struct cursor_t {
+    void *c_next;
+    void *c_prev;
+} cursor_t;
 
 
+cdll_list new_cdll_list(void *data);
+void init_cdll_list(cdll_list *cdll_l);
 
-// ********* Branched Doubly Linked List *********
+static inline cdll_t get_prev(cdll_t *node);
+static inline cdll_t get_next(cdll_t *node);
+static inline void set_object_data(cdll_t *node, void *obj_data);
 
-typedef struct BranchedDoublyLinkedList {
-    uint64_t value;
-    struct BranchedDoublyLinkedList *head;
-    struct BranchedDoublyLinkedList *tail;
-    struct BranchedDoublyLinkedList *branch;
-} bdll_node;
-
-
-
-bdll_node *new_bdll(uint64_t value);
-int init_bdll(bdll_node *node, uint64_t value);
-int bdll_set_value(bdll_node *node, uint64_t value);
-
-
-int bdll_insert_value_branch(bdll_node *node, uint64_t value);
-int bdll_insert_value_head(bdll_node *node, uint64_t value);
-int bdll_insert_value_tail(bdll_node *node, uint64_t value);
-
-int bdll_insert_node_branch(bdll_node *node, bdll_node *to_replace);
-int bdll_insert_node_head(bdll_node *node, bdll_node *to_replace);
-int bdll_insert_node_tail(bdll_node *node, bdll_node *to_replace);
-
-// Remove the given node and every branch depending on it and collasped the head and tail
-int bdll_remove_node(bdll_node *node);
-
-// Set values of the tail to 0
-int bdll_clear(bdll_node *node);
-
-// Free the whole tail, branch included
-int bdll_free(bdll_node *node);
-
-// Free the branch of the given node and every other branch depending on it.
-int bdll_free_branch(bdll_node *node);
-
-void bdll_display_tail(bdll_node *node);
 
 
 #endif

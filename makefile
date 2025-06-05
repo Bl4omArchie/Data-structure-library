@@ -1,14 +1,12 @@
 CC = gcc
 
 SRCDIR = src
-TESTDIR = tests
-BENCHDIR = benchmark
 INCDIR = includes
 BUILDDIR = build
 
 TARGET = file.o
 
-SRCS = $(wildcard $(SRCDIR)/linked_list/*.c $(SRCDIR)/hardware/*.c $(SRCDIR)/benchmark/*.c $(SRCDIR)/utils/*.c $(BENCHDIR)/*.c $(TESTDIR)/*.c)
+SRCS = $(wildcard $(SRCDIR)/linked_list/*.c $(SRCDIR)/utility/*.c)
 
 OBJS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
 

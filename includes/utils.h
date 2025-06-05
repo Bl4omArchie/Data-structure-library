@@ -19,10 +19,5 @@ uint64_t generate_random_number();
 void read_csv(const char *path_file);
 
 
-// ********** arithmetic.asm **********
-extern uint64_t add_binary_optimized(uint64_t a, uint64_t b);
-extern uint64_t sub_binary_optimized(uint64_t a, uint64_t b);
-
-
 
 #endif
