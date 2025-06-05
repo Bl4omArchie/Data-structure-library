@@ -21,8 +21,6 @@ int end_benchmark(benchmark *b) {
     return 1;
 }
 
-
-
 int add_session(benchmark *b, session *s) {
     if (b == NULL || s == NULL)
         return -1; 

@@ -44,6 +44,7 @@ int main() {
     //printf ("%ld\n", sub_binary_optimized(10, 5));
 
     simple_benchmark();
+    test_ll();
 
     return 1;
 }

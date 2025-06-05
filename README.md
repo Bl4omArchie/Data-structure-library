@@ -34,7 +34,7 @@ make
 
 ## Diagram
 
-This diagram resume every features of this project : 
+This diagram resume every features of this project : [NOT UPDATED]
 ![diagram](docs/diagram_dsa_project.excalidraw.png)
 
 ## 📣 Author
